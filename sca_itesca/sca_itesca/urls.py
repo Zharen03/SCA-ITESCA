@@ -16,7 +16,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from scaItescaApp.views import add_user_template
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('nuevoUsuario/', add_user_template),
 ]
