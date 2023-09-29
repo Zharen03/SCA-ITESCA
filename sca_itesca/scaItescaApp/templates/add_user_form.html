@@ -4,34 +4,34 @@
 <head>
     <meta charset="utf-16">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap demo</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="../static/CSS/general.css">
 </head>
 
 <body>
     <div class="container ">
         <div class="card shadow p-3 mb-5 bg-body-tertiary rounded" style="margin-top: 3%;">
             <div class="card-body">
-                <h3 style="margin-bottom: 4%; margin-top: 2%; margin-left: 1%;">Registro de usuario</h5>
+                <h3 style="margin-bottom: 4%; margin-top: 2%; margin-left: 1%;">REGISTRO DE USUARIO</h5>
                 <!-- ROW 1 FOR FIRST NAME, APELLIDO PATERNO Y MATERNO-->
                 <div class="row">
-                    <div class="col-4">
+                    <div class="col-12 col-md-4">
                         <div class="mb-3 container">
-                            <label for="first_name" class="form-label">Nombre</label>
-                            <input type="text" class="form-control" id="first_name" placeholder="">
+                            <label for="input_first_name" class="form-label">Nombre</label>
+                            <input maxlength="25" type="text" class="form-control" id="input_first_name" placeholder="Nombre" required>
                         </div>
                     </div>
-                    <div class="col-4">
+                    <div class="col-12 col-md-4">
                         <div class="mb-3 container">
-                            <label for="last_name" class="form-label">Apellido paterno</label>
-                            <input type="text" class="form-control" id="last_name" placeholder="">
+                            <label for="input_first_name" class="form-label">Primer apellido</label>
+                            <input maxlength="25" type="text" class="form-control" id="input_first_name" placeholder="Primer apellido" required>
                         </div>
                     </div>
-                    <div class="col-4">
+                    <div class="col-12 col-md-4">
                         <div class="mb-3 container">
-                            <label for="second_last_name" class="form-label">Apellido materno</label>
-                            <input type="text" class="form-control" id="second_last_name" placeholder="">
+                            <label for="input_last_name" class="form-label">Segundo apellido</label>
+                            <input maxlength="25" type="text" class="form-control" id="input_last_name" placeholder="Segundo apellido" required>
                         </div>
                     </div>
                 </div>
@@ -39,22 +39,22 @@
 
                 <!-- ROW 2 FOR PAYROLL NUMBER, PASSWORD AND PHONE NUMBER-->
                 <div class="row">
-                    <div class="col-4">
+                    <div class="col-12 col-md-4">
                         <div class="mb-3 container">
-                            <label for="payroll_number" class="form-label">No. Nomina</label>
-                            <input type="number" class="form-control" id="payroll_number" placeholder="">
+                            <label for="input_payroll_number" class="form-label">No. nómina</label>
+                            <input maxlength="11" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==11) return false;" type="number" class="form-control" id="input_payroll_number" placeholder="No. nómina" required>
                         </div>
                     </div>
-                    <div class="col-4">
+                    <div class="col-12 col-md-4">
                         <div class="mb-3 container">
-                            <label for="password" class="form-label">Password</label>
-                            <input type="password" class="form-control" id="password" placeholder="">
+                            <label for="input_password" class="form-label">Contraseña</label>
+                            <input maxlength="10" type="password" class="form-control" id="input_password" placeholder="Contraseña" required>
                         </div>
                     </div>
-                    <div class="col-4">
+                    <div class="col-12 col-md-4">
                         <div class="mb-3 container">
-                            <label for="telephone_number" class="form-label">Numero de telefono</label>
-                            <input type="number" class="form-control" id="telephone_number" placeholder="">
+                            <label for="input_telephone_number" class="form-label">Número de teléfono</label>
+                            <input maxlength="10" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==10) return false;" type="number" class="form-control" id="input_telephone_number" placeholder="Número de teléfono" required>
                         </div>
                     </div>
                 </div>
@@ -62,64 +62,50 @@
 
                 <!-- ROW 3 FOR POSITION, EMAIL AND AREA-->
                 <div class="row">
-                    <div class="col-4">
+                    <div class="col-12 col-md-4">
                         <div class="mb-3 container">
-                            <label for="position" class="form-label">Puesto</label>
-                            <input type="text" class="form-control" id="position" placeholder="">
+                            <label for="input_position" class="form-label">Puesto</label>
+                            <input maxlength="25" type="text" class="form-control" id="input_position" placeholder="Puesto" required>
                         </div>
                     </div>
-                    <div class="col-4">
+                    <div class="col-12 col-md-4">
                         <div class="mb-3 container">
-                            <label for="email" class="form-label">Correo electronico</label>
-                            <input type="email" class="form-control" id="email" placeholder="">
+                            <label for="input_email" class="form-label">Correo electrónico</label>
+                            <input maxlength="40" type="email" class="form-control" id="input_email" placeholder="Correo electrónico" required>
                         </div>
                     </div>
-                    <div class="col-4">
+                    <div class="col-12 col-md-4">
                         <div class="mb-3 container">
-                            <label for="area" class="form-label">Area</label>
-                            <div class="dropdown">
-                                <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                                    aria-expanded="false" style="width: 100%;">
-                                    Seleccione un area...
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">Por definir...</a></li>
-                                    <li><a class="dropdown-item" href="#">Por definir...</a></li>
-                                    <li><a class="dropdown-item" href="#">Por definir...</a></li>
-                                </ul>
-                            </div>
+                            <label for="select_area" class="form-label">Área</label>
+                            <select class="form-select" id="select_area" required>
+                                <option selected>Por definir...</option>
+                                <option value="1">Por definir...</option>
+                                <option value="2">Por definir...</option>
+                            </select>
                         </div>
                     </div>
+                    <!-- END OF ROW 3-->
+                    <!-- ROW 4 USER TYPE...-->
                 </div>
-                <!-- END OF ROW 3-->
-
-                <!-- ROW 4 USER TYPE...-->
                 <div class="row">
-                    <div class="col-4">
+                    <div class="col-12 col-md-4">
                         <div class="mb-3 container">
-                            <label for="user_type" class="form-label">Tipo de usuario</label>
-                            <div class="dropdown">
-                                <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                                    aria-expanded="false" style="width: 100%;">
-                                    Seleccione un tipo de usuario...
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">Administrador</a></li>
-                                    <li><a class="dropdown-item" href="#">Personal</a></li>
-                                    <li><a class="dropdown-item" href="#">Capacitador</a></li>
-                                </ul>
-                            </div>
+                            <label for="select_tipo_usuario" class="form-label">Tipo de usuario</label>
+                            <select class="form-select" id="select_tipo_usuario" required>
+                                <option selected>Personal</option>
+                                <option value="1">Jede de división</option>
+                                <option value="2">Capacitador</option>
+                            </select>
                         </div>
                     </div>
+                    <!-- END OF ROW 4-->
                 </div>
-                <!-- END OF ROW 4-->
-
                 <!-- ROW 5 ONLY FOR CANCEL AND REGISTER BUTTONS-->
                 <div class="row d-flex flex-column">
-                    <div class="col-12" style="width: 100%; margin-bottom: 2%;">
-                        <div class="container" style="margin-left:76%; margin-top: 5%;">
-                            <button type="button" class="btn btn-danger" style="width: 10%; margin-right: 2%; ">Cancelar</button>
-                            <button type="button" class="btn btn-primary" style="width: 10%;">Registrar</button>
+                    <div class="col-12">
+                        <div class="container" style="display: flex; justify-content: right;">
+                            <button id="button_cancelar" type="button" class="btn btn-danger">Cancelar</button>
+                            <button id="buttoin_registrar" type="button" class="btn btn-primary" style="margin-left: 2%;">Registrar</button>
                         </div>
                     </div>
                 </div>
@@ -127,13 +113,8 @@
         </div>
     </div>
 
-
-
-
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
 </body>
-
 </html>

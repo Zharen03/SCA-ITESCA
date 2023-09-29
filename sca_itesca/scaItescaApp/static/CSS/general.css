@@ -5,6 +5,64 @@ Prioridad:
     elemento
   */
 
-.ola:hover{
-    color: "white"
-}
+  /*AJUSTES A LA PANTALLA GENERAL*/
+  body {
+    background-color: white;
+  }
+
+  h3 {
+    font-style: bold;
+    color: #4D4D4D;
+  }
+
+  /*BOTÓN GENÉRICO AZUL*/
+  #buttoin_registrar {
+    background-color: #4F6BFF;
+    color: white;
+    border: none;
+    border-radius: 0%;
+  }
+
+  #buttoin_registrar:hover {
+    background-color: #1734CB;
+  }
+  #buttoin_registrar:active {
+    background-color: #1734CB;
+  }
+
+  /*BOTÓN GENÉRICO ROJO*/
+  #button_cancelar {
+    background-color: #FF5555;
+    color: white;
+    border: none;
+    border-radius: 0%;
+  }
+
+  #button_cancelar:hover {
+    background-color: #DD2A2A;
+  }
+
+  #button_cancelar:active {
+    background-color: #DD2A2A;
+  }
+
+  /*INPUT*/
+  .form-control {
+    box-sizing: border-box;
+    border: 2px solid #4F6BFF;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    border-radius: 0%;
+    outline: none;
+  }
+
+  /*SELECT*/
+  .form-select {
+    box-sizing: border-box;
+    border: 2px solid #4F6BFF;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    border-radius: 0%;
+    outline: none;
+  }
+  
