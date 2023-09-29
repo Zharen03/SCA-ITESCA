@@ -8,6 +8,7 @@ Prioridad:
   /*AJUSTES A LA PANTALLA GENERAL*/
   body {
     background-color: white;
+    font-family:'Times New Roman', Times, serif;
   }
 
   h3 {
@@ -16,17 +17,18 @@ Prioridad:
   }
 
   /*BOTÓN GENÉRICO AZUL*/
-  #buttoin_registrar {
+  #button_registrar {
     background-color: #4F6BFF;
     color: white;
     border: none;
     border-radius: 0%;
   }
 
-  #buttoin_registrar:hover {
+  #button_registrar:hover {
     background-color: #1734CB;
   }
-  #buttoin_registrar:active {
+
+  #button_registrar:active {
     background-color: #1734CB;
   }
 
