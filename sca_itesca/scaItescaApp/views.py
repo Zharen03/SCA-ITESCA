@@ -1,21 +1,22 @@
 from django.http import HttpResponse
 from django.shortcuts import render
-from django.template import Template, Context
-from django.utils.encoding import smart_str
+from django.template import loader
+from .models import * 
 
-# Create your views here.
+def showUser(request):
+    users = User.objects.all().values()
+    
+    template = loader.get_template('addUser.html')    
+    context = {
+        'users_list': users
+    }
+    #return HttpResponse(template.render(context, request))
+    return HttpResponse("showuser")
 
-#View to add user to the platform
-def add_user_template(request):
-    #Opening the html document that contains the template
-    extern_template = open("../sca_itesca/scaItescaApp/templates/add_user_form.html")
-    #Loading the template in a template type variable
-    template = Template(extern_template.read())
-    #Close the document that was opened before
-    extern_template.close()
-    #Creating the context for the template
-    context = Context()
-    #Render the template
-    document = template.render(context)
-
-    return HttpResponse(document)
+def addUser(request):
+    post = request.POST
+    
+    new_user = User(user_name = post['user_name'])
+    new_user.save()
+    
+    return HttpResponse("addUser")
