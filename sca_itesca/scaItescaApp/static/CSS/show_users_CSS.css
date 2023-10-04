@@ -1,0 +1,19 @@
+.btn-primary{
+  background-color: #4F6BFD;  
+}
+
+.form-control{
+    outline-color: #4F6BFD;
+    outline-style: solid;
+    
+}
+
+.btn-outline-secondary{
+    outline-color: #4F6BFD;
+    outline-style: solid; 
+}
+
+.body * {
+    font-family: 'Montserrat', sans-serif;
+}
+
