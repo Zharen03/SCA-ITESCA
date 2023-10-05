@@ -13,10 +13,19 @@ def showUser(request):
     #return HttpResponse(template.render(context, request))
     return HttpResponse("showuser")
 
+
+
+def addUserForm(request):
+    template = loader.get_template('add_user_form.html')    
+    context = {
+        
+    }
+    
+    return HttpResponse(template.render(context, request))
+
 def addUser(request):
     post = request.POST
     
     new_user = User(user_name = post['user_name'])
     new_user.save()
     
-    return HttpResponse("addUser")
