@@ -3,6 +3,9 @@
     {% block title %}Agregar usuario{% endblock  %}
     {% block css_links %}
         <link rel="stylesheet" href="../static/CSS/general.css"> 
+        <link rel="preconnect" href="https://fonts.googleapis.com/" >
+        <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     {% endblock %}
 
 
@@ -10,7 +13,7 @@
     <div class="p-0 m-0">
         <div class="card shadow p-3  bg-body-tertiary rounded">
             <div class="card-body">
-                <h3 style="margin-bottom: 4%; margin-top: 2%; margin-left: 1%;">REGISTRO DE USUARIO</h5>
+                <h3 style="margin-bottom: 4%; margin-top: 2%; margin-left: 1%;">R E G I S T R O  D E  U S U A R I O</h5>
                 <!-- ROW 1 FOR FIRST NAME, APELLIDO PATERNO Y MATERNO-->
                 <div class="row">
                     <div class="col-12 col-md-4">
@@ -21,13 +24,13 @@
                     </div>
                     <div class="col-12 col-md-4">
                         <div class="mb-3 container">
-                            <label for="input_mid_name" class="form-label">Primer apellido</label>
+                            <label for="input_mid_name" class="form-label">Primer Apelido</label>
                             <input maxlength="25" type="text" class="form-control" id="input_mid_name" placeholder="Primer apellido" required>
                         </div>
                     </div>
                     <div class="col-12 col-md-4">
                         <div class="mb-3 container">
-                            <label for="input_last_name" class="form-label">Segundo apellido</label>
+                            <label for="input_last_name" class="form-label">Segundo Apellido</label>
                             <input maxlength="25" type="text" class="form-control" id="input_last_name" placeholder="Segundo apellido" required>
                         </div>
                     </div>
@@ -100,7 +103,7 @@
                 <!-- ROW 5 ONLY FOR CANCEL AND REGISTER BUTTONS-->
                 <div class="row d-flex flex-column">
                     <div class="col-12">
-                        <div class="container" style="display: flex; justify-content: right;">
+                        <div class="container-fluid" style="display: flex; justify-content: right;">
                             <button id="button_cancelar" type="button" class="btn btn-danger">Cancelar</button>
                             <button id="button_registrar" onClick="add_user()" type="button" class="btn btn-primary" style="margin-left: 2%;">Registrar</button>
                         </div>
