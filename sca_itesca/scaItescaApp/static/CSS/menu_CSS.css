@@ -9,13 +9,11 @@
 /*Side menu*/
 .menu_container{
     max-height: 100vh;
-
     position: sticky;
     top: 0px;
 
     border-bottom: 1px solid black;
     overflow-y: scroll;
-    
 }
 
 .menu_controller{
@@ -76,7 +74,6 @@
     max-height: 66px;
     min-height: 66px;
     border-bottom: 2px solid #4F6BFF;
-
     position: sticky;
     top: 0px;
 }
@@ -89,7 +86,7 @@
 
 /*Page container*/
 .page_content{
-    min-height: calc(100vh - 60px);
+    min-height: calc(100vh - 66px);
     overflow-y: scroll;
 }
 

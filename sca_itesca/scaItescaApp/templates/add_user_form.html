@@ -78,9 +78,9 @@
                         <div class="mb-3 container">
                             <label for="select_area" class="form-label">Área</label>
                             <select class="form-select" id="select_area" required>
-                                <option selected>Por definir...</option>
-                                <option value="1">Por definir...</option>
-                                <option value="2">Por definir...</option>
+                                {% for area in areas%}
+                                <option value="a-{{area.id}}">{{area.name}}</option>
+                                {% endfor %}
                             </select>
                         </div>
                     </div>
@@ -92,9 +92,9 @@
                         <div class="mb-3 container">
                             <label for="select_tipo_usuario" class="form-label">Tipo de usuario</label>
                             <select class="form-select" id="select_tipo_usuario" required>
-                                <option selected>Personal</option>
+                                <option value="2" selected>Personal</option>
                                 <option value="1">Jefe de división</option>
-                                <option value="2">Capacitador</option>
+                                <option value="3">Capacitador</option>
                             </select>
                         </div>
                     </div>
@@ -125,7 +125,7 @@
                 var phone_number = $("#input_telephone_number").val();
                 var position = $("#input_position").val();
                 var email = $("#input_email").val();
-                var area = $("#select_area").val();
+                var area = $("#select_area").val().split("-")[1];
                 var type = $("#select_tipo_usuario").val();
 
                 $.ajax({
