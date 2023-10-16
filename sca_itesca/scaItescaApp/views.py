@@ -28,4 +28,28 @@ def addUser(request):
     
     new_user = User(user_name = post['user_name'])
     new_user.save()
+
+def resume_training (request): 
+    template = loader.get_template('resume_training_events.html')    
+    context = {
+        
+    }
+    
+    return HttpResponse(template.render(context, request))
+
+def training_events (request): 
+    template = loader.get_template('training_events.html')    
+    context = {
+        
+    }
+    
+    return HttpResponse(template.render(context, request))
+
+def virtual_training (request): 
+    template = loader.get_template('virtual_training.html')    
+    context = {
+        
+    }
+    
+    return HttpResponse(template.render(context, request))
     
