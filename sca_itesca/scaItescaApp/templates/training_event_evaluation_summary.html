@@ -2,17 +2,19 @@
 
 {% block title %}Resumen eventos capacitacion{% endblock %}
 {% block css_links %}
-<link rel="stylesheet" href="../static/CSS/general.css"> {% endblock %}
+<link rel="stylesheet" href="../static/CSS/general.css"> 
+<link rel="stylesheet" href="../static/CSS/training_event_evaluation_CSS.css"> 
+{% endblock %}
 
 
 {% block content%}
-<div class="container ">
-    <div class="card shadow p-3 mb-5 bg-body-tertiary rounded" style="margin-top: 3%;">
+<div>
+    <div class="card shadow p-3  bg-body-tertiary rounded">
         <div class="card-body">
             <h3 style="margin-bottom: 4%; margin-top: 2%; margin-left: 1%;">RESUMEN DE EVALUACIÓN DE EVENTOS DE
                 CAPACITACIÓN</h5>
                 <!-- ROW 1 FOR FIRST NAME, APELLIDO PATERNO Y MATERNO-->
-                <div class="row mb-5">
+                <div class="row">
                     <p>Por favor responda el siguiente cuestionario de la manera más objetiva. Coloque un número del 1
                         al 5 considerando que uno es muy malo y 5 excelente, anote el que mejor describa su percepción
                         del evento.</p>
@@ -20,7 +22,7 @@
 
                 <form action="">
                     <!--QUESTION 1-->
-                    <p>El instructor/a inició en los primeros 10 minutos</p>
+                    <p>1. El instructor/a inició en los primeros 10 minutos:</p>
                     <div class="row mb-2">
                         <div class="col-2">
                             <input type="radio" id="input_first_question_1" name="first_question" value="1">
@@ -45,7 +47,7 @@
                     </div>
                     <!--QUESTION 2-->
                     <div class="row mb-2">
-                        <p>Se presentó el objetivo y programa</p>
+                        <p>2. Se presentó el objetivo y programa:</p>
                         <div class="col-2">
                             <input type="radio" id="input_second_question_1" name="second_question" value="1">
                             <label for="input_second_question_1">1</label>
@@ -69,7 +71,7 @@
                     </div>
                     <!--QUESTION 3-->
                     <div class="row mb-2">
-                        <p>La explicación fue clara y completa</p>
+                        <p>3. La explicación fue clara y completa:</p>
                         <div class="col-2">
                             <input type="radio" id="input_third_question_1" name="third_question" value="1">
                             <label for="input_third_question_1">1</label>
@@ -93,7 +95,7 @@
                     </div>
                     <!--QUESTION 4-->
                     <div class="row mb-2">
-                        <p>El instructor/a domina el tema</p>
+                        <p>4. El instructor/a domina el tema:</p>
                         <div class="col-2">
                             <input type="radio" id="input_fourth_question_1" name="fourth_question" value="1">
                             <label for="input_fourth_question_1">1</label>
@@ -117,7 +119,7 @@
                     </div>
                     <!--QUESTION 5-->
                     <div class="row mb-2">
-                        <p>El instructor/a solucionó las dudas</p>
+                        <p>5. El instructor/a solucionó las dudas:</p>
                         <div class="col-2">
                             <input type="radio" id="input_fifth_question_1" name="fifth_question" value="1">
                             <label for="input_fifth_question_1">1</label>
@@ -141,7 +143,7 @@
                     </div>
                     <!--QUESTION 6-->
                     <div class="row mb-2">
-                        <p>Si hubo servicio de cafetería este fue</p>
+                        <p>6. Si hubo servicio de cafetería este fue:</p>
                         <div class="col-2">
                             <input type="radio" id="input_sixth_question_1" name="sixth_question" value="1">
                             <label for="input_sixth_question_1">1</label>
@@ -165,7 +167,7 @@
                     </div>
                     <!--QUESTION 7-->
                     <div class="row mb-2">
-                        <p>La exposición fue interesante y amena</p>
+                        <p>7. La exposición fue interesante y amena:</p>
                         <div class="col-2">
                             <input type="radio" id="input_seventh_question_1" name="seventh_question" value="1">
                             <label for="input_seventh_question_1">1</label>
@@ -189,7 +191,7 @@
                     </div>
                     <!--QUESTION 8-->
                     <div class="row mb-2">
-                        <p>Se brindó el material adecuado a los participantes</p>
+                        <p>8. Se brindó el material adecuado a los participantes:</p>
                         <div class="col-2">
                             <input type="radio" id="input_eigth_question_1" name="eigth_question" value="1">
                             <label for="input_eigth_question_1">1</label>
@@ -213,7 +215,7 @@
                     </div>
                     <!--QUESTION 9-->
                     <div class="row mb-2">
-                        <p>La presentación y apoyos fueron adecuados</p>
+                        <p>9. La presentación y apoyos fueron adecuados:</p>
                         <div class="col-2">
                             <input type="radio" id="input_ninth_question_1" name="ninth_question" value="1">
                             <label for="input_ninth_question_1">1</label>
@@ -237,7 +239,7 @@
                     </div>
                     <!--QUESTION 10-->
                     <div class="row mb-2">
-                        <p>El lugar fue adecuado y confortable</p>
+                        <p>10. El lugar fue adecuado y confortable:</p>
                         <div class="col-2">
                             <input type="radio" id="input_tenth_question_1" name="tenth_question" value="1">
                             <label for="input_tenth_question_1">1</label>
@@ -261,7 +263,7 @@
                     </div>
                     <!--QUESTION 11-->
                     <div class="row mb-2">
-                        <p>La organización del evento fue</p>
+                        <p>11. La organización del evento fue:</p>
                         <div class="col-2">
                             <input type="radio" id="input_eleventh_question_1" name="eleventh_question" value="1">
                             <label for="input_eleventh_question_1">1</label>
@@ -285,7 +287,7 @@
                     </div>
                     <!--QUESTION 12-->
                     <div class="row mb-4">
-                        <p>Mi participación en el desarrollo del curso fue</p>
+                        <p>12. Mi participación en el desarrollo del curso fue:</p>
                         <div class="col-2">
                             <input type="radio" id="input_twelfth_question_1" name="twelfth_question" value="1">
                             <label for="input_twelfth_question_1">1</label>
@@ -309,11 +311,11 @@
                     </div>
                     <div class="row mb-2">
                         <label for="input_comments" class="mb-3">Comentarios y sugerencias del grupo</label>
-                        <textarea id="input_comments" name="comments" rows="4" cols="50" maxlength="250" placeholder="Escriba aqui tus comentarios y sugerencias..."></textarea>
+                        <textarea id="input_comments" name="comments" rows="4" cols="50" maxlength="250" placeholder="Escriba aquí tus comentarios y sugerencias..."></textarea>
                     </div>
                     <div class="row mb-2">
-                        <label for="input_improvements" class="mb-3">Mejoras posibles</label>
-                        <textarea id="input_improvements" name="improvements" rows="4" cols="50" maxlength="250" placeholder="Escriba aqui mejoras posibles..."></textarea>
+                        <label id="label_improvements" for="input_improvements" class="mb-3">Mejoras posibles:</label>
+                        <textarea id="input_improvements" name="improvements" rows="4" cols="50" maxlength="250" placeholder="Escriba aquí mejoras posibles..."></textarea>
                     </div>
                     <div class="row d-flex flex-column mt-5">
                         <div class="col-12">
@@ -331,4 +333,4 @@
 <!--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>-->
-{% endblock %}`
+{% endblock %}
