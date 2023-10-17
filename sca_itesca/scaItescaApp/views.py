@@ -80,13 +80,13 @@ def showDNC(request):
 
 
 def trainingNeedsRequestForm(request):
-    template = loader.get_template('training_needs_request.html')
+    template = loader.get_template('needs_request.html')
     context = {} 
     return HttpResponse(template.render(context, request))
 
 
 @csrf_exempt
-def virtualTrainingEventEvaluation(request):
+def trainingNeedsRequest(request):
     post = request.POST
     print(post)
     
