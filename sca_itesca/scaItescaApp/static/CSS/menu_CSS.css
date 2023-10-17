@@ -9,13 +9,11 @@
 /*Side menu*/
 .menu_container{
     max-height: 100vh;
-
     position: sticky;
     top: 0px;
 
     border-bottom: 1px solid black;
     overflow-y: scroll;
-    
 }
 
 .menu_controller{
@@ -67,24 +65,17 @@
     transition: height .5s, width .75s;
 }
 
-/*Drawable (offcanvas)*/
-.offcanvas-body .btn{
-    
-}
-
 .offcanvas-container{
     width: 100%;
 }
 
 /*User bar*/
 .user_bar{
-    max-height: 60px;
-    min-height: 60px;
+    max-height: 66px;
+    min-height: 66px;
     border-bottom: 2px solid #4F6BFF;
-
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+    position: sticky;
+    top: 0px;
 }
 
 .dropdown-toggle:hover{
@@ -95,18 +86,9 @@
 
 /*Page container*/
 .page_content{
-    min-height: calc(120vh - 60px);
+    min-height: calc(100vh - 66px);
+    overflow-y: scroll;
 }
-
-
-
-
-
-
-
-
-
-
 
 /*A scroll utility*/
 ::-webkit-scrollbar {

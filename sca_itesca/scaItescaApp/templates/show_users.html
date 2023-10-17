@@ -1,107 +1,100 @@
-<!doctype html>
-<html lang="en">
+{% extends 'menu.html' %}
 
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Bootstrap demo</title>
+  {% block title %}Usuarios{% endblock %}
+  {% block css_links %}
+    <link rel="stylesheet" href="..\static\CSS\general.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com/" >
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+  {% endblock %}
 
-  <link rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-  <link rel="stylesheet" href="Style.css">
-</head>
-
-<body>
-
-  <div class="container-fluid shadow mt-5"> <!-- FILTRO -->
-    <div class="container text-center">
+  {% block content%}
+  <div class="card shadow p-3  bg-body-tertiary rounded"> <!-- FILTRO -->
+    <div class="card-body">
       <div class="row">
         <div class="col">
-          <h2 class="text-start">F I L T R O</h2>
+          <h3 style="margin-bottom: 4%; margin-top: 2%; margin-left: 1%;">F I L T R O</h3>
         </div>
-
+  
       </div>
       <div class="row"> <!-- r1 -->
-        <div class="col-md-4 col-12 text-start">
-          <label for="input_name" class="form-label">NOMBRE</label>
-          <div class="mb-3">
+        <div class="col-md-4 col-12">
+          <div class="mb-3 container">
+            <label for="input_name" class="form-label">Nombre</label>
             <input maxlength="25" onKeyPress="if(this.value.length==25) return false;" type="text" class="form-control"
               id="input_name" placeholder="Nombre">
           </div>
         </div>
-        <div class="col-12 col-md-4 text-start">
-          <label for="input_lastname" class="form-label">APELLIDO</label>
-          <div class="col">
-            <div class="mb-3">
-              <input maxlength="25" onKeyPress="if(this.value.length==25) return false;" type="text"
-                class="form-control" id="input_lastname" placeholder="Apellido">
-
-            </div>
+        <div class="col-12 col-md-4">
+          <div class="mb-3 container">
+            <label for="input_lastname" class="form-label">Primer Apellido</label>
+            <input maxlength="25" onKeyPress="if(this.value.length==25) return false;" type="text" class="form-control"
+              id="input_lastname" placeholder="Apellido">
           </div>
         </div>
-        <div class="col-md-4 col-12 text-start">
-
-          <label for="select_area" class="form-label">ÁREA</label>
-          <select class="form-select" id="select_area" required>
-            <option selected>Por definir...</option>
-            <option value="1">Por definir...</option>
-            <option value="2">Por definir...</option>
-          </select>
+        <div class="col-md-4 col-12">
+          <div class="mb-3 container">
+            <label for="select_area" class="form-label">Área</label>
+            <select class="form-select mb-3" id="select_area" required>
+              <option selected>Por definir...</option>
+              <option value="1">Por definir...</option>
+              <option value="2">Por definir...</option>
+            </select>
+          </div>
         </div>
       </div>
-
+  
       <div class="row"> <!-- r2 -->
-        <div class="col-md-4 col-12 text-start">
-          <label for="select_training" class="form-label">CAPACITACIÓN</label>
-          <select class="form-select" id="select_training" required>
-            <option selected>Por definir...</option>
-            <option value="1">Por definir...</option>
-            <option value="2">Por definir...</option>
-          </select>
+        <div class="col-md-4 col-12">
+          <div class="mb-3 container">
+            <label for="select_training" class="form-label">Capacitación</label>
+            <select class="form-select mb-3" id="select_training" required>
+              <option selected>Por definir...</option>
+              <option value="1">Por definir...</option>
+              <option value="2">Por definir...</option>
+            </select>
+          </div>
         </div>
-
-        <div class="col-md-4 col-12 text-start">
-
-          <label for="select_type_training" class="form-label">TIPO DE CAPACITACIÓN</label>
-          <select class="form-select" id="select_type_training" required>
-            <option selected>Por definir...</option>
-            <option value="1">Por definir...</option>
-            <option value="2">Por definir...</option>
-          </select>
-
+  
+        <div class="col-md-4 col-12">
+          <div class="mb-3 container">
+            <label for="select_type_training" class="form-label">Tipo de Capacitación</label>
+            <select class="form-select mb-3" id="select_type_training" required>
+              <option selected>Por definir...</option>
+              <option value="1">Por definir...</option>
+              <option value="2">Por definir...</option>
+            </select>
+          </div>
         </div>
-
-        <div class="col-md-4 col-12 text-start">
-
-          <label for="select_min_training" class="form-label">CAPACITACIÓN OBLIGATORIA</label>
-          <select class="form-select" id="select_min_training" required>
-            <option selected>Por definir...</option>
-            <option value="1">Por definir...</option>
-            <option value="2">Por definir...</option>
-          </select>
-
+  
+        <div class="col-md-4 col-12">
+          <div class="mb-3 container">
+            <label for="select_min_training" class="form-label">Capacitación Obligatoria</label>
+            <select class="form-select" id="select_min_training" required>
+              <option selected>Por definir...</option>
+              <option value="1">Por definir...</option>
+              <option value="2">Por definir...</option>
+            </select>
+          </div>
         </div>
       </div>
-
-      <div class="row"><!-- botones -->
-        <div class="col-4 col-md-8"></div>
-        <div class=" row col-8 col-md-4 mt-3 mb-3">
-          <button type="button" class="btn btn-primary col-5">FILTRAR</button>
-          <div class="col-2"> </div>
-          <button type="button" class="btn btn-primary col-5">BORRAR</button>
+      <!-- ROW 5 ONLY FOR CANCEL AND REGISTER BUTTONS-->
+      <div class="row d-flex flex-column" >
+        <div class="col-12">
+          <div class="container-fluid" style="display: flex; justify-content: right; ">
+            <button id="button_filtrar" type="button" class="btn">FILTRAR</button>
+            <button id="button_cancelar" type="button" class="btn" style="margin-left: 2%;">BORRAR</button>  
+          </div>
         </div>
       </div>
     </div>
   </div>
-
-
-  <div class="container-fluid table-responsive shadow mt-5 "><!-- TABLA DE CONTENIDO -->
-
-    <div class="col mt-3 mb-3 d-flex"> <button type="button" class="btn btn-primary me-5 ms-auto ">GENERAR
-        REPORTE</button> </div>
-
+  
+  <!-- USERS TABLE -->
+  <div class="card container-fluid bg-body-tertiary table-responsive shadow mt-5">
+    <div class="col mt-3 mb-3 d-flex">
+      <button id="button_gen_report" type="button" class="btn me-5 ms-auto ">GENERAR REPORTE</button>
+    </div>
     <table class="table aling-middle">
       <thead>
         <tr>
@@ -115,10 +108,9 @@
       </thead>
       <tbody class="table-group-divider">
         <tr>
-
-          <td>gina</td>
-          <td>Mark</td>
-          <td>Otto</td>
+          <td>user.first_name</td>
+          <td>user.last_name</td>
+          <td>user.email</td>
           <td>
             <svg xmlns="http://www.w3.org/2000/svg" height="1.25em"
               viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
@@ -130,7 +122,7 @@
               <path
                 d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z" />
             </svg>
-
+  
           </td>
           <td>
             <svg xmlns="http://www.w3.org/2000/svg" height="1.25em"
@@ -145,26 +137,51 @@
             </svg>
           </td>
           <td>
-            <div class="btn-group d-flex " role="group" aria-label="Basic mixed styles example">
-              <button type="button" class="btn btn-danger ms-auto py-auto mt-1"> </button>
-              <button type="button" class="btn btn-warning mt-1"> </button>
-              <button type="button" class="btn btn-success mt-1"> </button>
-            </div>
+            <button type="button" class="btn btn-warning mt-1"> </button>
+            <button type="button" class="btn btn-danger ms-auto py-auto mt-1"> </button>
           </td>
-
         </tr>
-
+        {%for user in users_list%}
+        <tr>
+          <td>{{user.first_name}}</td>
+          <td>{{user.last_name}}</td>
+          <td>{{user.email}}</td>
+          <td>
+            {% if user.min_general %}
+            <svg xmlns="http://www.w3.org/2000/svg" height="1.25em"
+              viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+              <style>
+                svg {
+                  fill: #005eff
+                }
+              </style>
+              <path
+                d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z" />
+            </svg>
+            {% endif%}
+          </td>
+          <td>
+            {% if user.min_gender %}
+            <svg xmlns="http://www.w3.org/2000/svg" height="1.25em"
+              viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+              <style>
+                svg {
+                  fill: #005eff
+                }
+              </style>
+              <path
+                d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z" />
+            </svg>
+            {% endif%}
+          </td>
+          <td>
+            <button type="button" class="btn btn-warning mt-1"> </button>
+            <button type="button" class="btn btn-danger ms-auto py-auto mt-1"> </button>
+          </td>
+        </tr>
+        {% endfor%}
+  
       </tbody>
     </table>
-
-
   </div>
-
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-    crossorigin="anonymous"></script>
-
-</body>
-
-</html>
+  {% endblock%}
