@@ -5,96 +5,150 @@ Prioridad:
     elemento
   */
 
-  /*AJUSTES A LA PANTALLA GENERAL*/
-  body {
+
+/*AJUSTES A LA PANTALLA GENERAL*/
+
+body {
     background-color: white;
     font-family: 'Montserrat', sans-serif;
-  }
+}
 
-  h3 {
+h3 {
     font-style: bold;
     color: #4D4D4D;
-  }
+}
 
-  /*BOTÓN GENÉRICO AZUL*/
-  #button_registrar {
+
+/*BOTÓN GENÉRICO AZUL*/
+
+#button_registrar {
     background-color: #4F6BFF;
     color: white;
     border: none;
     border-radius: 0%;
-  }
+}
 
-  #button_registrar:hover {
+#button_registrar:hover {
     background-color: #1734CB;
-  }
+}
 
-  #button_registrar:active {
+#button_registrar:active {
     background-color: #1734CB;
-  }
+}
 
-  #button_filtrar {
+#button_filtrar {
     background-color: #4F6BFF;
     color: white;
     border: none;
     border-radius: 0%;
-  }
+}
 
-  #button_filtrar:hover {
+#button_filtrar:hover {
     background-color: #1734CB;
-  }
+}
 
-  #button_filtrar:active {
+#button_filtrar:active {
     background-color: #1734CB;
-  }
+}
 
-  #button_gen_report {
+#button_gen_report {
     background-color: #4F6BFF;
     color: white;
     border: none;
     border-radius: 0%;
-  }
+}
 
-  #button_gen_report:hover {
+#button_gen_report:hover {
     background-color: #1734CB;
-  }
+}
 
-  #button_gen_report:active {
+#button_gen_report:active {
     background-color: #1734CB;
-  }
+}
 
-  /*BOTÓN GENÉRICO ROJO*/
-  #button_cancelar {
+#button_assist {
+    background-color: #4F6BFF;
+    color: white;
+    border: none;
+    border-radius: 0%;
+}
+
+#button_assist:hover {
+    background-color: #1734CB;
+}
+
+#button_assist:active {
+    background-color: #1734CB;
+}
+
+#button_interested {
+    background-color: #4F6BFF;
+    color: white;
+    border: none;
+    border-radius: 0%;
+}
+
+#button_interested:hover {
+    background-color: #1734CB;
+}
+
+#button_interested:active {
+    background-color: #1734CB;
+}
+
+#button_register_attendance {
+    background-color: #4F6BFF;
+    color: white;
+    border: none;
+    border-radius: 0%;
+}
+
+#button_register_attendance:hover {
+    background-color: #1734CB;
+}
+
+#button_register_attendance:active {
+    background-color: #1734CB;
+}
+
+
+/*BOTÓN GENÉRICO ROJO*/
+
+#button_cancelar {
     background-color: #FF5555;
     color: white;
     border: none;
     border-radius: 0%;
-  }
+}
 
-  #button_cancelar:hover {
+#button_cancelar:hover {
     background-color: #DD2A2A;
-  }
+}
 
-  #button_cancelar:active {
+#button_cancelar:active {
     background-color: #DD2A2A;
-  }
+}
 
-  /*INPUT*/
-  .form-control {
+
+/*INPUT*/
+
+.form-control {
     box-sizing: border-box;
     border: 2px solid #4F6BFF;
     -webkit-transition: 0.5s;
     transition: 0.5s;
     border-radius: 0%;
     outline: none;
-  }
+}
 
-  /*SELECT*/
-  .form-select {
+
+/*SELECT*/
+
+.form-select {
     box-sizing: border-box;
     border: 2px solid #4F6BFF;
     -webkit-transition: 0.5s;
     transition: 0.5s;
     border-radius: 0%;
     outline: none;
-  }
-  
+}

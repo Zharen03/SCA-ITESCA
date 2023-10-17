@@ -1,0 +1,169 @@
+{% extends 'menu.html' %}  
+
+
+{% block title %}Invitaciones{% endblock %}
+{% block css_links %}
+<link rel="stylesheet" href="..\static\CSS\general.css">
+<link rel="preconnect" href="https://fonts.googleapis.com/">
+<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet"> 
+{% endblock %}
+
+{% block content%}
+<div class="col-12 mb-3" style="align-items: end;">
+    <div class="container-fluid" style="display: flex; justify-content: right; ">
+        <button id="button_register_attendance" type="button" class="btn">REGISTRAR ASISTENCIA</button>
+    </div>
+</div>
+
+<div class="card shadow p-3  bg-body-tertiary rounded mb-5">
+    <!-- CAPACITACIÓN OBLIGATORIA -->
+    <!-- NOMBRE DE CAPACITACIÓN -->
+    <div class="card-body">
+        <div class="row">
+            <div class="col">
+                <h3 style="margin-bottom: 4%; margin-top: 2%; margin-left: 1%;"> <strong>FUNDAMENTOS DE EXCEL </strong></h3>
+            </div>
+
+        </div>
+        <div class="row">
+            <!-- r2 NOMBRE DEL INSTRUCTOR | HORARIO |  MODALIDAD -->
+            <div class="col-md-4 col-12">
+                <div class="mb-3 container">
+                    <label class="form-label"><strong>Instructor: </strong></label>
+                    <label class="form-label">Jackeline Vázquez Méndez</label>
+
+                </div>
+            </div>
+
+            <div class="col-md-4 col-12">
+                <div class="mb-3 container">
+                    <label class="form-label"><strong>Horario: </strong></label>
+                    <label class="form-label">Viernes 20-10-2023 10:00 hrs</label>
+
+                </div>
+            </div>
+
+
+
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <div class="mb-3 container">
+                    <label class="form-label"><strong>Modalidad: </strong></label>
+                    <label class="form-label">Virtual</label>
+                    <a href="#">https://us02web.zoom.us/j/82892390591?pwd=RGlyeThGTFpJZkREQjVvT2JBOUdqUT09</a>
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <!-- r2 DESCRIPCIÓN DE LA CAPACITACIÓN -->
+            <div class="col-md-12 col-12">
+                <div class="mb-3 container">
+                    <label class="form-label"><strong>Descripción: </strong></label>
+                    <label class="form-label">En este curso se aprenderán las herramientas más habituales de Microsoft Excel, desde lo más básico a los gráficos, funciones y tablas de datos.</label>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- r3 ARCHIVOS ADJUNTOS LABEL -->
+            <div class="col-12">
+                <div class="mb-3 container">
+                    <label for="input_position" class="form-label"> <strong>Archivos adjuntos: </strong></label>
+                    <hr>
+                    <a href="#">Manual de excel 2023.pdf</a> <br>
+                    <a href="#">Manual de instalación MS Office.pdf</a>
+                </div>
+            </div>
+        </div>
+        <!-- ROW 4 PARA BOTONES DE ASISTIR / ME INTERESA-->
+        <div class="row d-flex flex-column">
+            <div class="col-12">
+                <div class="container-fluid" style="display: flex; justify-content: right; ">
+                    <button id="button_assist" type="button" class="btn">ASISTIR</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- CAPACITACIÓN OPCIONAL -->
+<div class="card shadow p-3  bg-body-tertiary rounded">
+    <!-- NOMBRE DE CAPACITACIÓN -->
+    <div class="card-body">
+        <div class="row">
+            <div class="col">
+                <h3 style="margin-bottom: 4%; margin-top: 2%; margin-left: 1%;"> <strong>HABILIDADES PARA LA COMUNICACIÓN ORAL Y ESCRITA </strong></h3>
+            </div>
+
+        </div>
+        <div class="row">
+            <!-- r2 NOMBRE DEL INSTRUCTOR | HORARIO |  MODALIDAD -->
+            <div class="col-md-4 col-12">
+                <div class="mb-3 container">
+                    <label class="form-label"><strong>Instructor: </strong></label>
+                    <label class="form-label">Mtro. Bruno Pablos Lugo</label>
+
+                </div>
+            </div>
+
+            <div class="col-md-4 col-12">
+                <div class="mb-3 container">
+                    <label class="form-label"><strong>Horario: </strong></label>
+                    <label class="form-label">Jueves 19-10-2023 9:00 hrs</label>
+
+                </div>
+            </div>
+
+
+
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <div class="mb-3 container">
+                    <label class="form-label"><strong>Modalidad: </strong></label>
+                    <label class="form-label">Presencial</label>
+                    
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <!-- r2 DESCRIPCIÓN DE LA CAPACITACIÓN -->
+            <div class="col-md-12 col-12">
+                <div class="mb-3 container">
+                    <label class="form-label"><strong>Descripción: </strong></label>
+                    <label class="form-label">En este curso se aprenderán las herramientas básicas para la comunicación y expresión oral y escrita.</label>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- r3 ARCHIVOS ADJUNTOS LABEL -->
+            <div class="col-12">
+                <div class="mb-3 container">
+                    <label for="input_position" class="form-label"> <strong>Archivos adjuntos: </strong></label>
+                    <hr>
+                    <a href="#">Manual de lectura y redacción.pdf</a> <br>
+                    <a href="#">Ejercicios de gramática.pdf</a>
+                </div>
+            </div>
+        </div>
+        <!-- ROW 4 PARA BOTONES DE ASISTIR / ME INTERESA-->
+        <div class="row d-flex flex-column">
+            <div class="col-12">
+                <div class="container-fluid" style="display: flex; justify-content: right; ">
+                    <button id="button_interested" type="button" class="btn">ME INTERESA</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock%}
