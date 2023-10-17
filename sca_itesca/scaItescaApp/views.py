@@ -90,9 +90,9 @@ def virtualTrainingEventEvaluation(request):
     post = request.POST
     print(post)
     
-
-def training_list(request):
-    template = loader.get_template('training_needs_request.html')
+    
+def showInvitations(request):
+    template = loader.get_template('show_invitations.html')
     context = {} 
     return HttpResponse(template.render(context, request))
 

@@ -8,4 +8,5 @@ urlpatterns = [
     path('sca/resume_training_events', views.resume_training, name='resume_training_events'),
     path('sca/training_events', views.training_events, name='training_events'),
     path('sca/virtual_training', views.virtual_training, name='virtual_training'),
+    path('sca/show_invitations', views.showInvitations, name='show_invitations'),
 ]
