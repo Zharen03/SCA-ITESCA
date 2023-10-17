@@ -76,5 +76,10 @@ class DNC(models.Model):
     answer = models.CharField(max_length=65535)
     status = models.BooleanField()
 
+class Needs_Request(models.Model):
+    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
+    question_id = models.ForeignKey(Question, on_delete=models.CASCADE)
+    answer = models.CharField(max_length=65535)
+    status = models.BooleanField()
     
     

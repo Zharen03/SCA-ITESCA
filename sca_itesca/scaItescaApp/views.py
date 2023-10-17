@@ -95,3 +95,4 @@ def training_list(request):
     template = loader.get_template('training_needs_request.html')
     context = {} 
     return HttpResponse(template.render(context, request))
+
