@@ -2,16 +2,18 @@
 
 {% block title %}Evaluacion capacitacion virtual{% endblock %}
 {% block css_links %}
-<link rel="stylesheet" href="../static/CSS/general.css"> {% endblock %}
+<link rel="stylesheet" href="../static/CSS/general.css"> 
+<link rel="stylesheet" href="../static/CSS/training_event_evaluation_CSS.css"> 
+{% endblock %}
 
 
 {% block content%}
-<div class="container ">
-    <div class="card shadow p-3 mb-5 bg-body-tertiary rounded" style="margin-top: 3%;">
+<div>
+    <div class="card shadow p-3  bg-body-tertiary rounded">
         <div class="card-body">
             <h3 style="margin-bottom: 4%; margin-top: 2%; margin-left: 1%;">EVALUACIÓN DE EVENTOS DE CAPACITACIÓN VIRTUALES</h5>
                 <!-- ROW 1 FOR FIRST NAME, APELLIDO PATERNO Y MATERNO-->
-                <div class="row mb-5">
+                <div class="row">
                     <p>Por favor responda el siguiente cuestionario de la manera más objetiva. Coloque un número del 1
                         al 5 considerando que uno es muy malo y 5 excelente, anote el que mejor describa su percepción
                         del evento.</p>
@@ -19,7 +21,7 @@
 
                 <form action="">
                     <!--QUESTION 1-->
-                    <p>El acceso a la plataforma fue de forma sencilla</p>
+                    <p>1. El acceso a la plataforma fue de forma sencilla:</p>
                     <div class="row mb-2">
                         <div class="col-2">
                             <input type="radio" id="input_first_question_1" name="first_question" value="1">
@@ -44,7 +46,7 @@
                     </div>
                     <!--QUESTION 2-->
                     <div class="row mb-2">
-                        <p>El contenido del curso fue de fácil entendimiento</p>
+                        <p>2. El contenido del curso fue de fácil entendimiento:</p>
                         <div class="col-2">
                             <input type="radio" id="input_second_question_1" name="second_question" value="1">
                             <label for="input_second_question_1">1</label>
@@ -68,7 +70,7 @@
                     </div>
                     <!--QUESTION 3-->
                     <div class="row mb-2">
-                        <p>La presentación del tema fue interesante y amena</p>
+                        <p>3. La presentación del tema fue interesante y amena:</p>
                         <div class="col-2">
                             <input type="radio" id="input_third_question_1" name="third_question" value="1">
                             <label for="input_third_question_1">1</label>
@@ -92,7 +94,7 @@
                     </div>
                     <!--QUESTION 4-->
                     <div class="row mb-2">
-                        <p>Las instrucciones en las actividades de aprendizaje fueron claras</p>
+                        <p>4. Las instrucciones en las actividades de aprendizaje fueron claras:</p>
                         <div class="col-2">
                             <input type="radio" id="input_fourth_question_1" name="fourth_question" value="1">
                             <label for="input_fourth_question_1">1</label>
@@ -116,7 +118,7 @@
                     </div>
                     <!--QUESTION 5-->
                     <div class="row mb-2">
-                        <p>Se brindó material de apoyo</p>
+                        <p>5. Se brindó material de apoyo:</p>
                         <div class="col-2">
                             <input type="radio" id="input_fifth_question_1" name="fifth_question" value="1">
                             <label for="input_fifth_question_1">1</label>
@@ -140,7 +142,7 @@
                     </div>
                     <!--QUESTION 6-->
                     <div class="row mb-2">
-                        <p>Los conocimientos y habilidades desarrollados tiene aplicación inmediata o a corto plazo en mi trabajo</p>
+                        <p>6. Los conocimientos y habilidades desarrollados tiene aplicación inmediata o a corto plazo en mi trabajo:</p>
                         <div class="col-2">
                             <input type="radio" id="input_sixth_question_1" name="sixth_question" value="1">
                             <label for="input_sixth_question_1">1</label>
@@ -164,7 +166,7 @@
                     </div>
                     <!--QUESTION 7-->
                     <div class="row mb-2">
-                        <p>Mi participación en el presente curso</p>
+                        <p>7. Mi participación en el presente curso:</p>
                         <div class="col-2">
                             <input type="radio" id="input_seventh_question_1" name="seventh_question" value="1">
                             <label for="input_seventh_question_1">1</label>
@@ -187,8 +189,8 @@
                         </div>
                     </div>
                     <div class="row mb-2">
-                        <label for="input_comments" class="mb-3">Comentarios y sugerencias del grupo</label>
-                        <textarea id="input_comments" name="comments" rows="4" cols="50" maxlength="250" placeholder="Escriba aqui tus comentarios y sugerencias..."></textarea>
+                        <label for="input_comments" class="mb-3">Comentarios y sugerencias del grupo: </label>
+                        <textarea id="input_comments" name="comments" rows="4" cols="50" maxlength="250" placeholder="Escriba aquí tus comentarios y sugerencias..."></textarea>
                     </div>
                     <div class="row d-flex flex-column mt-5">
                         <div class="col-12">
