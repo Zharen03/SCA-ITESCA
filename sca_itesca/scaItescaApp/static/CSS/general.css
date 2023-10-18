@@ -32,6 +32,23 @@ Prioridad:
     background-color: #1734CB;
   }
 
+  /*ver detalles*/
+  #button_registrar {
+    background-color: #4F6BFF;
+    color: white;
+    border: none;
+    border-radius: 0%;
+  }
+
+  #button_registrar:hover {
+    background-color: #1734CB;
+  }
+
+  #button_registrar:active {
+    background-color: #1734CB;
+  }
+  /**/
+
   #button_filtrar {
     background-color: #4F6BFF;
     color: white;
