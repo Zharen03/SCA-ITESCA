@@ -8,7 +8,7 @@ def showUser(request):
     users = User.objects.all().values()
     template = loader.get_template('show_users.html')    
     context = {
-        'users_list': users
+        'users_list': users,
     }
     return HttpResponse(template.render(context, request))
 
@@ -93,6 +93,12 @@ def trainingNeedsRequest(request):
     
 def showInvitations(request):
     template = loader.get_template('show_invitations.html')
+    context = {} 
+    return HttpResponse(template.render(context, request))
+
+
+def addTrainingForm(request):
+    template = loader.get_template('add_training.html')
     context = {} 
     return HttpResponse(template.render(context, request))
 
