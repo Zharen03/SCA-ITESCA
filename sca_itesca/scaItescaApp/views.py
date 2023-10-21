@@ -96,3 +96,9 @@ def showInvitations(request):
     context = {} 
     return HttpResponse(template.render(context, request))
 
+
+def trainingPlan(request):
+    template = loader.get_template('training_plan.html')
+    context = {} 
+    return HttpResponse(template.render(context, request))
+
