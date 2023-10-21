@@ -4,6 +4,12 @@ from django.shortcuts import render
 from django.template import loader
 from .models import *
 
+def login(request):
+    template = loader.get_template('login.html')    
+    context = {}
+    return HttpResponse(template.render(context, request))
+
+
 def showUser(request):
     users = User.objects.all().values()
     template = loader.get_template('show_users.html')    
