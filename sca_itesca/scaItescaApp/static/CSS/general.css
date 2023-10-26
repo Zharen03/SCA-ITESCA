@@ -112,6 +112,28 @@ h3 {
     background-color: #1734CB;
 }
 
+#button_summary {
+    background-color: #4F6BFF;
+    color: white;
+    border: none;
+    border-radius: 0%;
+}
+
+.btn_generic{
+    background-color: #4F6BFF;
+    color: white;
+    border: none;
+    border-radius: 0%;
+}
+
+.btn_generic:active{
+    background-color: #1734CB;
+}
+
+.btn_generic:hover{
+    background-color: #1734CB;
+}
+
 #button_register_attendance {
     background-color: #4F6BFF;
     color: white;
@@ -126,6 +148,8 @@ h3 {
 #button_register_attendance:active {
     background-color: #1734CB;
 }
+
+
 
 
 /*BOTÓN GENÉRICO ROJO*/
