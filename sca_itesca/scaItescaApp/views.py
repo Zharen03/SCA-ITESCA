@@ -102,3 +102,8 @@ def trainingPlan(request):
     context = {} 
     return HttpResponse(template.render(context, request))
 
+def showSummary(request):
+    template = loader.get_template('show_summary.html')
+    context = {}
+    return HttpResponse(template.render(context, request))
+
