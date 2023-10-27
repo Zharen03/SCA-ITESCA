@@ -18,6 +18,28 @@ h3 {
     color: #4D4D4D;
 }
 
+/*BOTÓN GENÉRICO VER DETALLES*/
+#button_ver_detalles{
+    background: none;
+    border: 0;
+    color: inherit;
+}
+
+/*BOTÓN GENÉRICO EDITAR*/
+#button_editar{
+    background: none;
+    border: 0;
+    color: inherit;
+    margin-left: 4%;
+}
+
+/*BOTÓN GENÉRICO ELIMINAR*/
+#button_eliminar{
+    background: none;
+    border: 0;
+    color: inherit;
+    margin-left: 4%;
+}
 
 /*BOTÓN GENÉRICO AZUL*/
 
