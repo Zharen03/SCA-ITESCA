@@ -107,3 +107,7 @@ def showSummary(request):
     context = {}
     return HttpResponse(template.render(context, request))
 
+def capacitationNeedsDetection(request):
+    template = loader.get_template('capacitation_needs_detection.html')
+    context = {}
+    return HttpResponse(template.render(context, request))
