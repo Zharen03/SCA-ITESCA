@@ -15,7 +15,6 @@
         <div class="card shadow p-3  bg-body-tertiary rounded">
             <div class="card-body">
                 <h3 style="margin-bottom: 4%; margin-top: 2%; margin-left: 1%;">CREACIÓN DE PLAN DE TRABAJO</h3>
-                    <!-- ROW 1 PARA TIPO DE EVENTO, NOMBRE DEL EVENTO Y NÚMERO DE PERSONAS-->
                     <div class="row">
                         <div class="col-12" style="margin-left: 1%;">
                             <div class="mb-3">
@@ -27,12 +26,12 @@
                                         Enero
                                     </div>
                                     <div class="card-body collapse" id="collapseMonth"> 
-                                        
+                                        <!-- ROW 1 PARA BOTONES AGREGAR Y ELIMINAR-->
                                         <div class="row d-flex flex-column">
                                             <div class="col-12">
                                                 <div  style="display: flex; justify-content: right;">
-                                                    <button id="button_cancelar" type="button" class="btn btn-danger" style="margin-right: 1%;">-</button>
-                                                    <button id="button_registrar" type="button" class="btn btn-primary" style="margin-right: 0.8%;">+</button>
+                                                    <button name="button_eliminar" id="button_cancelar" type="button" class="btn btn-danger" style="margin-right: 1%;">-</button>
+                                                    <button name="button_agregar" id="button_registrar" type="button" class="btn btn-primary" style="margin-right: 0.8%;">+</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -41,13 +40,13 @@
                                             <div class="col-12 col-md-4">
                                                 <div class="mb-3 container">
                                                     <label for="input_event_name" class="form-label">Nombre del evento</label>
-                                                    <input maxlength="25" type="text" class="form-control" id="input_event_name" placeholder="Nombre del evento" required>
+                                                    <input name="input_event_name" maxlength="25" type="text" class="form-control" id="input_event_name" placeholder="Nombre del evento" required>
                                                 </div>
                                             </div>
                                             <div class="col-12 col-md-4">
                                                 <div class="mb-3 container">
                                                     <label for="select_event_type" class="form-label">Tipo de evento</label>
-                                                    <select class="form-select" id="select_event_type" required>
+                                                    <select name="select_event_type" class="form-select" id="select_event_type" required>
                                                         <option selected>Curso</option>
                                                         <option value="1">Congreso</option>
                                                         <option value="2">Taller</option>
@@ -58,38 +57,37 @@
                                             <div class="col-12 col-md-4">
                                                 <div class="mb-3 container">
                                                     <label for="input_event_duration" class="form-label">Duración del evento en horas</label>
-                                                    <input maxlength="10" type="number" class="form-control" id="input_event_duration" placeholder="Duración del evento" required>
+                                                    <input name="input_event_duration" maxlength="10" type="number" class="form-control" id="input_event_duration" placeholder="Duración del evento" required>
                                                 </div>
                                             </div>
                                         </div>
                                         <!-- END OF ROW 1-->
                     
-                                        <!-- ROW 2 PARA INSTRUCTOR PROPUESTO, DURACIÓN DEL EVENTO Y FECHA ESTIMADA-->
+                                        <!-- ROW 2 PARA FECHA ESTIMADA, N. PERSONAS QUE PARTICIPARÁN -->
                                         <div class="row">
                                             <div class="col-12 col-md-4">
                                                 <div class="mb-3 container">
                                                     <label for="select_date" class="form-label">Fecha estimada</label>
-                                                    <input id="select_date" class="form-control" type="date" />
+                                                    <input name="select_date" id="select_date" class="form-control" type="date" />
                                                 </div>
                                             </div>
                                             
                                             <div class="col-12 col-md-4">
                                                 <div class="mb-3 container">
                                                     <label for="input_attendees_number" class="form-label">Número de personas que asistirán</label>
-                                                    <input maxlength="3" type="number" class="form-control" onKeyPress="if(this.value.length==3) return false;" id="input_attendees_number" placeholder="Número de personas que asistirán" required>
+                                                    <input name="input_attendees_number" maxlength="3" type="number" class="form-control" onKeyPress="if(this.value.length==3) return false;" id="input_attendees_number" placeholder="Número de personas que asistirán" required>
                                                 </div>
                                             </div>
                                             
                                         </div>
                                         <!-- END OF ROW 2-->
                     
-                                        <!-- ROW 3 PARA PERIODO DE IMPLEMENTACIÓN E INFORMACIÓN COMPLEMENTARIA-->
+                                        <!-- ROW 3 PARA ÁREA QUE SOLICITA Y OBSERVACIONES -->
                                         <div class="row">
-                                            
                                             <div class="col-12 col-md-4">
                                                 <div class="mb-3 container">
                                                     <label for="select_area" class="form-label">Área que solicita</label>
-                                                    <select class="form-select" id="select_area" data-placeholder="Área que solicita">
+                                                    <select name="select_area" class="form-select" id="select_area" data-placeholder="Área que solicita">
                                                         <option value="1">Por definir</option>
                                                         <option value="2">Por definir</option>
                                                         <option value="3">Por definir</option>
@@ -99,13 +97,12 @@
                                             <div class="col-12 col-md-8">
                                                 <div class="mb-3 container">
                                                     <label for="textarea_observations" class="form-label">Observaciones</label>
-                                                    <textarea class="form-control" id="textarea_observations" placeholder="Observaciones" required></textarea>
+                                                    <textarea name="textarea_observations" class="form-control" id="textarea_observations" placeholder="Observaciones" required></textarea>
                                                 </div>
                                             </div>
                                             <!-- END OF ROW 3-->
                                         </div>
-                                        <!-- ROW 5 ONLY FOR CANCEL AND REGISTER BUTTONS-->
-                                        
+                                    
                                     </div>
                                   </div>
                                 
@@ -113,14 +110,13 @@
                         </div>
                         
                     </div>
-                    <!-- END OF ROW 1-->
 
-                    <!-- ROW 5 ONLY FOR CANCEL AND REGISTER BUTTONS-->
+                    <!-- ROW 4 ONLY FOR CANCEL AND REGISTER BUTTONS-->
                     <div class="row d-flex flex-column">
                         <div class="col-12">
                             <div class="container" style="display: flex; justify-content: right;">
-                                <button id="button_cancelar" type="button" class="btn btn-danger">Cancelar</button>
-                                <button id="button_registrar" onClick="add_user()" type="button" class="btn btn-primary" style="margin-left: 2%;">Guardar</button>
+                                <button name="button_cancelar" id="button_cancelar" type="button" class="btn btn-danger">Cancelar</button>
+                                <button name="button_registrar" id="button_registrar" onClick="add_user()" type="button" class="btn btn-primary" style="margin-left: 2%;">Guardar</button>
                             </div>
                         </div>
                     </div>
@@ -146,6 +142,11 @@
         closeOnSelect: false,
         });
     </script>Scripts -->
+
+    <script>
+       
+    </script>
+
     {% endblock %}
 {% endblock %}
 </html>
