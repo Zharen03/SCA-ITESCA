@@ -11,14 +11,14 @@
 
 {% block content%}
 <div>
-    <div class="card shadow p-3  bg-body-tertiary rounded">
+    <div class="card shadow p-4  bg-body-tertiary rounded">
         <div class="card-body">
-            <h3 style="margin-bottom: 4%; margin-top: 2%; margin-left: 1%;">AGREGAR NUEVA CAPACITACIÓN</h5>
-                <form action="" class="container">
+            <h3 style="margin-bottom: 4%; margin-top: 2%;">AGREGAR NUEVA CAPACITACIÓN</h5>
+                <form action="" class="">
                     <!--QUESTION 1-->
                     <div class="row mb-2">
                         <!--TRAINING NAME-->
-                        <div class="col-12">
+                        <div class="col-sm-4">
                             <div class="mb-3">
                                 <label for="input_training_name" class="form-label">Nombre de la capacitación</label>
                                 <input maxlength="250" type="text" class="form-control" id="input_training_name"
@@ -26,7 +26,7 @@
                             </div>
                         </div>
                         <!--TRAINER NAME-->
-                        <div class="col-12">
+                        <div class="col-sm-4">
                             <div class="mb-3">
                                 <label for="input_trainer_name" class="form-label">Nombre del instructor</label>
                                 <input maxlength="70" type="text" class="form-control" id="input_trainer_name"
@@ -34,7 +34,7 @@
                             </div>
                         </div>
                         <!--DATE PICKER-->
-                        <div class="col-12">
+                        <div class="col-sm-4">
                             <div class="col-12">
                                 <div class="row">
                                     <div class="col-sm-12" style="align-items: center">
@@ -44,9 +44,8 @@
                                 </div>
                             </div>
                         </div>
-
                         <!--TIME PICKER-->
-                        <div class="col-12 mt-3">
+                        <div class="col-sm-4 mt-3">
                             <div class="col-12">
                                 <div class="row">
                                     <div class="col-sm-12" style="align-items: center">
@@ -58,12 +57,14 @@
                         </div>
 
                         <!--DROPDOWN FOR TRAINING ON-SITE OR VIRTUAL-->
-                        <div class="col-12 mt-3">
+                        <div class="col-sm-4 mt-3">
                             <div class="col-12">
                                 <div class="row">
                                     <div class="col-sm-12" style="align-items: center">
-                                        <label for="input_training_onsite_virtual" class="form-label">Modalidad</label></br>
-                                        <select name="input_training_onsite_virtual" class="form-control" id="input_training_onsite_virtual">
+                                        <label for="input_training_onsite_virtual"
+                                            class="form-label">Modalidad</label></br>
+                                        <select name="input_training_onsite_virtual" class="form-control"
+                                            id="input_training_onsite_virtual">
                                             <option class="form-label" value="Presencial">Presencial</option>
                                             <option class="form-label" value="Virtual">Virtual</option>
                                         </select>
@@ -73,14 +74,17 @@
                         </div>
 
                         <!--DROPDOWN FOR GENERAL OR GENER EQUALITY-->
-                        <div class="col-12 mt-3">
+                        <div class="col-sm-4 mt-3">
                             <div class="col-12">
                                 <div class="row">
                                     <div class="col-sm-12" style="align-items: center">
-                                        <label for="input_training_type" class="form-label">Tipo de capacitación</label></br>
-                                        <select name="input_training_type" class="form-control" id="input_training_type">
+                                        <label for="input_training_type" class="form-label">Tipo de
+                                            capacitación</label></br>
+                                        <select name="input_training_type" class="form-control"
+                                            id="input_training_type">
                                             <option class="form-label" value="General">General</option>
-                                            <option class="form-label" value="Igualdad de genero">Igualdad de género</option>
+                                            <option class="form-label" value="Igualdad de genero">Igualdad de género
+                                            </option>
                                         </select>
                                     </div>
                                 </div>
@@ -88,12 +92,14 @@
                         </div>
 
                         <!--DROPDOWN FOR TRAINING AREA-->
-                        <div class="col-12 mt-3">
+                        <div class="col-sm-4 mt-3">
                             <div class="col-12">
                                 <div class="row">
                                     <div class="col-sm-12" style="align-items: center">
-                                        <label for="input_training_area" class="form-label">Área a capacitar</label></br>
-                                        <select name="input_training_area" class="form-control" id="input_training_area">
+                                        <label for="input_training_area" class="form-label">Área a
+                                            capacitar</label></br>
+                                        <select name="input_training_area" class="form-control"
+                                            id="input_training_area">
                                             <option class="form-label" value="...">...</option>
                                             <option class="form-label" value="...">...</option>
                                         </select>
@@ -103,12 +109,13 @@
                         </div>
 
                         <!--DROPDOWN FOR TRAINING STATE: MANDATORY OR PUBLIC-->
-                        <div class="col-12 mt-3">
+                        <div class="col-sm-4 mt-3">
                             <div class="col-12">
                                 <div class="row">
                                     <div class="col-sm-12" style="align-items: center">
                                         <label for="input_training_state" class="form-label">Estado</label></br>
-                                        <select name="input_training_state" class="form-control" id="input_training_state">
+                                        <select name="input_training_state" class="form-control"
+                                            id="input_training_state">
                                             <option class="form-label" value="Publica">Pública</option>
                                             <option class="form-label" value="Obligatoria">Obligatoria</option>
                                         </select>
@@ -118,7 +125,7 @@
                         </div>
 
                         <!--DROPDOWN FOR VISIBILITY: YES OR NO-->
-                        <div class="col-12 mt-3">
+                        <div class="col-sm-4 mt-3">
                             <div class="col-12">
                                 <div class="row">
                                     <div class="col-sm-12" style="align-items: center">
@@ -137,9 +144,9 @@
                             <div class="col-12">
                                 <div class="row">
                                     <div class="col-sm-12" style="align-items: center">
-                                        <label for="input_description" class="form-label">Descripcion</label></br>
-                                        <textarea class="form-control" id="input_description"
-                                            rows="3" maxlength="250"></textarea>
+                                        <label for="input_description" class="form-label">Descripción</label></br>
+                                        <textarea class="form-control" id="input_description" rows="3"
+                                            maxlength="250"></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -151,8 +158,7 @@
                                 <div class="row">
                                     <div class="col-sm-12" style="align-items: center">
                                         <div class="mb-3">
-                                            <label for="input_choose_file" class="form-label">Multiple files input
-                                                example</label>
+                                            <label for="input_choose_file" class="form-label">Archivos adjuntos</label>
                                             <input class="form-control" type="file" id="input_choose_file" multiple>
                                         </div>
                                     </div>
@@ -165,7 +171,7 @@
                     <!--Buttons to sumbit or cancel the form-->
                     <div class="row d-flex flex-column mt-5">
                         <div class="col-12">
-                            <div class="container" style="display: flex; justify-content: right;">
+                            <div class="" style="display: flex; justify-content: right;">
                                 <button id="button_cancelar" type="button" class="btn btn-danger">Cancelar</button>
                                 <button id="button_registrar" type="button" class="btn btn-primary"
                                     style="margin-left: 2%;">Enviar</button>
