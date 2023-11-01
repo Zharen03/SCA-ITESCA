@@ -51,7 +51,7 @@ def trainingEventEvaluationSummary(request):
 
 def trainingEventEvaluationForm(request):
     template = loader.get_template('training_event_evaluation.html')
-    context = {} 
+    context = {}
     return HttpResponse(template.render(context, request))
 
 

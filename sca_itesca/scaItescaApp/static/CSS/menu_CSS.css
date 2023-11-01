@@ -79,6 +79,8 @@
     border-bottom: 2px solid #4F6BFF;
     position: sticky;
     top: 0px;
+    background-color: white;
+    z-index: 10;
 }
 
 .dropdown-toggle:hover{
