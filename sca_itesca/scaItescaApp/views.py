@@ -102,3 +102,12 @@ def addTrainingForm(request):
     context = {} 
     return HttpResponse(template.render(context, request))
 
+def trainingHistoryNoAdmin(request):
+    template = loader.get_template('training_history_no_admin.html')
+    context = {} 
+    return HttpResponse(template.render(context, request))
+
+def trainingHistoryAdmin(request):
+    template = loader.get_template('training_history_admin.html')
+    context = {} 
+    return HttpResponse(template.render(context, request))

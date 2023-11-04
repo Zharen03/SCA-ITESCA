@@ -12,4 +12,6 @@ urlpatterns = [
     path('sca/show_invitations', views.showInvitations, name='show_invitations'),
     path('sca/training_needs_request', views.trainingNeedsRequestForm, name='training_needs_request'),
     path('sca/add_training', views.addTrainingForm, name="add_training"),
+    path('sca/training_history_na', views.trainingHistoryNoAdmin, name="training_history_na"),
+    path('sca/training_history_ad', views.trainingHistoryAdmin, name="training_history_ad"),
 ]
