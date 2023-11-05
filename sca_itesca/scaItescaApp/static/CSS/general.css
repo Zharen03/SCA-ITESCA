@@ -168,3 +168,20 @@ h3 {
     border-radius: 0%;
     outline: none;
 }
+
+/*ICONOS*/
+.input-group {
+    position: relative;
+  }
+  
+  .input-group .input-group-text {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    background-color: #f8f9fa; /* Puedes cambiar el color de fondo según tus preferencias */
+    border: 1px solid #4F6BFF; /* Puedes ajustar el borde según tus preferencias */
+  }

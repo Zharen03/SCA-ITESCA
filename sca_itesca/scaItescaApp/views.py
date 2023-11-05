@@ -102,3 +102,22 @@ def showInvitations(request):
     context = {} 
     return HttpResponse(template.render(context, request))
 
+def evaluations(request):
+    template = loader.get_template('evaluations.html')
+    context = {}
+    return HttpResponse(template.render(context, request))
+
+def certificatesNoAdmin(request):
+    template = loader.get_template('certificates_no_admin.html')
+    context = {}
+    return HttpResponse(template.render(context, request))
+
+def show_attendances(request):
+    template = loader.get_template('show_attendances.html')
+    context = {}
+    return HttpResponse(template.render(context, request))
+
+def show_records(request):
+    template = loader.get_template('show_records.html')
+    context = {}
+    return HttpResponse(template.render(context, request))
