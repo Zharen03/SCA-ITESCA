@@ -337,15 +337,27 @@
     function add_evaluation(){
         var form = $('form').serialize();
         console.log(form);
+        
+        var splitted_form = form.split('&')
+        console.log(splitted_form)
+
+        var formatted_form = {}
+        
+        for (var element of splitted_form){
+            var split = element.split("=")
+            var key = split[0]
+            var value = split[1]
+            formatted_form[key]= value
+            console.log(key, value)
+        } 
+
 
         $.ajax({
             url: "../sca/training_event_evaluation",
-            data: {
-                "form":form,
-            },
+            data: formatted_form,
             type: "POST",
             success: function success(){
-                document.location.href = '../sca/training_event_evaluation';
+                //document.location.href = '../sca/training_event_evaluation';
             }
         });
     } 

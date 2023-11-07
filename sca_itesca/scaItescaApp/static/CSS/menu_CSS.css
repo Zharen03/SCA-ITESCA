@@ -14,6 +14,7 @@
 
     border-bottom: 1px solid black;
     overflow-y: scroll;
+    z-index: 10;
 }
 
 .menu_controller{

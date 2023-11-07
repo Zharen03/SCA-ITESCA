@@ -34,8 +34,7 @@ def addUser(request):
                     phone_number = post["phone_number"], min_gender = False, min_general = False, role = int(post["type"]), 
                     status = 1, area_id = area)
     new_user.save()
-    return HttpResponse("OK")
-    
+    return HttpResponse("OK") 
     
 def trainingEventEvaluationSummaryForm(request):
     template = loader.get_template('training_event_evaluation_summary.html')
@@ -57,8 +56,18 @@ def trainingEventEvaluationForm(request):
 
 @csrf_exempt
 def trainingEventEvaluation(request):
+    
+    #TEMPORAL
+    
+    #FIN TEMPORAL
+    
+    evaluation_type = 0
     post = request.POST
     print(post)
+    
+    evaluation = Evaluation(type = evaluation_type )
+    
+    return HttpResponse("OK") 
 
 
 def virtualTrainingEventEvaluationForm(request):
