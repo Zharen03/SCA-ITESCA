@@ -190,3 +190,13 @@ h3 {
     border-radius: 0%;
     outline: none;
 }
+
+/*TABLA GENÉRICA*/
+#table-users > thead {
+    border: 2px solid #4F6BFF;
+    color: #4D4D4D;
+}
+
+#table-users > thead > tr > th{
+    color: #4D4D4D;
+}
