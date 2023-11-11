@@ -1,6 +1,11 @@
+/*Side menu
 .card{
     margin-top:8%;
     margin-left: 36%;
     width:27%;
     height:65vh;
-}
+}*/
+
+.simple-linear {
+    background: linear-gradient(#4F6BFF, white);
+  }
