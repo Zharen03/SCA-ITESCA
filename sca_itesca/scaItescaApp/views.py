@@ -35,7 +35,15 @@ def addUser(request):
                     status = 1, area_id = area)
     new_user.save()
     return HttpResponse("OK")
-    
+
+@csrf_exempt
+def addDNC(request):
+    post = request.POST
+    print(post)
+    new_DNC = DNC(user_id = post['user'], question_id = post['questions[0].question_id'], 
+                  answer = post['questions[0].answer'], status = True)
+    new_DNC.save()
+    return HttpResponse("OK")
     
 def trainingEventEvaluationSummaryForm(request):
     template = loader.get_template('training_event_evaluation_summary.html')
@@ -107,7 +115,7 @@ def showSummary(request):
     context = {}
     return HttpResponse(template.render(context, request))
 
-def capacitationNeedsDetection(request):
+def capacitationNeedsDetectionForm(request):
     template = loader.get_template('capacitation_needs_detection.html')
     context = {}
     return HttpResponse(template.render(context, request))
