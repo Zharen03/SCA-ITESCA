@@ -464,7 +464,7 @@
         console.log(JSON.stringify(dnc));
         $.ajax({
             url: "../sca/add_dnc",
-            data: dnc,
+            data: JSON.stringify(dnc),
             type: "POST",
             success: function success(){
                 document.location.href='../sca/show_DNC'
