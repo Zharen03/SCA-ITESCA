@@ -209,3 +209,40 @@
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>-->
 {% endblock %}`
+
+{% block scripts%}
+
+<script type="text/javascript">
+                
+    function add_evaluation(){
+        var form = $('form').serialize();
+        console.log(form);
+        
+        var splitted_form = form.split('&')
+        console.log(splitted_form)
+
+        var formatted_form = {}
+        
+        for (var element of splitted_form){
+            var split = element.split("=")
+            var key = split[0]
+            var value = split[1]
+            formatted_form[key]= value
+            console.log(key, value)
+        } 
+
+
+
+
+        $.ajax({
+            url: "../sca/virtual_training_event_evaluation",
+            data: formatted_form,
+            type: "POST",
+            success: function success(){
+                //document.location.href = '../sca/virtual_training_event_evaluation';
+            }
+        });
+    } 
+</script>
+
+{% endblock%}
