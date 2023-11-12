@@ -18,6 +18,28 @@ h3 {
     color: #4D4D4D;
 }
 
+/*BOTÓN GENÉRICO VER DETALLES*/
+#button_ver_detalles{
+    background: none;
+    border: 0;
+    color: inherit;
+}
+
+/*BOTÓN GENÉRICO EDITAR*/
+#button_editar{
+    background: none;
+    border: 0;
+    color: inherit;
+    margin-left: 4%;
+}
+
+/*BOTÓN GENÉRICO ELIMINAR*/
+#button_eliminar{
+    background: none;
+    border: 0;
+    color: inherit;
+    margin-left: 4%;
+}
 
 /*BOTÓN GENÉRICO AZUL*/
 
@@ -167,4 +189,14 @@ h3 {
     transition: 0.5s;
     border-radius: 0%;
     outline: none;
+}
+
+/*TABLA GENÉRICA*/
+#table-users > thead {
+    border: 2px solid #4F6BFF;
+    color: #4D4D4D;
+}
+
+#table-users > thead > tr > th{
+    color: #4D4D4D;
 }

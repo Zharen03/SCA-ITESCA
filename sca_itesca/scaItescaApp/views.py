@@ -96,3 +96,7 @@ def showInvitations(request):
     context = {} 
     return HttpResponse(template.render(context, request))
 
+def createWorkplan(request):
+    template = loader.get_template('create_workplan.html')
+    context = {} 
+    return HttpResponse(template.render(context, request))
