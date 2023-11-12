@@ -34,7 +34,18 @@ def addUser(request):
                     phone_number = post["phone_number"], min_gender = False, min_general = False, role = int(post["type"]), 
                     status = 1, area_id = area)
     new_user.save()
-    return HttpResponse("OK") 
+    return HttpResponse("OK")
+
+  
+@csrf_exempt
+def addDNC(request):
+    post = request.POST
+    print(post)
+    new_DNC = DNC(user_id = post['user'], question_id = post['questions[0].question_id'], 
+                  answer = post['questions[0].answer'], status = True)
+    new_DNC.save()
+    return HttpResponse("OK")
+    
     
 def trainingEventEvaluationSummaryForm(request):
     template = loader.get_template('training_event_evaluation_summary.html')
@@ -104,7 +115,26 @@ def showInvitations(request):
     template = loader.get_template('show_invitations.html')
     context = {} 
     return HttpResponse(template.render(context, request))
+  
 
+def trainingPlan(request):
+    template = loader.get_template('training_plan.html')
+    context = {} 
+    return HttpResponse(template.render(context, request))
+
+  
+def showSummary(request):
+    template = loader.get_template('show_summary.html')
+    context = {}
+    return HttpResponse(template.render(context, request))
+
+  
+def capacitationNeedsDetectionForm(request):
+    template = loader.get_template('capacitation_needs_detection.html')
+    context = {}
+    return HttpResponse(template.render(context, request))
+  
+  
 def createWorkplan(request):
     template = loader.get_template('create_workplan.html')
     context = {} 
