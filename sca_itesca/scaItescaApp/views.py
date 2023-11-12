@@ -8,7 +8,7 @@ def showUser(request):
     users = User.objects.all().values()
     template = loader.get_template('show_users.html')    
     context = {
-        'users_list': users
+        'users_list': users,
     }
     return HttpResponse(template.render(context, request))
 
@@ -116,7 +116,25 @@ def showInvitations(request):
     context = {} 
     return HttpResponse(template.render(context, request))
   
+  
+def addTrainingForm(request):
+    template = loader.get_template('add_training.html')
+    context = {} 
+    return HttpResponse(template.render(context, request))
 
+  
+def trainingHistoryNoAdmin(request):
+    template = loader.get_template('training_history_no_admin.html')
+    context = {} 
+    return HttpResponse(template.render(context, request))
+
+  
+def trainingHistoryAdmin(request):
+    template = loader.get_template('training_history_admin.html')
+    context = {} 
+    return HttpResponse(template.render(context, request))
+
+  
 def trainingPlan(request):
     template = loader.get_template('training_plan.html')
     context = {} 
