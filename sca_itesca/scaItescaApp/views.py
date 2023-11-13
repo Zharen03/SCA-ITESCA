@@ -14,7 +14,7 @@ def showUser(request):
     users = User.objects.all().values()
     template = loader.get_template('show_users.html')    
     context = {
-        'users_list': users
+        'users_list': users,
     }
     return HttpResponse(template.render(context, request))
 
@@ -41,6 +41,16 @@ def addUser(request):
                     status = 1, area_id = area)
     new_user.save()
     return HttpResponse("OK")
+
+  
+@csrf_exempt
+def addDNC(request):
+    post = request.POST
+    print(post)
+    new_DNC = DNC(user_id = post['user'], question_id = post['questions[0].question_id'], 
+                  answer = post['questions[0].answer'], status = True)
+    new_DNC.save()
+    return HttpResponse("OK")
     
     
 def trainingEventEvaluationSummaryForm(request):
@@ -57,14 +67,24 @@ def trainingEventEvaluationSummary(request):
 
 def trainingEventEvaluationForm(request):
     template = loader.get_template('training_event_evaluation.html')
-    context = {} 
+    context = {}
     return HttpResponse(template.render(context, request))
 
 
 @csrf_exempt
 def trainingEventEvaluation(request):
+    
+    #TEMPORAL
+    
+    #FIN TEMPORAL
+    
+    evaluation_type = 0
     post = request.POST
     print(post)
+    
+    evaluation = Evaluation(type = evaluation_type )
+    
+    return HttpResponse("OK") 
 
 
 def virtualTrainingEventEvaluationForm(request):
@@ -101,23 +121,69 @@ def showInvitations(request):
     template = loader.get_template('show_invitations.html')
     context = {} 
     return HttpResponse(template.render(context, request))
+  
+  
+def addTrainingForm(request):
+    template = loader.get_template('add_training.html')
+    context = {} 
+    return HttpResponse(template.render(context, request))
 
+  
 def evaluations(request):
     template = loader.get_template('evaluations.html')
     context = {}
     return HttpResponse(template.render(context, request))
 
+  
 def certificatesNoAdmin(request):
     template = loader.get_template('certificates_no_admin.html')
     context = {}
     return HttpResponse(template.render(context, request))
 
+  
 def show_attendances(request):
     template = loader.get_template('show_attendances.html')
     context = {}
     return HttpResponse(template.render(context, request))
 
+  
 def show_records(request):
     template = loader.get_template('show_records.html')
     context = {}
+    return HttpResponse(template.render(context, request))
+  
+  
+def trainingHistoryNoAdmin(request):
+    template = loader.get_template('training_history_no_admin.html')
+    context = {} 
+    return HttpResponse(template.render(context, request))
+
+  
+def trainingHistoryAdmin(request):
+    template = loader.get_template('training_history_admin.html')
+    context = {} 
+    return HttpResponse(template.render(context, request))
+
+  
+def trainingPlan(request):
+    template = loader.get_template('training_plan.html')
+    context = {} 
+    return HttpResponse(template.render(context, request))
+
+  
+def showSummary(request):
+    template = loader.get_template('show_summary.html')
+    context = {}
+    return HttpResponse(template.render(context, request))
+
+  
+def capacitationNeedsDetectionForm(request):
+    template = loader.get_template('capacitation_needs_detection.html')
+    context = {}
+    return HttpResponse(template.render(context, request))
+  
+  
+def createWorkplan(request):
+    template = loader.get_template('create_workplan.html')
+    context = {} 
     return HttpResponse(template.render(context, request))

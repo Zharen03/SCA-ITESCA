@@ -18,6 +18,28 @@ h3 {
     color: #4D4D4D;
 }
 
+/*BOTÓN GENÉRICO VER DETALLES*/
+#button_ver_detalles{
+    background: none;
+    border: 0;
+    color: inherit;
+}
+
+/*BOTÓN GENÉRICO EDITAR*/
+#button_editar{
+    background: none;
+    border: 0;
+    color: inherit;
+    margin-left: 4%;
+}
+
+/*BOTÓN GENÉRICO ELIMINAR*/
+#button_eliminar{
+    background: none;
+    border: 0;
+    color: inherit;
+    margin-left: 4%;
+}
 
 /*BOTÓN GENÉRICO AZUL*/
 
@@ -112,6 +134,28 @@ h3 {
     background-color: #1734CB;
 }
 
+#button_summary {
+    background-color: #4F6BFF;
+    color: white;
+    border: none;
+    border-radius: 0%;
+}
+
+.btn_generic{
+    background-color: #4F6BFF;
+    color: white;
+    border: none;
+    border-radius: 0%;
+}
+
+.btn_generic:active{
+    background-color: #1734CB;
+}
+
+.btn_generic:hover{
+    background-color: #1734CB;
+}
+
 #button_register_attendance {
     background-color: #4F6BFF;
     color: white;
@@ -126,6 +170,8 @@ h3 {
 #button_register_attendance:active {
     background-color: #1734CB;
 }
+
+
 
 
 /*BOTÓN GENÉRICO ROJO*/
@@ -169,5 +215,12 @@ h3 {
     outline: none;
 }
 
+/*TABLA GENÉRICA  Revisar*/
+#table-users > thead {
+    border: 2px solid #4F6BFF;
+    color: #4D4D4D;
+}
 
-  
+#table-users > thead > tr > th{
+    color: #4D4D4D;
+}
