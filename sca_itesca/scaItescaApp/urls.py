@@ -2,6 +2,7 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
+    path('sca/login', views.login, name="login"),
     path('sca/add_user_form', views.addUserForm, name='add_user_form'),
     path('sca/add_user', views.addUser, name="add_user"),
     path('sca/show_user', views.showUser, name='show_user'),
@@ -25,4 +26,8 @@ urlpatterns = [
     path('sca/training_needs_request_form', views.trainingNeedsRequestForm, name='training_needs_request'),
     path('sca/training_needs_request', views.trainingNeedsRequest, name='training_needs')
     path('sca/create_workplan', views.createWorkplan, name='create_workplan'),
+    path('sca/evaluations', views.evaluations, name="evaluations"),
+    path('sca/certificates', views.certificatesNoAdmin, name="certificates_no_admin"),
+    path('sca/show_records', views.show_records, name="show_records"),
+    path('sca/show_attendances', views.show_attendances, name="show_attendances"),
 ]
