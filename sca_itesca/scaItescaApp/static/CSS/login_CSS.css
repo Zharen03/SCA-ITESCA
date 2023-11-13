@@ -9,3 +9,8 @@
 .simple-linear {
     background: linear-gradient(#4F6BFF, white);
   }
+
+  form i {
+    margin-left: -30px;
+    cursor: pointer;
+}
