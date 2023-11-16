@@ -187,3 +187,8 @@ def createWorkplan(request):
     template = loader.get_template('create_workplan.html')
     context = {} 
     return HttpResponse(template.render(context, request))
+
+def pass_recovery(request):
+    template = loader.get_template('pass_recovery.html')
+    context = {}
+    return HttpResponse(template.render(context, request))

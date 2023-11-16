@@ -22,12 +22,13 @@ urlpatterns = [
     path('sca/training_plan', views.trainingPlan, name="training_plan"),
     path('sca/show_summary', views.showSummary, name="show_summary"),
     path('sca/capacitation_needs_detection', views.capacitationNeedsDetectionForm, name="capacitation_needs_detection"),
-    path('sca/add_dnc', views.addDNC, name='add_dnc')
+    path('sca/add_dnc', views.addDNC, name='add_dnc'),
     path('sca/training_needs_request_form', views.trainingNeedsRequestForm, name='training_needs_request'),
-    path('sca/training_needs_request', views.trainingNeedsRequest, name='training_needs')
+    path('sca/training_needs_request', views.trainingNeedsRequest, name='training_needs'),
     path('sca/create_workplan', views.createWorkplan, name='create_workplan'),
     path('sca/evaluations', views.evaluations, name="evaluations"),
     path('sca/certificates', views.certificatesNoAdmin, name="certificates_no_admin"),
     path('sca/show_records', views.show_records, name="show_records"),
     path('sca/show_attendances', views.show_attendances, name="show_attendances"),
+    path('sca/pass_recovery', views.pass_recovery, name="pass_recovery"),
 ]
