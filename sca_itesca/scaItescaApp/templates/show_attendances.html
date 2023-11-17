@@ -75,7 +75,7 @@
           <td>Gina Pacheco</td>
           <td>Asistió</td>
           <td>
-            <button type="button" class="btn mt-1" style="background-color: #4F6BFF; margin-left: 10%;"> </button>
+            <button type="button" data-bs-toggle="modal" data-bs-target="#modal_edit_attendances" class="btn mt-1" style="background-color: #4F6BFF; margin-left: 10%;"> </button>
           </td>
 
         </tr>
@@ -101,4 +101,27 @@
       </tbody>
     </table>
   </div>
+<!-- Modal -->
+<div class="modal fade" id="modal_edit_attendances" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+aria-labelledby="modal_edit_attendances" aria-hidden="true">
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="modal_edit_attendances">EDITAR ASISTENCIA</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <label class="form-label">Seleccione el estado de la asistencia del usuario: </label>
+            <select class="form-select" id="select_attendances" required>
+              <option value="2" selected>Asistió</option>
+              <option value="1">No asistió</option>
+            </select>
+        </div>
+        
+        <div class="modal-footer">
+            <button type="button" id="button_registrar" class="btn" data-bs-dismiss="modal">Aceptar</button>
+        </div>
+    </div>
+</div>
+</div>
   {% endblock%}
