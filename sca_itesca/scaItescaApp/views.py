@@ -187,3 +187,8 @@ def createWorkplan(request):
     template = loader.get_template('create_workplan.html')
     context = {} 
     return HttpResponse(template.render(context, request))
+
+def update_user(request):
+    template = loader.get_template('update_user.html')
+    context = {} 
+    return HttpResponse(template.render(context, request))
