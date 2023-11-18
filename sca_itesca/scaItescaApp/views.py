@@ -47,11 +47,25 @@ def addUser(request):
 def addDNC(request):
     post = request.POST
     print(post)
-    new_DNC = DNC(user_id = post['user'], question_id = post['questions[0].question_id'], 
-                  answer = post['questions[0].answer'], status = True)
-    new_DNC.save()
+    i = 0
+    for a in range(8):
+        new_DNC = DNC(user_id = post['user'], question_id = post[f"questions[{i}].question_id"], 
+                  answer = post[f"questions[{i}].answer"], status = True)
+        new_DNC.save()
+        i = i+1
+        
     return HttpResponse("OK")
-    
+
+@csrf_exempt   
+def addNeedsRequest(request):
+    post = request.POST
+    print(post)
+    i=0
+    for a in range(8):
+        new_needs_request = Needs_Request(user_id = post['user'], question_id=post[f"questions[{i}].question_id"],
+                                          answer = post[f"questions[{i}].answer"], status=post["status"])
+        new_needs_request.save()
+        i = i+1
     
 def trainingEventEvaluationSummaryForm(request):
     template = loader.get_template('training_event_evaluation_summary.html')

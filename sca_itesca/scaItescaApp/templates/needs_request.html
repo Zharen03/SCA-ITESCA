@@ -21,10 +21,10 @@
                             <div class="mb-3 container">
                                 <label for="select_event_type" class="form-label">Tipo de evento</label>
                                 <select class="form-select" id="select_event_type" required>
-                                    <option selected>Curso</option>
-                                    <option value="1">Congreso</option>
-                                    <option value="2">Taller</option>
-                                    <option value="3">Otro</option>
+                                    <option selected value="Curso">Curso</option>
+                                    <option value="Congreso">Congreso</option>
+                                    <option value="Taller">Taller</option>
+                                    <option value="Otro">Otro</option>
                                 </select>
 
                             </div>
@@ -62,9 +62,9 @@
                             <div class="mb-3 container">
                                 <label for="select_period" class="form-label">Periodo de implementación</label>
                                 <select class="form-select" id="select_period" required>
-                                    <option selected>Semestre Enero-Junio</option>
-                                    <option value="1">Verano</option>
-                                    <option value="2">Semestre Agosto-Diciembre</option>
+                                    <option selected value="Semestre Enero-Junio">Semestre Enero-Junio</option>
+                                    <option value="Verano">Verano</option>
+                                    <option value="Semestre Agosto-Diciembre">Semestre Agosto-Diciembre</option>
                                 </select>
                             </div>
                         </div>
@@ -74,7 +74,7 @@
                     <!-- ROW 3 PARA PERIODO DE IMPLEMENTACIÓN E INFORMACIÓN COMPLEMENTARIA-->
                     <div class="row">
                         <div class="col-12 col-md-4">
-                            <div class="mb-3 container">
+                            <div class="mb-3 container">   
                                 <label for="textarea_expected_results" class="form-label">Resultados esperados</label>
                                 <textarea class="form-control" id="textarea_expected_results" placeholder="Resultados esperados" required></textarea>
                                 <div class="form-text"> Impacto de la capacitación</div>
@@ -95,7 +95,7 @@
                         <div class="col-12">
                             <div class="container" style="display: flex; justify-content: right;">
                                 <button id="button_cancelar" type="button" class="btn btn-danger">Cancelar</button>
-                                <button id="button_registrar" type="button" class="btn btn-primary" style="margin-left: 2%;">Enviar</button>
+                                <button id="button_registrar" type="button" class="btn btn-primary" style="margin-left: 2%;" onclick="add_Needs_Request()">Enviar</button>
                             </div>
                         </div>
                     </div>
@@ -104,4 +104,65 @@
     </div>
 {% endblock %}
 
-</html>
+{% block scripts%}
+<script type="text/javascript">
+    needs_request = {
+        user: 1,
+        questions: [
+        {
+            question_id: 1,
+            answer:""
+        },
+        {
+            question_id: 2,
+            answer:""
+        },
+        {
+            question_id: 3,
+            answer:""
+        },
+        {
+            question_id: 4,
+            answer:""
+        },
+        {
+            question_id: 5,
+            answer:""
+        },
+        {
+            question_id: 6,
+            answer:""
+        },
+        {
+            question_id: 7,
+            answer:""
+        },
+        {
+            question_id: 8,
+            answer:""
+        }],
+        status: true
+    }
+
+    function add_Needs_Request(){
+        needs_request.questions[0].answer = document.getElementById('select_event_type').value;
+        needs_request.questions[1].answer = document.getElementById('input_event_name').value;
+        needs_request.questions[2].answer = document.getElementById('input_attendees_number').value;
+        needs_request.questions[3].answer = document.getElementById('input_investment_person').value;
+        needs_request.questions[4].answer = document.getElementById('input_event_duration').value;
+        needs_request.questions[5].answer = document.getElementById('select_period').value;
+        needs_request.questions[6].answer = document.getElementById('textarea_expected_results').value;
+        needs_request.questions[7].answer = document.getElementById('textarea_complementary_information').value;
+        
+        console.log(JSON.stringify(needs_request))
+        $.ajax({
+            url: "../sca/add_needs_request",
+            data: JSON.stringify(needs_request),
+            type: "POST",
+            success: function success(){
+                document.location.href='../sca/show_dnc'
+            }
+        });
+    }
+</script>
+{% endblock %}
