@@ -31,4 +31,7 @@ urlpatterns = [
     path('sca/show_records', views.show_records, name="show_records"),
     path('sca/show_attendances', views.show_attendances, name="show_attendances"),
     path('sca/update_user', views.update_user, name="update_user"),
+    path('sca/certificates_admin', views.certificates_admin, name="certificates_admin"),
+    path('sca/records_module', views.records_module, name="records_module"),
+    path('sca/certificate_review', views.certificate_review, name="certificate_review"),
 ]

@@ -192,3 +192,21 @@ def update_user(request):
     template = loader.get_template('update_user.html')
     context = {} 
     return HttpResponse(template.render(context, request))
+
+
+def certificates_admin(request):
+    template = loader.get_template('certificates_admin.html')
+    context = {} 
+    return HttpResponse(template.render(context, request))
+
+
+def records_module(request):
+    template = loader.get_template('records_module.html')
+    context = {} 
+    return HttpResponse(template.render(context, request))
+
+
+def certificate_review(request):
+    template = loader.get_template('certificate_review.html')
+    context = {} 
+    return HttpResponse(template.render(context, request))
