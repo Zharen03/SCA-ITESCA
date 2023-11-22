@@ -20,68 +20,67 @@
 
 </head>
 
-<body>
+
+<body class="simple-linear">
     <div class="card shadow p-3 bg-body-tertiary rounded "> <!-- LOGIN -->
         <div class="card-body" style="">
-            <div class="row">
-                <div class="col-12">
-
-                    <h1 class="text-center" style="margin-bottom: 4%; margin-top: 2%;"><img width="64" height="64"
-                            src="..\static\Images_Login\logoITESCA.png" /><b> S C A</b></h1>
-                </div>
-
-                <div class="row"> <!-- r1 -->
+            <form method="post" action="../sca/login_auth">
+                <div class="row">
                     <div class="col-12">
-                        <div class="mb-3 container">
-                            <label for="input_payroll" class="form-label"><b>NÚMERO DE NÓMINA</b> </label>
-                            <div class="input-group">
-
-                                <input type="password" maxlength="11"
-                                    onKeyPress="if(this.value.length==11) return false;" class="form-control"
-                                    id="input_payroll" placeholder=" ">
-                                <i class="bi bi-eye-slash" id="togglePassword"></i>
+                        <h1 class="text-center" style="margin-bottom: 4%; margin-top: 2%;"><img width="64" height="64"
+                                src="..\static\Images_Login\logoITESCA.png" /><b> S C A</b></h1>
+                    </div>
+                    <div class="row"> <!-- r1 -->
+                        <div class="col-12">
+                            <div class="mb-3 container">
+                                <label for="input_payroll" class="form-label"><b>NÚMERO DE NÓMINA</b> </label>
+                                <div class="input-group">
+                                    <input type="password" maxlength="11"
+                                        onKeyPress="if(this.value.length==11) return false;" class="form-control"
+                                        id="input_payroll" name="payroll_number" placeholder=" ">
+                                    <i class="bi bi-eye-slash" id="togglePassword"></i>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="row"> <!-- r2 -->
-                <div class="col-12">
-                    <div class="mb-3 container">
-                        <label for="input_password" class="form-label"><b>CONTRASEÑA</b></label>
-                        <div class="input-group">
-                            <input type="password" maxlength="20" onKeyPress="if(this.value.length==20) return false;"
-                                class="form-control" id="input_password" placeholder=" " />
-                            <i class="bi bi-eye-slash" id="togglePassword"></i>
+                <div class="row"> <!-- r2 -->
+                    <div class="col-12">
+                        <div class="mb-3 container">
+                            <label for="input_password" class="form-label"><b>CONTRASEÑA</b></label>
+                            <div class="input-group">
+                                <input type="password" maxlength="20" onKeyPress="if(this.value.length==20) return false;"
+                                    class="form-control" id="input_password" name="password" placeholder=" " />
+                                <i class="bi bi-eye-slash" id="togglePassword"></i>
+                            </div>
+                            <label class="form-label" style="margin-top: 2%;"><u><b>¿Olvidaste tu contraseña?</b></u></label>
                         </div>
-                        <label class="form-label" style="margin-top: 2%;"><u><b>¿Olvidaste tu contraseña?</b></u></label>
                     </div>
                 </div>
-            </div>
 
-            <div class="row "> <!-- r3 -->
-                <div class="col-12 d-flex justify-content-center align-items-center ">
-                    <button id="button_registrar" type="button" class="btn ">I N I C I A R</button>
+                <div class="row "> <!-- r3 -->
+                    <div class="col-12 d-flex justify-content-center align-items-center ">
+                        <button id="button_registrar" type="sumbit" class="btn" action="">I N I C I A R</button>
+                    </div>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
-
-    <script>
-        const togglePassword = document.querySelector("#togglePassword");
-        const password = document.querySelector("#password");
-
-        togglePassword.addEventListener("click", function () {
-            // toggle the type attribute
-            const type = password.getAttribute("type") === "password" ? "text" : "password";
-            password.setAttribute("type", type);
-
-            // toggle the icon
-            this.classList.toggle("bi-eye");
-        });
-    </script>
-
 </body>
+
+<script type="text/javascript">
+    const togglePassword = document.querySelector("#togglePassword");
+    const password = document.querySelector("#password");
+
+    togglePassword.addEventListener("click", function () {
+        // toggle the type attribute
+        const type = password.getAttribute("type") === "password" ? "text" : "password";
+        password.setAttribute("type", type);
+
+        // toggle the icon
+        this.classList.toggle("bi-eye");
+    });
+</script>
 
 </html>
