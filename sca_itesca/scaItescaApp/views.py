@@ -66,6 +66,14 @@ def addNeedsRequest(request):
                                           answer = post[f"questions[{i}].answer"], status=post["status"])
         new_needs_request.save()
         i = i+1
+
+@csrf_exempt
+def addTraining(request):
+    post = request.POST
+    new_training = Training(name = post['name'], description=post['description'], attendance_code=post['attendance_code'], 
+                            modality=post['modality'], general=post['general'], internal=post['internal'], 
+                            status=post['status'], area_id=post['area_id'])
+    new_training.save()
     
 def trainingEventEvaluationSummaryForm(request):
     template = loader.get_template('training_event_evaluation_summary.html')
