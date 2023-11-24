@@ -100,8 +100,8 @@
                                             capacitar</label></br>
                                         <select name="input_training_area" class="form-control"
                                             id="input_training_area">
-                                            <option class="form-label" value="...">...</option>
-                                            <option class="form-label" value="...">...</option>
+                                            <option class="form-label" value="0">...</option>
+                                            <option class="form-label" value="1">...</option>
                                         </select>
                                     </div>
                                 </div>
@@ -191,3 +191,67 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
 {% endblock %}
+
+{% block scripts%}
+<script>
+   /* training = {
+        name: "",//
+        description: "",//
+        modality: true,//
+        general: true,//
+        internal: true,
+        status: true,
+        attendance_code: ""
+        visible: true,
+        area_id: 0
+    }*/
+
+   /* invitation = {
+        description: "",
+        training: "",
+        optional: true,
+        status: true
+    }*/
+
+    function randomCode() {
+        const caracteres = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+        let codigo = '';
+        for (let i = 0; i < 5; i++) {
+          const caracterAleatorio = caracteres.charAt(Math.floor(Math.random() * caracteres.length));
+          codigo += caracterAleatorio;
+        }
+        return codigo;
+      }
+
+      function addTraining(){
+        var name = $("#input_training_name").val()
+        var description = $("#input_description").val()
+        var modality = $("#input_training_onsite_virtual").val()=="Presencial" //true Presencial
+        var general = $("#input_training_type").val() == "General" //true si es General
+        var internal = true //no aparece en algún input
+        var status = true //el status que aparece en el formato es la obligatoriedad, que pertenece a las invitaciones
+        var attendance_code = randomCode()
+        //var visible = $("#input_visibility").val() =="Si" //true si es visible VISIBLE ES PARA LAS INVITACIONES
+        var area_id = 0 //Por default puse 0
+
+        $.ajax({
+            url: "../sca/add_training",
+            data: {
+                "name": name,
+                "description": description,
+                "modality": modality,
+                "general" :general,
+                "internal": internal,
+                "status": status,
+                "attendance_code": attendance_code,
+                "area_id": area_id
+            },
+            type: "POST",
+            success: function success(){
+                document.location.href = '../sca/show_trainings'
+            }
+        })
+
+      }
+</script>
+{% endblock%}

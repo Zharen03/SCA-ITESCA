@@ -40,3 +40,17 @@ input {
 label {
   color: #4D4D4D;
 }
+
+.simple-linear {
+    background: linear-gradient(#4F6BFF, white);
+    height: 83vh;
+}
+
+form i {
+    margin-left: -30px;
+    cursor: pointer;
+}
+
+input:invalid {
+    background-color: pink;
+  }
