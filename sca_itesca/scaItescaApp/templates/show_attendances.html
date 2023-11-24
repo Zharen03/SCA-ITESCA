@@ -71,33 +71,15 @@
         </tr>
       </thead>
       <tbody class="table-group-divider">
+        {%for userTraining in users_list%}
         <tr>
-          <td>Gina Pacheco</td>
-          <td>Asistió</td>
+          <td>{{userTraining.name}}</td>
+          <td>{{userTraining.attendance}}</td>
           <td>
             <button type="button" class="btn mt-1" style="background-color: #4F6BFF; margin-left: 10%;"> </button>
           </td>
-
         </tr>
-
-        <tr>
-          <td>Rafael Valenzuela</td>
-          <td>No asistió</td>
-          <td>
-            <button type="button" class="btn mt-1" style="background-color: #4F6BFF; margin-left: 10%;"> </button>
-          </td>
-
-        </tr>
-
-        <tr>
-          <td>Valeria Ibarra</td>
-          <td>Asistió</td>
-          <td>
-            <button type="button" class="btn mt-1" style="background-color: #4F6BFF; margin-left: 10%;"> </button>
-          </td>
-
-        </tr>
-
+        {% endfor%}
       </tbody>
     </table>
   </div>
