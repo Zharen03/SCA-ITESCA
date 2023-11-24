@@ -8,7 +8,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
 {% endblock %}
 
-
 {% block content%}
 <div class="p-0 m-0">
     <div class="card shadow p-3  bg-body-tertiary rounded ">
@@ -102,18 +101,18 @@
                         </select>
                     </div>
                 </div>
-                <!-- END OF ROW 3-->
-                <!-- ROW 4 USER TYPE...-->
-            </div>
-            <div class="row">
-                <div class="col-12 col-md-4">
-                    <div class="mb-3 container">
-                        <label for="select_tipo_usuario" class="form-label">Tipo de usuario</label>
-                        <select class="form-select" id="select_tipo_usuario" required>
-                            <option value="2" selected>Personal</option>
-                            <option value="1">Jefe de división</option>
-                            <option value="3">Capacitador</option>
-                        </select>
+
+                <div class="row">
+                    <div class="col-12 col-md-4">
+                        <div class="mb-3 container">
+                            <label for="select_tipo_usuario" class="form-label">Tipo de usuario</label>
+                            <select class="form-select" id="select_tipo_usuario" required>
+                                <option value="2" selected>Personal</option>
+                                <option value="3">Jefe de departamento</option>
+                                <option value="1">Administrador</option>
+                                <option value="4">Capacitador</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
                 <!-- END OF ROW 4-->
@@ -177,6 +176,5 @@
         input_password.setAttribute("type", "password");
     });
 </script>
-
 
 {% endblock %}
