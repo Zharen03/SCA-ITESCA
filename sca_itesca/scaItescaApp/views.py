@@ -198,8 +198,11 @@ def addTrainingForm(request):
 
 @login_required
 def evaluations(request):
+    evaluations = Evaluation.objects.all().values()
+
+
     template = loader.get_template('evaluations.html')
-    context = {}
+    context = {"evaluations": evaluations}
     return HttpResponse(template.render(context, request))
 
 @login_required
@@ -208,10 +211,45 @@ def certificatesNoAdmin(request):
     context = {}
     return HttpResponse(template.render(context, request))
 
+  
+class showAttendance:
+    def __init__(self, name, attendance):
+        self.name = name
+        self.attendance = attendance
+  
+  
 @login_required
 def show_attendances(request):
+    #This will be the variable that holds the user id account
+    userID = ""
+
+    #Bring user table obj
+    user = User.objects.all().values()
+
+    #Variable for user name
+    name
+    #Variable for attendance
+    attendance
+    
+    #Variable that holds objects
+    objList
+
+    user_training = User_Training.objects.all().values()
+    
+    for u in user:
+        if (u.payroll_number == userID):
+            name = u.first_name
+            for ut in user_training:
+                if (ut.user_id == u.payroll_number):
+                    attendance = ut.attendance
+                    p = showAttendance(name, attendance)
+                    objList.append(p)
+            
+    
+
+
     template = loader.get_template('show_attendances.html')
-    context = {}
+    context = {"userTraining": objList}
     return HttpResponse(template.render(context, request))
 
 @login_required
@@ -219,17 +257,120 @@ def show_records(request):
     template = loader.get_template('show_records.html')
     context = {}
     return HttpResponse(template.render(context, request))
-  
+ 
+class training_h_na:
+    def __init__(self, name, date, type, attendance):
+        self.name = name
+        self.date = date
+        self.type = type
+        self.attendace = attendance
+
+
 @login_required
 def trainingHistoryNoAdmin(request):
+    #This will be the variable that holds the user id account
+    userID = ""
+
+    #Bring training table obj
+    training = Training.objects.all().values()
+    #Bring date training table obj
+    date_training = Date_Training.objects.all().values()
+    #Bring date table obj
+    date = Date.objects.all().values()
+    #Bring user_training
+    user_training = User_Training.objects.all().values()
+
+    #Variable that will hold us nombre fecha tipo asistencia
+    training_Name
+    #Variable that holds date training
+    training_Date
+    #Variable that holds type training
+    training_Type
+    #Variable that holds attendance
+    training_Attendance
+
+    #This variable will hold the list for objects for the table
+    objList
+
+    for user in user_training:
+        if (user.user_id == userID):
+            if (user.attendace):
+                training_Attendance = "Asistio"
+            else:
+                training_Attendance = "No asistio"
+            for t in training:
+                if (user.training_id == t.ID):
+                    training_Name = t.name
+                    if (t.general):
+                        training_Type = "General"
+                    if (t.internal):
+                        training_Type = "Interno"
+                    for dt in date_training:
+                        if (t.ID == dt.training_id):
+                            for d in date:
+                                if (dt.training_id == d.ID):
+                                    training_Date = str(d.day) + str(d.month) + str(d.year)
+                                    p = training_h_na(training_Name, training_Date, training_Type, training_Attendance)
+                                    objList.append(p)
+   
+
+
+
     template = loader.get_template('training_history_no_admin.html')
-    context = {} 
+    context = {'training_na_list': objList} 
     return HttpResponse(template.render(context, request))
 
 @login_required
 def trainingHistoryAdmin(request):
+    #This will be the variable that holds the user id account
+    userID = ""
+
+    #Bring training table obj
+    training = Training.objects.all().values()
+    #Bring date training table obj
+    date_training = Date_Training.objects.all().values()
+    #Bring date table obj
+    date = Date.objects.all().values()
+    #Bring user_training
+    user_training = User_Training.objects.all().values()
+
+    #Variable that will hold us nombre fecha tipo asistencia
+    training_Name
+    #Variable that holds date training
+    training_Date
+    #Variable that holds type training
+    training_Type
+    #Variable that holds attendance
+    training_Attendance
+
+    #This variable will hold the list for objects for the table
+    objList
+
+    for user in user_training:
+        if (user.user_id == userID):
+            if (user.attendace):
+                training_Attendance = "Asistio"
+            else:
+                training_Attendance = "No asistio"
+            for t in training:
+                if (user.training_id == t.ID):
+                    training_Name = t.name
+                    if (t.general):
+                        training_Type = "General"
+                    if (t.internal):
+                        training_Type = "Interno"
+                    for dt in date_training:
+                        if (t.ID == dt.training_id):
+                            for d in date:
+                                if (dt.training_id == d.ID):
+                                    training_Date = str(d.day) + str(d.month) + str(d.year)
+                                    p = training_h_na(training_Name, training_Date, training_Type, training_Attendance)
+                                    objList.append(p)
+
+
+
     template = loader.get_template('training_history_admin.html')
-    context = {} 
+    context = {'training_ad_list': objList,} 
     return HttpResponse(template.render(context, request))
 
 @login_required

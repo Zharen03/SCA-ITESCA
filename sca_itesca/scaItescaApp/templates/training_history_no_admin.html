@@ -58,12 +58,20 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
+                                    {%for training in training_na_list%}
+                                        <tr>
+                                            <td>{{training.training_Name}}</td>
+                                            <td>{{training.training_Date}}</td>
+                                            <td>{{training.training_Type}}</td>
+                                            <td>{{training.training_Attendance}}</td>
+                                        </tr>
+                                    {% endfor%}
+                                    <!-- <tr>
                                         <td>Empatia</td>
                                         <td>11/03/2023</td>
                                         <td>General</td>
                                         <td>Asistió</td>
-                                    </tr>
+                                    </tr> -->
                                 </tbody>
                             </table>
                         </div>

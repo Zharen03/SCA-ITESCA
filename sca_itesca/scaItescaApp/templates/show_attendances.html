@@ -57,51 +57,32 @@
     </div>
   </div>
 </div>
-
-<!-- ATTENDEES TABLE -->
-<div class="card container-fluid bg-body-tertiary table-responsive shadow mt-5">
-  <div class="col mt-3 mb-3 d-flex">
-    <button id="button_gen_report" type="button" class="btn me-5 ms-auto ">GENERAR REPORTE</button>
+  <!-- ATTENDEES TABLE -->
+  <div class="card container-fluid bg-body-tertiary table-responsive shadow mt-5">
+    <div class="col mt-3 mb-3 d-flex">
+      <button id="button_gen_report" type="button" class="btn me-5 ms-auto ">GENERAR REPORTE</button>
+    </div>
+    <table class="table aling-middle table-striped table-hover align-self-center">
+      <thead>
+        <tr>
+          <th scope="col">NOMBRE</th>
+          <th scope="col">ASISTENCIA</th>
+          <th scope="col">MODIFICAR ASISTENCIA </th>
+        </tr>
+      </thead>
+      <tbody class="table-group-divider">
+        {%for userTraining in users_list%}
+        <tr>
+          <td>{{userTraining.name}}</td>
+          <td>{{userTraining.attendance}}</td>
+          <td>
+            <button type="button" class="btn mt-1" id="button_editar"><img
+              src="..\static\Images\editar.png" width="24px" height="24px" alt="Inicio"></button>
+          </td>
+        </tr>
+        {% endfor%}
+      </tbody>
+    </table>
   </div>
-  <table class="table aling-middle table-striped table-hover align-self-center" id="table-users">
-    <thead>
-      <tr>
-        <th scope="col">NOMBRE</th>
-        <th class="text-center" scope="col">ASISTENCIA</th>
-        <th class="text-center" scope="col">MODIFICAR ASISTENCIA </th>
-      </tr>
-    </thead>
-    <tbody class="table-group-divider">
-      <tr>
-        <td>Gina Pacheco</td>
-        <td class="text-center">Asistió</td>
-        <td class="text-center">
-          <button type="button" class="btn mt-1" id="button_editar"><img
-              src="..\static\Images\editar.png" width="24px" height="24px" alt="Inicio"></button>
-        </td>
+  {% endblock%}
 
-      </tr>
-
-      <tr>
-        <td>Rafael Valenzuela</td>
-        <td class="text-center">No asistió</td>
-        <td class="text-center">
-          <button type="button" class="btn mt-1"  id="button_editar"><img
-              src="..\static\Images\editar.png" width="24px" height="24px" alt="Inicio"> </button>
-        </td>
-
-      </tr>
-
-      <tr>
-        <td>Valeria Ibarra</td>
-        <td class="text-center">Asistió</td>
-        <td class="text-center">
-          <button type="button" class="btn mt-1"  id="button_editar"><img
-              src="..\static\Images\editar.png" width="24px" height="24px" alt="Inicio"></button>
-
-      </tr>
-
-    </tbody>
-  </table>
-</div>
-{% endblock%}
