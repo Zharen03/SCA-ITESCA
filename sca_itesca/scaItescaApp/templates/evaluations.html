@@ -52,7 +52,6 @@
   <div class="col mt-3 mb-3 d-flex">
     <button id="button_gen_report" type="button" class="btn me-5 ms-auto ">GENERAR REPORTE</button>
   </div>
-
   <table class="table aling-middle">
     <thead>
       <tr>
@@ -67,8 +66,7 @@
         <td>{{evaluation.ID}}</td>
         <td>{{evaluation.type}}</td>
         <td>
-          <button type="button" class="btn mt-1" style="background-color: #4F6BFF; margin-left: 18%">VER
-            DETALLES</button>
+          <button type="button" class="btn mt-1"  id="button_ver_detalles"><img src="..\static\Images\ver-detalles.png" width="24px" height="24px" alt="Inicio"> </button>
         </td>
       </tr>
       {% endfor%}

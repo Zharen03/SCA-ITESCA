@@ -8,11 +8,12 @@
 <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
 {% endblock %}
 
+
 {% block content%}
 <div class="p-0 m-0">
     <div class="card shadow p-3  bg-body-tertiary rounded ">
         <div class="card-body">
-            <h3 style="margin-bottom: 4%; margin-top: 2%; margin-left: .5%;">R E G I S T R O    D E    U S U A R I O</h3>
+            <h3 style="margin-bottom: 4%; margin-top: 2%; margin-left: .5%;">R E G I S T R O D E U S U A R I O</h3>
             <!-- ROW 1 FOR FIRST NAME, APELLIDO PATERNO Y MATERNO-->
             <div class="row">
                 <div class="col-12 col-md-4">
@@ -51,17 +52,9 @@
                 </div>
                 <div class="col-12 col-md-4">
                     <div class="mb-3 container">
-                        <label for="input_password" class="form-label">Contraseña</label>
-                        <div class="input-group" >
-                            <div class="form-group col-10">
-                                <input maxlength="25" type="password" class="form-control" style="width: 100%;" id="input_password" placeholder="Contraseña" required>
-                            </div>
-                            <div class="form-group text-end col-2">
-                                <button type="button" id="mostrar" class="btn">
-                                    <img src="..\static\Images\eye_show.png" width="24px" height="24px">
-                                </button>
-                            </div>
-                        </div>
+                        <label for="input_email" class="form-label">Correo electrónico</label>
+                        <input maxlength="40" type="email" class="form-control" id="input_email"
+                            placeholder="Correo electrónico" required>  
                     </div>
                 </div>
                 <div class="col-12 col-md-4">
@@ -86,11 +79,16 @@
                 </div>
                 <div class="col-12 col-md-4">
                     <div class="mb-3 container">
-                        <label for="input_email" class="form-label">Correo electrónico</label>
-                        <input maxlength="40" type="email" class="form-control" id="input_email"
-                            placeholder="Correo electrónico" required>
+                        <label for="select_tipo_usuario" class="form-label">Tipo de usuario</label>
+                        <select class="form-select" id="select_tipo_usuario" required>
+                            <option value="2" selected>Personal</option>
+                            <option value="1">Jefe de división</option>
+                            <option value="3">Capacitador</option>
+                        </select>
                     </div>
                 </div>
+
+
                 <div class="col-12 col-md-4">
                     <div class="mb-3 container">
                         <label for="select_area" class="form-label">Área</label>
@@ -101,31 +99,17 @@
                         </select>
                     </div>
                 </div>
-
-                <div class="row">
-                    <div class="col-12 col-md-4">
-                        <div class="mb-3 container">
-                            <label for="select_tipo_usuario" class="form-label">Tipo de usuario</label>
-                            <select class="form-select" id="select_tipo_usuario" required>
-                                <option value="2" selected>Personal</option>
-                                <option value="3">Jefe de departamento</option>
-                                <option value="1">Administrador</option>
-                                <option value="4">Capacitador</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                <!-- END OF ROW 4-->
+                <!-- END OF ROW 3-->
             </div>
-            <!-- ROW 5 ONLY FOR CANCEL AND REGISTER BUTTONS-->
+            <!-- ROW 4 ONLY FOR CANCEL AND REGISTER BUTTONS-->
             <div class="row d-flex flex-column">
                 <div class="col-12">
                     <div class="container-fluid" style="display: flex; justify-content: right;">
                         <button id="button_cancelar" type="button" class="btn btn-danger">Cancelar</button>
+                        <button id="button_registrar" type="button" class="btn btn-primary" style="margin-left: 2%;">Restablecer Contraseña</button>
                         <button id="button_registrar" onClick="add_user()" type="button" class="btn btn-primary"
                             style="margin-left: 2%;">Registrar</button>
                     </div>
-                </div>
             </div>
         </div>
     </div>
@@ -176,5 +160,6 @@
         input_password.setAttribute("type", "password");
     });
 </script>
+
 
 {% endblock %}

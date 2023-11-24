@@ -224,3 +224,17 @@ h3 {
 #table-users > thead > tr > th{
     color: #4D4D4D;
 }
+
+/*BOTÓN SUBIR*/
+#button_subir{
+    background: none;
+    border: 0;
+    color: inherit;
+}
+
+/*BOTÓN DESCARGAR*/
+#button_descargar{
+    background: none;
+    border: 0;
+    color: inherit;
+}

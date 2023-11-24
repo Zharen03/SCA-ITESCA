@@ -2,13 +2,15 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('sca/login', views.login, name="login"),
+    path('sca/add_group', views.addGroup),
+    path('sca/login', views.loginView, name="login"),
+    path('sca/login_auth', views.loginAuth),
+    path('sca/logout_user', views.logoutUser),
     path('sca/add_user_form', views.addUserForm, name='add_user_form'),
     path('sca/add_user', views.addUser, name="add_user"),
     path('sca/show_user', views.showUser, name='show_user'),
+    path("sca/add_area", views.addArea, name="add_area"),
     path('sca/show_dnc', views.showDNC, name='show_dnc'),
-    
-    
     path('sca/resume_training_events', views.trainingEventEvaluationSummaryForm, name='resume_training_events'),
     path('sca/training_events_evaluation_form', views.trainingEventEvaluationForm, name='training_events'),
     path('sca/training_event_evaluation', views.trainingEventEvaluation, name='training_event_evaluation'),
@@ -30,4 +32,8 @@ urlpatterns = [
     path('sca/certificates', views.certificatesNoAdmin, name="certificates_no_admin"),
     path('sca/show_records', views.show_records, name="show_records"),
     path('sca/show_attendances', views.show_attendances, name="show_attendances"),
+    path('sca/update_user', views.update_user, name="update_user"),
+    path('sca/certificates_admin', views.certificates_admin, name="certificates_admin"),
+    path('sca/records_module', views.records_module, name="records_module"),
+    path('sca/certificate_review', views.certificate_review, name="certificate_review"),
 ]
