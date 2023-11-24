@@ -41,6 +41,14 @@ h3 {
     margin-left: 4%;
 }
 
+/*BOTÓN GENÉRICO SHOW*/
+#mostrar{
+    background: none;
+    border: 0;
+    color: inherit;
+    margin-left: 4%;
+}
+
 /*BOTÓN GENÉRICO AZUL*/
 
 #button_registrar {
@@ -57,21 +65,23 @@ h3 {
 #button_registrar:active {
     background-color: #1734CB;
 }
+
   /*ver detalles*/
   #button_registrar {
-    background-color: #4F6BFF;
-    color: white;
-    border: none;
-    border-radius: 0%;
+      background-color: #4F6BFF;
+      color: white;
+      border: none;
+      border-radius: 0%;
   }
 
   #button_registrar:hover {
-    background-color: #1734CB;
+      background-color: #1734CB;
   }
 
   #button_registrar:active {
-    background-color: #1734CB;
+      background-color: #1734CB;
   }
+
   /**/
 
 #button_filtrar {
@@ -170,9 +180,6 @@ h3 {
 #button_register_attendance:active {
     background-color: #1734CB;
 }
-
-
-
 
 /*BOTÓN GENÉRICO ROJO*/
 

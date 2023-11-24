@@ -76,7 +76,7 @@
           <td>{{userTraining.name}}</td>
           <td>{{userTraining.attendance}}</td>
           <td>
-            <button type="button" class="btn mt-1" id="button_editar"><img
+            <button type="button" data-bs-toggle="modal" data-bs-target="#modal_edit_attendances" class="btn mt-1" id="button_editar"><img
               src="..\static\Images\editar.png" width="24px" height="24px" alt="Inicio"></button>
           </td>
         </tr>
@@ -84,5 +84,28 @@
       </tbody>
     </table>
   </div>
-  {% endblock%}
 
+<!-- Modal -->
+<div class="modal fade" id="modal_edit_attendances" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+aria-labelledby="modal_edit_attendances" aria-hidden="true">
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="modal_edit_attendances">EDITAR ASISTENCIA</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <label class="form-label">Seleccione el estado de la asistencia del usuario: </label>
+            <select class="form-select" id="select_attendances" required>
+              <option value="2" selected>Asistió</option>
+              <option value="1">No asistió</option>
+            </select>
+        </div>
+        
+        <div class="modal-footer">
+            <button type="button" id="button_registrar" class="btn" data-bs-dismiss="modal">Aceptar</button>
+        </div>
+    </div>
+</div>
+</div>
+  {% endblock%}

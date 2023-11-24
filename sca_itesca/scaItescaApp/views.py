@@ -421,6 +421,10 @@ def createWorkplan(request):
     context = {} 
     return HttpResponse(template.render(context, request))
 
+def pass_recovery(request):
+    template = loader.get_template('pass_recovery.html')
+    context = {}
+    return HttpResponse(template.render(context, request))
   
 def update_user(request):
     template = loader.get_template('update_user.html')
@@ -477,4 +481,3 @@ def addGroup(request):
         #print(Group.objects.all())
         #return HttpResponse("Something gone wrong")
     return HttpResponse("ok")
-

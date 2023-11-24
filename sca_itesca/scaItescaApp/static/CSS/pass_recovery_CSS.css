@@ -1,13 +1,13 @@
 
 @media (min-height: 900px) {
   .card{
-    height:57vh;
+    height:42vh;
   }
 }
 
 @media (max-height: 900px) {
   .card{
-    height:65vh;
+    height:50vh;
   }
 }
 
@@ -33,24 +33,6 @@ body {
   margin-bottom: 10%;
 }
 
-input {
-  margin-bottom: 5%;
-}
-
 label {
   color: #4D4D4D;
 }
-
-.simple-linear {
-    background: linear-gradient(#4F6BFF, white);
-    height: 83vh;
-}
-
-form i {
-    margin-left: -30px;
-    cursor: pointer;
-}
-
-input:invalid {
-    background-color: pink;
-  }
