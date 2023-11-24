@@ -1,32 +1,62 @@
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, user_passes_test
 from django.conf import settings
 from django.shortcuts import render, redirect
 from django.template import loader
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import Group
-
 from .models import *
 
+#Tests
+
+def isAdministradorTest(user):
+    grupo_admin = Group.objects.filter(name="Administrador").get()
+    return grupo_admin in user.groups.all()
+
+def isJefeDeDepartamentoTest(user):
+    grupo_jefeDepartamento = Group.objects.filter(name="JefeDeDepartamento").get()
+    return grupo_jefeDepartamento in user.groups.all()
+
+#Views
+
 def loginView(request):
-    template = loader.get_template('login.html')    
-    context = {}
+    if request.user.is_authenticated:
+            if isAdministradorTest(request.user):
+                return redirect('../sca/show_user')
+            else: 
+                return redirect('../sca/show_invitations')
+    failed_login = ""
+    next = ""
+    if "p" in request.GET.keys():
+        failed_login = request.GET["p"]
+    if "next" in request.GET.keys():
+        next = request.GET["next"]
+    template = loader.get_template('login.html')
+    context = {"failed": failed_login,
+               "next": next}
     return HttpResponse(template.render(context, request))
 
 
 @csrf_exempt
 def loginAuth(request):
+    next = request.GET["next"]
     print(request.POST)
     payroll_number = request.POST['payroll_number']
     password = request.POST['password']
     user = authenticate(request, username=payroll_number, password=password)
     if user is not None:
         login(request, user)
-        return redirect('../sca/show_user')
+        if not next == "":
+            return redirect(f'..{next}')
+        if user.is_authenticated:
+            if isAdministradorTest(user):
+                return redirect('../sca/show_user')
+            else: 
+                return redirect('../sca/show_invitations')
     else:
         print(user, payroll_number, password)
-    return HttpResponse("ok")
+    return redirect(f'../sca/login?p=invalid&next={next}')
 
 def logoutUser(request):
     logout(request)
@@ -36,14 +66,15 @@ def logoutUser(request):
 @login_required
 def showUser(request):
     users = User.objects.all().values()
-    template = loader.get_template('show_users.html') 
-    print(request.user)   
+    template = loader.get_template('show_users.html')
+    print(request.user)
     context = {
         'users_list': users,
     }
     return HttpResponse(template.render(context, request))
 
 @login_required
+@user_passes_test(isAdministradorTest)
 def addUserForm(request):
     template = loader.get_template('add_user_form.html')
     areas = Area.objects.all().values()    
@@ -69,6 +100,7 @@ def addUser(request):
                     #phone_number = post["phone_number"], min_gender = False, min_general = False, role = int(post["type"]), 
                     #status = 1, area_id = area)
     print(new_user)
+    new_user.groups.add(int(post["type"]))
     new_user.save()
     return HttpResponse("OK")
 
@@ -242,6 +274,7 @@ def addArea(request):
 
 
 def addGroup(request):
+    
     #group = Group.objects.get(name='Administrador')
     #print(group.user_set)
     #try:

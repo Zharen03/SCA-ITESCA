@@ -6,14 +6,11 @@ urlpatterns = [
     path('sca/login', views.loginView, name="login"),
     path('sca/login_auth', views.loginAuth),
     path('sca/logout_user', views.logoutUser),
-    
     path('sca/add_user_form', views.addUserForm, name='add_user_form'),
     path('sca/add_user', views.addUser, name="add_user"),
     path('sca/show_user', views.showUser, name='show_user'),
     path("sca/add_area", views.addArea, name="add_area"),
-    
     path('sca/show_dnc', views.showDNC, name='show_dnc'),
-    
     path('sca/resume_training_events', views.trainingEventEvaluationSummaryForm, name='resume_training_events'),
     path('sca/training_events_evaluation_form', views.trainingEventEvaluationForm, name='training_events'),
     path('sca/training_event_evaluation', views.trainingEventEvaluation, name='training_event_evaluation'),
