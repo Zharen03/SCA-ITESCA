@@ -30,12 +30,14 @@ class Training(models.Model):
     general = models.BooleanField()
     internal = models.BooleanField()
     status = models.BooleanField()
+    area_id = models.ForeignKey(Area, on_delete=models.CASCADE)
 
 class Invitation(models.Model):
     description = models.CharField(max_length=255)
     optional = models.BooleanField()
     status = models.BooleanField()
     training_id = models.ForeignKey(Training, on_delete=models.CASCADE)
+    visible = models.BooleanField()
 
 class Date(models.Model):
     day = models.DateField()
@@ -87,5 +89,9 @@ class Needs_Request(models.Model):
     question_id = models.ForeignKey(Question, on_delete=models.CASCADE)
     answer = models.CharField(max_length=65535)
     status = models.BooleanField()
+
+class File(models.Model):
+    url = models.URLField()
+    training_id = models.ForeignKey(Training, on_delete=models.CASCADE)
     
     

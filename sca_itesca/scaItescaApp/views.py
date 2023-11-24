@@ -109,10 +109,34 @@ def addUser(request):
 def addDNC(request):
     post = request.POST
     print(post)
-    new_DNC = DNC(user_id = post['user'], question_id = post['questions[0].question_id'], 
-                  answer = post['questions[0].answer'], status = True)
-    new_DNC.save()
+    i = 0
+    for a in range(8):
+        new_DNC = DNC(user_id = post['user'], question_id = post[f"questions[{i}].question_id"], 
+                  answer = post[f"questions[{i}].answer"], status = True)
+        new_DNC.save()
+        i = i+1
+        
     return HttpResponse("OK")
+
+ 
+@csrf_exempt   
+def addNeedsRequest(request):
+    post = request.POST
+    print(post)
+    i=0
+    for a in range(8):
+        new_needs_request = Needs_Request(user_id = post['user'], question_id=post[f"questions[{i}].question_id"],
+                                          answer = post[f"questions[{i}].answer"], status=post["status"])
+        new_needs_request.save()
+        i = i+1
+
+@csrf_exempt
+def addTraining(request):
+    post = request.POST
+    new_training = Training(name = post['name'], description=post['description'], attendance_code=post['attendance_code'], 
+                            modality=post['modality'], general=post['general'], internal=post['internal'], 
+                            status=post['status'], area_id=post['area_id'])
+    new_training.save()
     
 @login_required    
 def trainingEventEvaluationSummaryForm(request):
