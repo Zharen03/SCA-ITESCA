@@ -24,6 +24,7 @@ class User(AbstractUser):
     
 class Training(models.Model):
     name = models.CharField(max_length=255)
+    trainer = models.CharField(max_length=255)
     description = models.CharField(max_length=255)
     attendance_code = models.CharField(max_length=5)
     modality = models.BooleanField()
@@ -35,9 +36,8 @@ class Training(models.Model):
 class Invitation(models.Model):
     description = models.CharField(max_length=255)
     optional = models.BooleanField()
-    status = models.BooleanField()
     training_id = models.ForeignKey(Training, on_delete=models.CASCADE)
-    visible = models.BooleanField()
+        
 
 class Date(models.Model):
     day = models.DateField()
@@ -48,7 +48,9 @@ class Question(models.Model):
 class User_Invitation(models.Model):
     user_id = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     invitation_id = models.ForeignKey(Invitation, on_delete=models.CASCADE)
-
+    status = models.IntegerField()
+    visible = models.BooleanField()
+    
 class User_Training(models.Model):
     training_id = models.ForeignKey(Training, on_delete=models.CASCADE)
     user_id = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)

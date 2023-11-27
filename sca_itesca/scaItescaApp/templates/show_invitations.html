@@ -16,13 +16,15 @@
     </div>
 </div>
 
+{% for invitation in invitation_list%}
 <div class="card shadow p-3  bg-body-tertiary rounded mb-5">
     <!-- CAPACITACIÓN OBLIGATORIA -->
     <!-- NOMBRE DE CAPACITACIÓN -->
+    
     <div class="card-body">
         <div class="row">
             <div class="col">
-                <h3 style="margin-bottom: 4%; margin-top: 2%; margin-left: 1%;"> <strong>FUNDAMENTOS DE EXCEL </strong></h3>
+                <h3 style="margin-bottom: 4%; margin-top: 2%; margin-left: 1%;"> <strong>{{invitation.training_info.name}} </strong></h3>
             </div>
 
         </div>
@@ -31,7 +33,7 @@
             <div class="col-md-4 col-12">
                 <div class="mb-3">
                     <label class="form-label"><strong>Instructor: </strong></label>
-                    <label class="form-label">Jackeline Vázquez Méndez</label>
+                    <label class="form-label">{{invitation.training_info.trainer}}</label>
 
                 </div>
             </div>
@@ -39,7 +41,11 @@
             <div class="col-md-4 col-12">
                 <div class="mb-3 ">
                     <label class="form-label"><strong>Horario: </strong></label>
-                    <label class="form-label">Viernes 20-10-2023 10:00 hrs</label>
+                    <label class="form-label">
+                        {%for schedule in invitation.schedule%}
+                            {{schedule.date}}: {{schedule.time}} <br>
+                        {%endfor%}
+                    </label>
 
                 </div>
             </div>
@@ -52,9 +58,13 @@
             <div class="col">
                 <div class="mb-3 ">
                     <label class="form-label"><strong>Modalidad: </strong></label>
-                    <label class="form-label">Virtual</label>
-                    <a href="#">https://us02web.zoom.us/j/82892390591?pwd=RGlyeThGTFpJZkREQjVvT2JBOUdqUT09</a>
-
+                    <label class="form-label">
+                        {% if invitation.training_info.modality%}
+                            Presencial
+                        {%else%}
+                            Virtual <a href="#">https://us02web.zoom.us/j/82892390591?pwd=RGlyeThGTFpJZkREQjVvT2JBOUdqUT09</a>
+                        {%endif%}
+                    </label>
                 </div>
             </div>
         </div>
@@ -63,8 +73,7 @@
             <div class="col-md-12 col-12">
                 <div class="mb-3">
                     <label class="form-label"><strong>Descripción: </strong></label>
-                    <label class="form-label">En este curso se aprenderán las herramientas más habituales de Microsoft Excel, desde lo más básico a los gráficos, funciones y tablas de datos.</label>
-
+                    <label class="form-label">{{invitation.training_info.description}}</label>
                 </div>
             </div>
         </div>
@@ -83,13 +92,20 @@
         <!-- ROW 4 PARA BOTONES DE ASISTIR / ME INTERESA-->
         <div class="row d-flex flex-column">
             <div class="col-12">
+                {% if invitation.invitation_info.status == "Obligatoria"%}
                 <div class="container-fluid" style="display: flex; justify-content: right; ">
                     <button id="button_assist" type="button" class="btn">ASISTIR</button>
                 </div>
+                {% else %}
+                <div class="container-fluid" style="display: flex; justify-content: right; ">
+                    <button id="button_interested" type="button" class="btn">ME INTERESA</button>
+                </div>
+                {% endif %}
             </div>
         </div>
     </div>
 </div>
+{% endfor %}
 
 <!-- CAPACITACIÓN OPCIONAL -->
 <div class="card shadow p-3  bg-body-tertiary rounded">

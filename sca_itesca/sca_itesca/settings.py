@@ -133,4 +133,9 @@ LOGIN_URL = '/sca/login'
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 
 #Set to logout when enough time has passed
-SESSION_COOKIE_AGE = 600
+SESSION_COOKIE_AGE = 600000
+
+#Disable to override format
+USE_L10N = False  
+#Set time format
+TIME_FORMAT = 'h:i a'

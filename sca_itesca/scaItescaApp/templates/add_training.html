@@ -39,7 +39,7 @@
                                 <div class="row">
                                     <div class="col-sm-12" style="align-items: center">
                                         <label for="input_date" class="form-label">Fecha</label>
-                                        <input type="date" class="form-control" name="input_date">
+                                        <input type="date" class="form-control" id="input_date" name="input_date">
                                     </div>
                                 </div>
                             </div>
@@ -100,8 +100,9 @@
                                             capacitar</label></br>
                                         <select name="input_training_area" class="form-control"
                                             id="input_training_area">
-                                            <option class="form-label" value="0">...</option>
-                                            <option class="form-label" value="1">...</option>
+                                            {% for area in areas%}
+                                            <option class="form-label" value="{{area.id}}">{{area.name}}</option>
+                                            {% endfor%}
                                         </select>
                                     </div>
                                 </div>
@@ -172,8 +173,8 @@
                     <div class="row d-flex flex-column mt-5">
                         <div class="col-12">
                             <div class="" style="display: flex; justify-content: right;">
-                                <button id="button_cancelar" type="button" class="btn btn-danger">Cancelar</button>
-                                <button id="button_registrar" type="button" class="btn btn-primary"
+                                <a href="../sca/training_history_ad"><button id="button_cancelar" type="button" class="btn btn-danger">Cancelar</button></a>
+                                <button id="button_registrar" type="button" class="btn btn-primary" onClick="addTraining()"
                                     style="margin-left: 2%;">Enviar</button>
                             </div>
                         </div>
@@ -221,10 +222,13 @@
           codigo += caracterAleatorio;
         }
         return codigo;
-      }
+    }
 
-      function addTraining(){
+    function addTraining(){
         var name = $("#input_training_name").val()
+        var trainer = $("#input_trainer_name").val()
+        var time = $("#input_time").val()
+        var date = $("#input_date").val()
         var description = $("#input_description").val()
         var modality = $("#input_training_onsite_virtual").val()=="Presencial" //true Presencial
         var general = $("#input_training_type").val() == "General" //true si es General
@@ -232,26 +236,31 @@
         var status = true //el status que aparece en el formato es la obligatoriedad, que pertenece a las invitaciones
         var attendance_code = randomCode()
         //var visible = $("#input_visibility").val() =="Si" //true si es visible VISIBLE ES PARA LAS INVITACIONES
-        var area_id = 0 //Por default puse 0
+        var area_id = $("#input_training_area").val() //Por default puse 0
+        var optional = $("#input_training_state").val()
 
         $.ajax({
             url: "../sca/add_training",
             data: {
                 "name": name,
+                "trainer": trainer,
+                "time": time,
+                "date": date,
                 "description": description,
                 "modality": modality,
                 "general" :general,
                 "internal": internal,
                 "status": status,
                 "attendance_code": attendance_code,
-                "area_id": area_id
+                "area_id": area_id,
+                "optional": optional
             },
             type: "POST",
             success: function success(){
-                document.location.href = '../sca/show_trainings'
+                document.location.href = '../sca/training_history_ad'
             }
         })
 
-      }
+    }
 </script>
 {% endblock%}
