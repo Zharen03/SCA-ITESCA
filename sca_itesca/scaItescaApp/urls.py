@@ -1,4 +1,6 @@
 from django.urls import path
+from .views import UsersCSV, EvaluationCSV
+
 from . import views
 
 urlpatterns = [
@@ -59,4 +61,7 @@ urlpatterns = [
     path('sca/update_pass', views.updatePassword, name="update_password"),
     
     path('sca/upload_file', views.uploadFile, name="upload_file"),
+
+    path('exportar-csv/', UsersCSV.as_view(), name='exportar_csv'),
+    path('exportar-csv-evaluation/', EvaluationCSV.as_view(), name='exportar_csv_evaluation'),
 ]

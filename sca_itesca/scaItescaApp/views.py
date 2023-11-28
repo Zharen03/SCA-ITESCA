@@ -1,4 +1,5 @@
 from django.http import HttpResponse
+from import_export import resources
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.conf import settings
@@ -6,10 +7,55 @@ from django.shortcuts import render, redirect
 from django.template import loader
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import Group
+from django.views.generic import View
 from .models import *
 import datetime
 from http import HTTPStatus
 from .forms import *
+
+#Resource
+class UserResource(resources.ModelResource):
+    class Meta:
+        model = User
+        fields = ("payroll_number", "first_name", "last_name", "email", "phone_number", "is_active") 
+
+class CapacitationResource(resources.ModelResource):
+    class Meta:
+        model = Training
+        fields = ("name", "trainer", "modality") 
+
+class EvaluationsResource(resources.ModelResource):
+    class Meta:
+        model = Evaluation
+        fields = ("user_id", "status") 
+
+#export
+class UsersCSV(View):
+    def get(self, request, *args, **kwargs):
+        resource = UserResource()
+        dataset = resource.export()
+
+        response = HttpResponse(dataset.csv, content_type='text/csv')
+        response['Content-Disposition'] = 'attachment; filename="Reporte_usuarios.csv"'
+        return response
+
+class CapacitationCSV(View):
+    def get(self, request, *args, **kwargs):
+        resource = CapacitationResource()
+        dataset = resource.export()
+
+        response = HttpResponse(dataset.csv, content_type='text/csv')
+        response['Content-Disposition'] = 'attachment; filename="Reporte_capacitaciones.csv"'
+        return response
+
+class EvaluationCSV(View):
+    def get(self, request, *args, **kwargs):
+        resource = EvaluationsResource()
+        dataset = resource.export()
+
+        response = HttpResponse(dataset.csv, content_type='text/csv')
+        response['Content-Disposition'] = 'attachment; filename="Reporte_evaluaciones.csv"'
+        return response
 
 #Tests
 
