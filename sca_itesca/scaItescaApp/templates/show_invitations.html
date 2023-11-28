@@ -62,7 +62,7 @@
                         {% if invitation.training_info.modality%}
                             Presencial
                         {%else%}
-                            Virtual <a href="#">https://us02web.zoom.us/j/82892390591?pwd=RGlyeThGTFpJZkREQjVvT2JBOUdqUT09</a>
+                            Virtual
                         {%endif%}
                     </label>
                 </div>
@@ -92,13 +92,18 @@
         <!-- ROW 4 PARA BOTONES DE ASISTIR / ME INTERESA-->
         <div class="row d-flex flex-column">
             <div class="col-12">
-                {% if invitation.invitation_info.status == "Obligatoria"%}
+                {% if invitation.invitation_info.status == "Obligatoria" or invitation.inscrito%}
                 <div class="container-fluid" style="display: flex; justify-content: right; ">
                     <button id="button_assist" type="button" class="btn">ASISTIR</button>
                 </div>
                 {% else %}
                 <div class="container-fluid" style="display: flex; justify-content: right; ">
-                    <button id="button_interested" type="button" class="btn">ME INTERESA</button>
+                    <form method="post" action="/sca/set_user_training">
+                        {% csrf_token %}
+                        <input name="training_id" value="{{invitation.training_info.id}}" class="d-none">
+                        
+                        <button id="button_interested" type="sumbit" class="btn">ME INTERESA</button>
+                    </form>
                 </div>
                 {% endif %}
             </div>

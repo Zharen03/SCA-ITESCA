@@ -8,22 +8,23 @@
 {% block content%}
     <div class="card shadow p-3  bg-body-tertiary rounded"> <!-- FILTRO -->
         <div class="card-body">
+            <form method="post" action="/sca/show_dnc">
             <h3 style="margin-bottom: 4%; margin-top: 2%; margin-left: .5%;">F I L T R O</h3>
-
+                {% csrf_token %}
             <div class="row"> <!-- r1 -->
                 <div class="col-12 col-md-4">
                     <div class="mb-3 container">
                         <label for="input_name" class="form-label">Fecha</label>
-                        <input id="startDate" class="form-control" type="date" />
+                        <input id="startDate" class="form-control" name="input_date" type="date" />
                     </div>
                 </div>
                 <div class="col-12 col-md-4">
                     <div class="mb-3 container">
                         <label for="select_area" class="form-label">Área</label>
-                        <select class="form-select" id="select_area" required>
-                            <option selected>Por definir...</option>
-                            <option value="1">Por definir...</option>
-                            <option value="2">Por definir...</option>
+                        <select class="form-select" id="select_area" name="select_area" required>
+                            {%for area in areas%}
+                                <option value="{{area.id}}">{{area.name}}</option>
+                            {%endfor%}
                         </select>
                     </div>
                 </div>
@@ -32,11 +33,12 @@
             <div class="row d-flex flex-column">
                 <div class="col-12">
                     <div class="container-fluid" style="display: flex; justify-content: right; ">
-                        <button id="button_filtrar" type="button" class="btn">FILTRAR</button>
+                        <button id="button_filtrar" type="sumbit" class="btn">FILTRAR</button>
                         <button id="button_cancelar" type="button" class="btn" style="margin-left: 2%;">BORRAR</button>
                     </div>
                 </div>
             </div>
+        </form>
         </div>
     </div>
 
@@ -53,15 +55,21 @@
                 </tr>
             </thead>
             <tbody class="table-group-divider">
+                {%for user in user_list%}
                 <tr>
-                    <td>gina</td>
-                    <td>Mark</td>
+                    <td>{{user.user.area_id.name}}</td>
+                    <td>{{user.dnc.date}}</td>
                     <td class="text-center">
+                        {%if user.done %}
                         <button type="button" class="btn btn-warning mt-1"  id="button_ver_detalles"><img
                                 src="..\static\Images\ver-detalles.png" width="24px" height="24px"
                                 alt="Inicio"></button>
+                        {%else%}
+                        Pendiente
+                        {%endif%}
                     </td>
                 </tr>
+                {%endfor%}
             </tbody>
         </table>
     </div>

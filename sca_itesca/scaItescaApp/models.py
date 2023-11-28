@@ -85,12 +85,14 @@ class DNC(models.Model):
     question_id = models.ForeignKey(Question, on_delete=models.CASCADE)
     answer = models.CharField(max_length=65535)
     date = models.DateField()
+    done = models.BooleanField()
     status = models.BooleanField()
 
 class Needs_Request(models.Model):
     user_id = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     question_id = models.ForeignKey(Question, on_delete=models.CASCADE)
     answer = models.CharField(max_length=65535)
+    done = models.BooleanField()
     status = models.BooleanField()
 
 class File(models.Model):

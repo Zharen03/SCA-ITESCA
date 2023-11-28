@@ -33,7 +33,6 @@ def userTypeTest(user):
 #Login module views
 
 
-
 def loginView(request):
     if request.user.is_authenticated:
             if isAdministradorTest(request.user):
@@ -88,17 +87,27 @@ def pass_recovery(request):
 #User module views
 
 @login_required
-@csrf_exempt
 def showUser(request):
-    users = User.objects.all()
+    post = request.POST
+    users = User.objects.filter(is_active=True)
     if "input_name" in request.POST.keys():
         if not request.POST["input_name"] == "":
-            users = users.filter(first_name=request.POST["input_name"])
+            users = users.filter(first_name=post["input_name"])
+        if not post["input_lastname"] == "":
+            users = users.filter(last_name__contains=post["input_lastname"])
+        if not post["inpur_2lastname"] =="":
+            users = users.filter(last_name__contains=post["input_2lastname"])
+        if not post["select_area"] == "":
+            obj_area = Area.objects.filter(id=post["select_area"])[0]
+            users = users.filter(area_id = obj_area)
+        if not post["select_min_training"] == "5":
+            pass
+
     else:
         users = users.values()
     template = loader.get_template('show_users.html')
     areas = Area.objects.all().values()
-    trainings = Training.objects.all().values()
+    trainings = Training.objects.filter(status=True)
     context = {
         'users_list': users,
         'user_type': userTypeTest(request.user),
@@ -139,12 +148,69 @@ def addUser(request):
     return HttpResponse("OK")
 
 
-def update_user(request):
+def updateUserForm(request, uid=0):
+    if uid == 0:
+        return redirect("/sca/show_user")
+    user = User.objects.filter(payroll_number=uid)[0]
+    last_name = user.last_name.split(" ")
+    areas = Area.objects.all().values()
+        
     template = loader.get_template('update_user.html')
     context = {
+        'user':user,
+        'areas':areas,
+        'last_name': last_name,
+        'to_update_user_type': userTypeTest(user),
         'user_type': userTypeTest(request.user),
     } 
     return HttpResponse(template.render(context, request))
+
+@csrf_exempt
+def updateUser(request):
+    post = request.POST
+    user = User.objects.filter(payroll_number=post["payroll_number"])[0]
+    user.first_name = post["first_name"]
+    user.last_name = post["last_name"]
+    user.phone_number = post["phone_number"]
+    user.email = post["email"]
+    user.position = post["position"]
+    
+    area = Area.objects.filter(id=post["area"])[0]
+    user.area_id = area
+    group = Group.objects.filter(id=post["type"])[0]
+    print(user.groups.all())
+    if not group in user.groups.all():
+        user.groups.clear()
+        user.groups.add(int(post["type"]))
+    return HttpResponse("ok")
+
+def removeUser(request):
+    post = request.POST
+    obj_user = User.objects.filter(payroll_number = post["payroll_number"])[0]
+    obj_user.is_active = False
+    obj_user.save()
+    return redirect("/sca/show_user")
+
+def selectUser(request, uid=1):
+    obj_user = User.objects.filter(payroll_number = uid)[0]
+    last_name = obj_user.last_name.split(" ")
+    template = loader.get_template('select_user.html')
+    context = {
+        'user':obj_user,
+        'last_name': last_name,
+        'to_update_user_type': userTypeTest(obj_user),
+        'user_type': userTypeTest(request.user),
+    } 
+    return HttpResponse(template.render(context, request))
+    pass
+
+@csrf_exempt
+def updatePassword(request):
+    post = request.POST
+    obj_user = User.objects.filter(payroll_number = post["payroll_number"])[0]
+    obj_user.set_password(f"{obj_user.payroll_number}23")
+    obj_user.save()
+    return HttpResponse("ok")
 
 
 #DNC module views
@@ -156,24 +222,51 @@ def capacitationNeedsDetectionForm(request):
     }
     return HttpResponse(template.render(context, request))
 
+
 @csrf_exempt
 def addDNC(request):
     post = request.POST
-    print(post)
-    i = 0
     for a in range(8):
-        new_DNC = DNC(user_id = post['user'], question_id = post[f"questions[{i}].question_id"], 
-                  answer = post[f"questions[{i}].answer"], status = True)
-        new_DNC.save()
-        i = i+1
-        
+        i = a+22
+        obj_question = Question.objects.filter(id=post["questions"][i]["question_id"])[0]
+        for answer in post["questions"][i]["answer"]:
+            new_DNC = DNC(user_id = request.user, question_id = obj_question, 
+                  answer = answer, done=False, status = True, date=datetime.date.today())
+            new_DNC.save()
+            print(new_DNC)
+
     return HttpResponse("OK")
 
 
 @login_required
 def showDNC(request):
     template = loader.get_template('show_dnc.html')
+    jefeDepartament_group = Group.objects.filter(id=3)[0]
+    users = User.objects.all()
+    post = request.POST
+    date_filter = ""
+    if request.method == "POST":
+        if not post["select_area"] == "":
+            area = Area.objects.filter(id=post["select_area"])[0]
+            users = users.filter(area_id=area)
+        if not post["input_date"] == "":
+            date_filter = post["input_date"]
+    user_list = []
+    for user in users:
+        if jefeDepartament_group in user.groups.all():
+            dnc = DNC.objects.filter(status=True)
+            dnc = dnc.filter(user_id=user)
+            if not date_filter == "":
+                dnc = dnc.filter(date=date_filter)
+            done = False
+            if len(dnc) > 0:
+                done = True
+                user_list.append({"user":user, "done": done, "dnc": dnc[0]})
+            user_list.append({"user":user, "done": done})
+    areas = Area.objects.all().values()
     context = {
+        'areas':areas,
+        'user_list': user_list,
         'user_type': userTypeTest(request.user),
     } 
     return HttpResponse(template.render(context, request))
@@ -186,7 +279,7 @@ def addNeedsRequest(request):
     print(post)
     i=0
     for a in range(8):
-        new_needs_request = Needs_Request(user_id = post['user'], question_id=post[f"questions[{i}].question_id"],
+        new_needs_request = Needs_Request(user_id = request.user, question_id=post[f"questions[{i}].question_id"],
                                           answer = post[f"questions[{i}].answer"], status=post["status"])
         new_needs_request.save()
         i = i+1
@@ -312,8 +405,17 @@ def trainingHistoryAdmin(request):
     training_list = []
     
     trainings = Training.objects.all()
+    date_filter = ""
+    if "input_training_name" in request.POST.keys():
+        if not request.POST["input_training_name"] == "":
+            trainings = Training.objects.filter(name__contains=request.POST["input_training_name"])
+        if not request.POST["input_date"] == "":
+            date_filter= request.POST["input_date"]
     for training in trainings:
         dates = Date_Training.objects.filter(training_id = training)
+        if not date_filter == "":
+            obj_date = Date.objects.filter(day=date_filter)[0]
+            dates=dates.filter(date_id=obj_date)
         obj_date = []
         for date in dates:
             obj_date.append(Date.objects.filter(id=date.date_id.id)[0])
@@ -417,8 +519,12 @@ def virtualTrainingEventEvaluation(request):
 
 @login_required
 def evaluations(request):
-    
     trainings = Training.objects.filter(status=True) 
+    if request.method == "POST":
+        if not request.POST["input_name_training"] == "":
+            trainings = trainings.filter(name__contains=request.POST["input_name_training"])
+        if not request.POST["select_type_training"] == "2":
+            trainings = trainings.filter(modality=(request.POST["select_type_training"]=="1"))
     
     template = loader.get_template('evaluations.html')
     context = {
@@ -444,17 +550,26 @@ def showEvaluations(request, tid=0):
 @login_required
 def evaluationsNoAdmin(request):
     user_trainings = User_Training.objects.filter(user_id= request.user)
-
+    name = ""
+    type = ""
+    if request.method == "POST":
+        if not request.POST["input_name_training"] =="":
+            name = request.POST["input_name_training"]
+        if not request.POST["select_type_training"] =="":
+            type = request.POST["select_type_training"]
+        
     trainings = []
     for user_training in user_trainings:
+        
         obj_training = user_training.training_id
-        evaluations = Evaluation.objects.filter(training_id=obj_training)
-        evaluations = evaluations.filter(user_id=request.user)
-        if len(evaluations) > 0:
-            evaluations = evaluations[0]
-        else:
-            evaluations = ""
-        trainings.append({"training":obj_training, "evaluation":evaluations})
+        if not name == "" and name in obj_training.name or (not type == "2" and obj_training.modality == (type=="1")):
+            evaluations = Evaluation.objects.filter(training_id=obj_training)
+            evaluations = evaluations.filter(user_id=request.user)
+            if len(evaluations) > 0:
+                evaluations = evaluations[0]
+            else:
+                evaluations = ""
+            trainings.append({"training":obj_training, "evaluation":evaluations})
     
     template = loader.get_template('evaluations_na.html')
     context = {
@@ -482,11 +597,14 @@ def showInvitations(request):
         obj_invitation = Invitation.objects.filter(id=invitation.invitation_id.id)[0]
         obj_training = Training.objects.filter(id=obj_invitation.training_id.id)[0]
         obj_date_training = Date_Training.objects.filter(training_id=obj_training)
+        obj_user_trainning = User_Training.objects.filter(training_id=obj_training)
+        obj_user_trainning = obj_user_trainning.filter(user_id = request.user)
+        inscrito = len(obj_user_trainning) > 0
         date_list = []
         for date in obj_date_training:
             obj_date = Date.objects.filter(id=date.date_id.id)[0]
             date_list.append({"date":obj_date.day, "time":date.time})
-        invitation_list.append({"invitation_info":obj_invitation, "relation":invitation, "training_info":obj_training, "schedule": date_list})
+        invitation_list.append({"invitation_info":obj_invitation, "relation":invitation, "training_info":obj_training, "schedule": date_list, "inscrito": inscrito})
     context = {
             "invitation_list": invitation_list,
             'user_type': userTypeTest(request.user),
@@ -552,6 +670,20 @@ def updateAttendance(request):
     user_training.save()
     return HttpResponse("ok")
 
+def setUserTraining(request):
+    post = request.POST
+    obj_training = Training.objects.filter(id=post["training_id"])[0]
+    new_user_training = User_Training(training_id=obj_training, user_id=request.user,
+                                                attendance=False, certified=False)
+    new_user_training.save()
+    
+    if obj_training.modality:
+        new_evaluation = Evaluation(type=0, training_id=obj_training, user_id=request.user, status=0)
+        new_evaluation.save()
+    else:
+        new_vitrual_evaluation = Evaluation(type=1, training_id=obj_training, user_id=request.user, status=0)
+        new_vitrual_evaluation.save()
+    return redirect("/sca/show_invitations")
 
 #Certificates module views
 @login_required

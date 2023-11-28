@@ -20,21 +20,21 @@
                     <div class="mb-3 container">
                         <label for="input_first_name" class="form-label">Nombre</label>
                         <input maxlength="25" type="text" class="form-control" id="input_first_name"
-                            placeholder="Nombre" value="{{user.first_name}}" required>
+                            placeholder="Nombre" value="{{user.first_name}}" readonly>
                     </div>
                 </div>
                 <div class="col-12 col-md-4">
                     <div class="mb-3 container">
                         <label for="input_mid_name" class="form-label">Primer Apellido</label>
                         <input maxlength="25" type="text" class="form-control" id="input_mid_name"
-                            placeholder="Primer apellido" value="{{last_name.0}}" required>
+                            placeholder="Primer apellido" value="{{last_name.0}}" readonly>
                     </div>
                 </div>
                 <div class="col-12 col-md-4">
                     <div class="mb-3 container">
                         <label for="input_last_name" class="form-label">Segundo Apellido</label>
                         <input maxlength="25" type="text" class="form-control" id="input_last_name"
-                            placeholder="Segundo apellido" value="{{last_name.1}}" required>
+                            placeholder="Segundo apellido" value="{{last_name.1}}" readonly>
                     </div>
                 </div>
             </div>
@@ -47,14 +47,14 @@
                         <label for="input_payroll_number" class="form-label">No. nómina</label>
                         <input maxlength="11" pattern="/^-?\d+\.?\d*$/"
                             onKeyPress="if(this.value.length==11) return false;" type="number" class="form-control"
-                            id="input_payroll_number" placeholder="No. nómina" value="{{user.payroll_number}}"required>
+                            id="input_payroll_number" placeholder="No. nómina" value="{{user.payroll_number}}"readonly>
                     </div>
                 </div>
                 <div class="col-12 col-md-4">
                     <div class="mb-3 container">
                         <label for="input_email" class="form-label">Correo electrónico</label>
                         <input maxlength="40" type="email" class="form-control" id="input_email"
-                            placeholder="Correo electrónico" value="{{user.email}}" required>  
+                            placeholder="Correo electrónico" value="{{user.email}}" readonly>  
                     </div>
                 </div>
                 <div class="col-12 col-md-4">
@@ -62,7 +62,7 @@
                         <label for="input_telephone_number" class="form-label">Número de teléfono</label>
                         <input maxlength="10" pattern="/^-?\d+\.?\d*$/"
                             onKeyPress="if(this.value.length==10) return false;" type="number" class="form-control"
-                            id="input_telephone_number" placeholder="Número de teléfono" value="{{user.phone_number}}" required>
+                            id="input_telephone_number" placeholder="Número de teléfono" value="{{user.phone_number}}" readonly>
                     </div>
                 </div>
             </div>
@@ -74,13 +74,13 @@
                     <div class="mb-3 container">
                         <label for="input_position" class="form-label">Puesto</label>
                         <input maxlength="25" type="text" class="form-control" id="input_position" value="{{user.position}}" placeholder="Puesto"
-                            required>
+                            readonly>
                     </div>
                 </div>
                 <div class="col-12 col-md-4">
                     <div class="mb-3 container">
                         <label for="select_tipo_usuario" class="form-label">Tipo de usuario</label>
-                        <select class="form-select" id="select_tipo_usuario" required>
+                        <select class="form-select" id="select_tipo_usuario" readonly>
                             <option value="2" {%if to_update_user_type == "Personal"%} selected {%endif%}>Personal</option>
                             <option value="3" {%if to_update_user_type == "Jefe de departamento"%} selected {%endif%}>Jefe de departamento</option>
                             <option value="1" {%if to_update_user_type == "Administrador"%} selected {%endif%}>Administrador</option>
@@ -92,10 +92,8 @@
                 <div class="col-12 col-md-4">
                     <div class="mb-3 container">
                         <label for="select_area" class="form-label">Área</label>
-                        <select class="form-select" id="select_area" required>
-                            {% for area in areas%}
-                            <option value="{{area.id}}" {%if area.id == user.area_id.id%} selected {%endif%}>{{area.name}}</option>
-                            {% endfor %}
+                        <select class="form-select" id="select_area" readonly>
+                            <option value="{{user.area_id.id}}"selected>{{user.area_id.name}}</option>
                         </select>
                     </div>
                 </div>
@@ -105,11 +103,7 @@
             <div class="row d-flex flex-column">
                 <div class="col-12">
                     <div class="container-fluid" style="display: flex; justify-content: right;">
-                        <a href="/sca/show_user" ><button id="button_cancelar" type="button" class="btn btn-danger">Cancelar</button></a>
-                        <button id="button_registrar" type="button" class="btn btn-primary" style="margin-left: 2%;" onClick="passRecovery()">Restablecer Contraseña</button>
-                        <button id="button_registrar" onClick="add_user()" type="button" class="btn btn-primary"
-                            style="margin-left: 2%;">Editar</button>
-                    </div>
+                        <a href="/sca/show_user" ><button id="button_cancelar" type="button" class="btn btn-danger">Volver</button></a>
             </div>
         </div>
     </div>

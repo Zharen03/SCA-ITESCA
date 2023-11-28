@@ -11,6 +11,7 @@
   {% block content%}
   <div class="card shadow p-3  bg-body-tertiary rounded"> <!-- FILTRO -->
     <form method="post" action="../sca/show_user">
+      {% csrf_token %}
       <div class="card-body">
         <div class="row">
           <div class="col">
@@ -52,7 +53,7 @@
               <label for="select_area" class="form-label">Área</label>
               <select class="form-select mb-3" id="select_area" name="select_area" required>
                 {% for area in areas%}
-                  <option value="a-{{area.id}}">{{area.name}}</option>
+                  <option value="{{area.id}}">{{area.name}}</option>
                 {% endfor%}
               </select>
             </div>
@@ -62,7 +63,6 @@
             <div class="mb-3 container">
               <label for="select_training" class="form-label">Capacitación</label>
               <select class="form-select mb-3" id="select_training" name="select_training" required>
-                <option selected>Por definir...</option>
                 {% for training in trainings%}
                   <option value="{{training.id}}">{{training.name}}</option>
                 {% endfor%}
@@ -131,8 +131,8 @@
               {#{% endif%}#}
           </td>
           <td class="text-center">
-            <button type="button" name="button_ver_detalles" id="button_ver_detalles" ><img src="..\static\Images\ver-detalles.png" width="24px" height="24px" alt="Ver detalles"></button>
-            <button type="button" name="button_editar" id="button_editar"><img src="..\static\Images\editar.png" width="24px" height="24px" alt="Editar"></button>
+            <a href="/sca/select_user/{{user.payroll_number}}/"> <button type="button" name="button_ver_detalles" id="button_ver_detalles" ><img src="..\static\Images\ver-detalles.png" width="24px" height="24px" alt="Ver detalles"></button></a>
+            <a href="/sca/update_user_form/{{user.payroll_number}}/"><button type="button" name="button_editar" id="button_editar"><img src="..\static\Images\editar.png" width="24px" height="24px" alt="Editar"></button></a>
             <button type="button" name="button_eliminar" id="button_eliminar" data-bs-toggle="modal" data-bs-target="#modal_remove-{{user.payroll_number}}"><img src="..\static\Images\eliminar.png" width="24px" height="24px" alt="Eliminar"></button>
           </td>
         </tr>
@@ -150,7 +150,11 @@
                   </div>
                   <div class="modal-footer">
                       <button id="button_cancelar" type="button" class="btn" style="margin-left: 2%;">Cancelar</button>
-                      <button type="button" id="button_registrar" class="btn" data-bs-dismiss="modal">Aceptar</button>
+                      <form method="post" action="/sca/remove_user">
+                        {% csrf_token %}
+                        <input name="payroll_number" value="{{user.payroll_number}}" class="d-none">
+                        <button type="sumbit" id="button_registrar" class="btn" data-bs-dismiss="modal">Aceptar</button>
+                      </form>
                   </div>
               </div>
           </div>

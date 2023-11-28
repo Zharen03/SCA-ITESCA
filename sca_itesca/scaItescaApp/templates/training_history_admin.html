@@ -13,15 +13,16 @@
     <div class="card shadow p-4  bg-body-tertiary rounded">
         <div class="card-body">
             <h3 style="margin-bottom: 4%; margin-top: 2%;">HISTÓRICO DE CAPACITACIONES</h3>
-            <form action="" method="">
+            <form action="" method="post">
                 <!--QUESTION 1-->
                 <div class="row mb-2">
+                    {% csrf_token %}
                     <!--TRAINING NAME-->
                     <div class="col-sm-6">
                         <div class="mb-3">
                             <label for="input_training_name" class="form-label">Nombre de la capacitación</label>
-                            <input maxlength="250" type="text" class="form-control" id="input_training_name"
-                                placeholder="Nombre de la capacitación" required>
+                            <input maxlength="250" type="text" class="form-control" id="input_training_name" name="input_training_name"
+                                placeholder="Nombre de la capacitación">
                         </div>
                     </div>
                     <!--DATE PICKER-->

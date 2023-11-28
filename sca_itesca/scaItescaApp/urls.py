@@ -45,12 +45,18 @@ urlpatterns = [
     
     path('sca/create_workplan', views.createWorkplan, name='create_workplan'),
     
-    path('sca/update_user', views.update_user, name="update_user"),
+    path('sca/update_user_form/<int:uid>/', views.updateUserForm, name="update_user_form"),
+    path('sca/update_user', views.updateUser, name="update_user"),
     path('sca/update_attendance', views.updateAttendance, name="update_attendance"),
     
     path('sca/records_module', views.records_module, name="records_module"),
     path('sca/certificate_review', views.certificate_review, name="certificate_review"),
     
     path('sca/set_attendance', views.setAttendance, name="set_attendance"),
+    path('sca/set_user_training', views.setUserTraining, name="set_user_training"),
+    path('sca/remove_user', views.removeUser, name="remove_user"),
+    path('sca/select_user/<int:uid>/', views.selectUser, name="select_user"),
+    path('sca/update_pass', views.updatePassword, name="update_password"),
+    
     path('sca/upload_file', views.uploadFile, name="upload_file"),
 ]

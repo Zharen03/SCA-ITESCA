@@ -12,38 +12,41 @@
 <div class="card shadow p-3  bg-body-tertiary rounded"> <!-- FILTRO -->
   <div class="card-body">
     <div class="row">
-      <div class="col">
-        <h3 style="margin-bottom: 4%; margin-top: 2%; margin-left: 1%;">F I L T R O</h3>
-      </div>
+      <form method="post" action="/sca/evaluations">
+        {% csrf_token %}
+        <div class="col">
+          <h3 style="margin-bottom: 4%; margin-top: 2%; margin-left: 1%;">F I L T R O</h3>
+        </div>
 
-      <div class="row"> <!-- r1 -->
-        <div class="col-12 col-md-4">
-          <div class="mb-3 container">
-            <label for="input_name_training" class="form-label">Nombre la Capacitación</label>
-            <input maxlength="25" onKeyPress="if(this.value.length==25) return false;" type="text" class="form-control"
-              id="input_name_training" placeholder="Nombre de la Capacitación">
+        <div class="row"> <!-- r1 -->
+          <div class="col-12 col-md-4">
+            <div class="mb-3 container">
+              <label for="input_name_training" class="form-label">Nombre la Capacitación</label>
+              <input maxlength="25" onKeyPress="if(this.value.length==25) return false;" type="text" class="form-control"
+                id="input_name_training" placeholder="Nombre de la Capacitación" name="input_name_training">
+            </div>
+          </div>
+          <div class="col-12 col-md-4">
+            <div class="mb-3 container">
+              <label for="select_type_training" class="form-label">Tipo de Capacitación</label>
+              <select class="form-select" id="select_type_training" name="select_type_training">
+                <option value="2" selected>Seleccionar</option>
+                <option value="0">Capacitación Virtual</option>
+                <option value="1">Capacitación Presencial</option>
+              </select>
+            </div>
           </div>
         </div>
-        <div class="col-12 col-md-4">
-          <div class="mb-3 container">
-            <label for="select_type_training" class="form-label">Tipo de Capacitación</label>
-            <select class="form-select" id="select_type_training" required>
-              <option selected>Seleccionar</option>
-              <option value="1">Capacitación Virtual</option>
-              <option value="2">Capacitación Presencial</option>
-            </select>
+        <!-- ROW 5 ONLY FOR CANCEL AND REGISTER BUTTONS-->
+        <div class="row d-flex flex-column">
+          <div class="col-12">
+            <div class="container-fluid" style="display: flex; justify-content: right; ">
+              <button id="button_filtrar" type="sumbit" class="btn">FILTRAR</button>
+              <a href="/sca/evaluations"><button id="button_cancelar" type="button" class="btn" style="margin-left: 2%;">BORRAR</button></a>
+            </div>
           </div>
         </div>
-      </div>
-      <!-- ROW 5 ONLY FOR CANCEL AND REGISTER BUTTONS-->
-      <div class="row d-flex flex-column">
-        <div class="col-12">
-          <div class="container-fluid" style="display: flex; justify-content: right; ">
-            <button id="button_filtrar" type="button" class="btn">FILTRAR</button>
-            <button id="button_cancelar" type="button" class="btn" style="margin-left: 2%;">BORRAR</button>
-          </div>
-        </div>
-      </div>
+      </form>
     </div>
   </div>
 </div>

@@ -388,39 +388,39 @@
 {% block scripts %}
 <script type="text/javascript"> 
     dnc = {
-        user: 1,
-        questions: [
+        "user:" 1,
+        "questions": [
         {
-            question_id: 1,
-            answer:[]
+            "question_id": 22,
+            "answer":[]
         },
         {
-            question_id: 2,
-            answer:[]
+            "question_id": 23,
+            "answer":[]
         },
         {
-            question_id: 3,
-            answer:[]
+            "question_id": 24,
+            "answer":[]
         },
         {
-            question_id: 4,
-            answer:[]
+            "question_id": 25,
+            "answer":[]
         },
         {
-            question_id: 5,
-            answer:[]
+            "question_id": 26,
+            "answer":[]
         },
         {
-            question_id: 6,
-            answer:[]
+            "question_id": 27,
+            "answer":[]
         },
         {
-            question_id: 7,
-            answer:[]
+            "question_id": 28,
+            "answer":[]
         },
         {
-            question_id: 8,
-            answer:[]
+            "question_id": 29,
+            "answer":[]
         }]
     }
     function add_DNC(){
@@ -463,7 +463,7 @@
         console.log(JSON.stringify(dnc));
         $.ajax({
             url: "../sca/add_dnc",
-            data: JSON.stringify(dnc),
+            data: dnc,
             type: "POST",
             success: function success(){
                 document.location.href='../sca/show_dnc'
