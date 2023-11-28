@@ -11,6 +11,7 @@
     <div class="card shadow p-3  bg-body-tertiary rounded" >
         <div class="card-body">
             <h3 style="margin-bottom: 4%; margin-top: 2%; margin-left: 1%;">EVALUACIÓN DE EVENTOS DE CAPACITACIÓN</h5>
+                {%if e_status == 0%}
                 <!-- ROW 1 FOR FIRST NAME, APELLIDO PATERNO Y MATERNO-->
                 <div class="row">
                     <p>Por favor responda el siguiente cuestionario de la manera más objetiva. Coloque un número del 1
@@ -18,8 +19,10 @@
                         del evento.</p>
                 </div>
 
-                <form action="">
+                <form id="form" method="post" action="/sca/training_event_evaluation">
+                    {% csrf_token %}
                     <!--QUESTION 1-->
+                    <input name="evaluation_id" value="{{eid}}" class="d-none">
                     <p>1. El instructor/a inició en los primeros 10 minutos: </p>
                     <div class="row mb-2">
                         <div class="col-2">
@@ -316,11 +319,14 @@
                         <div class="col-12">
                             <div class="container" style="display: flex; justify-content: right;">
                                 <button id="button_cancelar" type="button" class="btn btn-danger">Cancelar</button>
-                                <button id="button_registrar" type="sumbit" onClick="add_evaluation()"  class="btn btn-primary" style="margin-left: 2%;">Enviar</button>
+                                <button id="button_registrar" type="sumbit" onClick=""  class="btn btn-primary" style="margin-left: 2%;">Enviar</button>
                             </div>
                         </div>
                     </div>
                 </form>
+            {% else %}
+            <p>Usted ya contestó esta evaluación</p>
+            {%endif%}
         </div>
     </div>
 
@@ -333,34 +339,59 @@
 {% block scripts%}
 
 <script type="text/javascript">
+            
+    
+    /*$(document).ready(function() {
+        $("#form").submit(function(event) {
+            // Evitar el envío predeterminado del formulario
+            event.preventDefault();
+            var formValido = true;
+        
+            console.log("Formulario no enviado. Realizando acciones adicionales.");
+            $("#form [required]").each(function() {
+                if (!$(this).is(":checked")) {
+                    formValido = false;
+                    return false; 
+                }
+            });
+
+            if(formValido){
+                var form = $('form').serialize();
+                console.log(form);
                 
-    function add_evaluation(){
-        var form = $('form').serialize();
-        console.log(form);
-        
-        var splitted_form = form.split('&')
-        console.log(splitted_form)
+                var splitted_form = form.split('&')
+                console.log(splitted_form)
 
-        var formatted_form = {}
-        
-        for (var element of splitted_form){
-            var split = element.split("=")
-            var key = split[0]
-            var value = split[1]
-            formatted_form[key]= value
-            console.log(key, value)
-        } 
+                var formatted_form = {}
+                
+                formatted_form["eid"] = {{eid}}
+
+                for (var element of splitted_form){
+                    var split = element.split("=")
+                    var key = split[0]
+                    var value = split[1]
+                    formatted_form[key]= value
+                    console.log(key, value)
+                } 
 
 
-        $.ajax({
-            url: "../sca/training_event_evaluation",
-            data: formatted_form,
-            type: "POST",
-            success: function success(){
-                //document.location.href = '../sca/training_event_evaluation';
+                $.ajax({
+                    url: "/sca/training_event_evaluation",
+                    data: formatted_form,
+                    type: "POST",
+                    success: function success(){
+                        //document.location.href = '../sca/training_event_evaluation';
+                    }
+                });
             }
-        });
-    } 
+        })
+
+        
+    });
+    /*function add_evaluation(){
+        
+    } */
+    
 </script>
 
 {% endblock%}

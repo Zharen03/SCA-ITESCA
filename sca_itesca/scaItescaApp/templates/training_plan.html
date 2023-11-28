@@ -5,607 +5,608 @@
 {% endblock %}
 
 {% block content%}
-
-    <div class="p-0 m-0">
-        <div class=" card shadow p-3 bg-body-tertiary rounded"><!-- TABLA DE CONTENIDO -->
-            <div class="card-body">
-                <h3 style="margin-bottom: 4%; margin-top: 2%; margin-left: 1%;">ENERO</h3>
-                <div class="mb-3 container">
-                    <table class="table aling-middle table-striped table-hover">
-                        <thead>
-                            <tr>
-                                <th scope="col">CAPACITACIÓN</th>
-                                <th scope="col">DESCRIPCIÓN</th>
-                                <th scope="col">FECHA ESTIMADA</th>
-                                <th scope="col">INSTRUCTOR</th>
-                            </tr>
-                        </thead>
-                        <tbody class="table-group-divider">
-                            <tr>
-                                <td>Fundamentos básicos de excel</td>
-                                <td>Capacitación básica de excel</td>
-                                <td>18/10/2023 </td>
-                                <td>Lizeth Vázquez</td>
-                            </tr>
-                            <tr>
-                                <td>Fundamentos básicos de excel</td>
-                                <td>Capacitación básica de excel</td>
-                                <td>18/10/2023 </td>
-                                <td>Ramon Guevara</td>
-                            </tr>
-                            <tr>
-                                <td>Fundamentos básicos de excel</td>
-                                <td>Capacitación básica de excel</td>
-                                <td>18/10/2023 </td>
-                                <td>Alguien con Nombre Largo</td>
-                            </tr>
-                            <tr>
-                                <td>Fundamentos básicos de excel</td>
-                                <td>Capacitación básica de excel</td>
-                                <td>18/10/2023 </td>
-                                <td>Ramon Guevara</td>
-                            </tr>
-                            <tr>
-                                <td>Fundamentos básicos de excel</td>
-                                <td>Capacitación básica de excel</td>
-                                <td>18/10/2023 </td>
-                                <td>Alguien con Nombre Largo</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+    {%if user_type == "Administrador" %}
+        <div class="text-end p-3">
+            <a href="../sca/create_workplan"><button id="button_gen_report" type="button" class="btn me-2 ms-auto">MODIFICAR PLAN DE TRABAJO</button></a>
         </div>
-
-        <div class=" card shadow p-3 mt-5 bg-body-tertiary rounded"><!-- TABLA DE CONTENIDO -->
-            <div class="card-body">
-                <h3 style="margin-bottom: 4%; margin-top: 2%; margin-left: 1%;">FEBRERO</h3>
-                <div class="mb-3 container">
-                    <table class="table aling-middle table-striped table-hover">
-                        <thead>
-                            <tr>
-                                <th scope="col">CAPACITACIÓN</th>
-                                <th scope="col">DESCRIPCIÓN</th>
-                                <th scope="col">FECHA ESTIMADA</th>
-                                <th scope="col">INSTRUCTOR</th>
-                            </tr>
-                        </thead>
-                        <tbody class="table-group-divider">
-                            <tr>
-                                <td>Fundamentos básicos de excel</td>
-                                <td>Capacitación básica de excel</td>
-                                <td>18/10/2023 </td>
-                                <td>Lizeth Vázquez</td>
-                            </tr>
-                            <tr>
-                                <td>Fundamentos básicos de excel</td>
-                                <td>Capacitación básica de excel</td>
-                                <td>18/10/2023 </td>
-                                <td>Ramon Guevara</td>
-                            </tr>
-                            <tr>
-                                <td>Fundamentos básicos de excel</td>
-                                <td>Capacitación básica de excel</td>
-                                <td>18/10/2023 </td>
-                                <td>Alguien con Nombre Largo</td>
-                            </tr>
-                            <tr>
-                                <td>Fundamentos básicos de excel</td>
-                                <td>Capacitación básica de excel</td>
-                                <td>18/10/2023 </td>
-                                <td>Ramon Guevara</td>
-                            </tr>
-                            <tr>
-                                <td>Fundamentos básicos de excel</td>
-                                <td>Capacitación básica de excel</td>
-                                <td>18/10/2023 </td>
-                                <td>Alguien con Nombre Largo</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-
-        <div class=" card shadow p-3 mt-5 bg-body-tertiary rounded"><!-- TABLA DE CONTENIDO -->
-            <div class="card-body">
-                <h3 style="margin-bottom: 4%; margin-top: 2%; margin-left: 1%;">MARZO</h3>
-                <div class="mb-3 container">
-                    <table class="table aling-middle table-striped table-hover">
-                        <thead>
-                            <tr>
-                                <th scope="col">CAPACITACIÓN</th>
-                                <th scope="col">DESCRIPCIÓN</th>
-                                <th scope="col">FECHA ESTIMADA</th>
-                                <th scope="col">INSTRUCTOR</th>
-                            </tr>
-                        </thead>
-                        <tbody class="table-group-divider">
-                            <tr>
-                                <td>Fundamentos básicos de excel</td>
-                                <td>Capacitación básica de excel</td>
-                                <td>18/10/2023 </td>
-                                <td>Lizeth Vázquez</td>
-                            </tr>
-                            <tr>
-                                <td>Fundamentos básicos de excel</td>
-                                <td>Capacitación básica de excel</td>
-                                <td>18/10/2023 </td>
-                                <td>Ramon Guevara</td>
-                            </tr>
-                            <tr>
-                                <td>Fundamentos básicos de excel</td>
-                                <td>Capacitación básica de excel</td>
-                                <td>18/10/2023 </td>
-                                <td>Alguien con Nombre Largo</td>
-                            </tr>
-                            <tr>
-                                <td>Fundamentos básicos de excel</td>
-                                <td>Capacitación básica de excel</td>
-                                <td>18/10/2023 </td>
-                                <td>Ramon Guevara</td>
-                            </tr>
-                            <tr>
-                                <td>Fundamentos básicos de excel</td>
-                                <td>Capacitación básica de excel</td>
-                                <td>18/10/2023 </td>
-                                <td>Alguien con Nombre Largo</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-
-        <div class=" card shadow p-3 mt-5 bg-body-tertiary rounded"><!-- TABLA DE CONTENIDO -->
-            <div class="card-body">
-                <h3 style="margin-bottom: 4%; margin-top: 2%; margin-left: 1%;">ABRIL</h3>
-                <div class="mb-3 container">
-                    <table class="table aling-middle table-striped table-hover">
-                        <thead>
-                            <tr>
-                                <th scope="col">CAPACITACIÓN</th>
-                                <th scope="col">DESCRIPCIÓN</th>
-                                <th scope="col">FECHA ESTIMADA</th>
-                                <th scope="col">INSTRUCTOR</th>
-                            </tr>
-                        </thead>
-                        <tbody class="table-group-divider">
-                            <tr>
-                                <td>Fundamentos básicos de excel</td>
-                                <td>Capacitación básica de excel</td>
-                                <td>18/10/2023 </td>
-                                <td>Lizeth Vázquez</td>
-                            </tr>
-                            <tr>
-                                <td>Fundamentos básicos de excel</td>
-                                <td>Capacitación básica de excel</td>
-                                <td>18/10/2023 </td>
-                                <td>Ramon Guevara</td>
-                            </tr>
-                            <tr>
-                                <td>Fundamentos básicos de excel</td>
-                                <td>Capacitación básica de excel</td>
-                                <td>18/10/2023 </td>
-                                <td>Alguien con Nombre Largo</td>
-                            </tr>
-                            <tr>
-                                <td>Fundamentos básicos de excel</td>
-                                <td>Capacitación básica de excel</td>
-                                <td>18/10/2023 </td>
-                                <td>Ramon Guevara</td>
-                            </tr>
-                            <tr>
-                                <td>Fundamentos básicos de excel</td>
-                                <td>Capacitación básica de excel</td>
-                                <td>18/10/2023 </td>
-                                <td>Alguien con Nombre Largo</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-
-        <div class=" card shadow p-3 mt-5 bg-body-tertiary rounded"><!-- TABLA DE CONTENIDO -->
-            <div class="card-body">
-                <h3 style="margin-bottom: 4%; margin-top: 2%; margin-left: 1%;">MAYO</h3>
-                <div class="mb-3 container">
-                    <table class="table aling-middle table-striped table-hover">
-                        <thead>
-                            <tr>
-                                <th scope="col">CAPACITACIÓN</th>
-                                <th scope="col">DESCRIPCIÓN</th>
-                                <th scope="col">FECHA ESTIMADA</th>
-                                <th scope="col">INSTRUCTOR</th>
-                            </tr>
-                        </thead>
-                        <tbody class="table-group-divider">
-                            <tr>
-                                <td>Fundamentos básicos de excel</td>
-                                <td>Capacitación básica de excel</td>
-                                <td>18/10/2023 </td>
-                                <td>Lizeth Vázquez</td>
-                            </tr>
-                            <tr>
-                                <td>Fundamentos básicos de excel</td>
-                                <td>Capacitación básica de excel</td>
-                                <td>18/10/2023 </td>
-                                <td>Ramon Guevara</td>
-                            </tr>
-                            <tr>
-                                <td>Fundamentos básicos de excel</td>
-                                <td>Capacitación básica de excel</td>
-                                <td>18/10/2023 </td>
-                                <td>Alguien con Nombre Largo</td>
-                            </tr>
-                            <tr>
-                                <td>Fundamentos básicos de excel</td>
-                                <td>Capacitación básica de excel</td>
-                                <td>18/10/2023 </td>
-                                <td>Ramon Guevara</td>
-                            </tr>
-                            <tr>
-                                <td>Fundamentos básicos de excel</td>
-                                <td>Capacitación básica de excel</td>
-                                <td>18/10/2023 </td>
-                                <td>Alguien con Nombre Largo</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-
-        <<div class=" card shadow p-3 mt-5 bg-body-tertiary rounded"><!-- TABLA DE CONTENIDO -->
-            <div class="card-body">
-                <h3 style="margin-bottom: 4%; margin-top: 2%; margin-left: 1%;">JUNIO</h3>
-                <div class="mb-3 container">
-                    <table class="table aling-middle table-striped table-hover">
-                        <thead>
-                            <tr>
-                                <th scope="col">CAPACITACIÓN</th>
-                                <th scope="col">DESCRIPCIÓN</th>
-                                <th scope="col">FECHA ESTIMADA</th>
-                                <th scope="col">INSTRUCTOR</th>
-                            </tr>
-                        </thead>
-                        <tbody class="table-group-divider">
-                            <tr>
-                                <td>Fundamentos básicos de excel</td>
-                                <td>Capacitación básica de excel</td>
-                                <td>18/10/2023 </td>
-                                <td>Lizeth Vázquez</td>
-                            </tr>
-                            <tr>
-                                <td>Fundamentos básicos de excel</td>
-                                <td>Capacitación básica de excel</td>
-                                <td>18/10/2023 </td>
-                                <td>Ramon Guevara</td>
-                            </tr>
-                            <tr>
-                                <td>Fundamentos básicos de excel</td>
-                                <td>Capacitación básica de excel</td>
-                                <td>18/10/2023 </td>
-                                <td>Alguien con Nombre Largo</td>
-                            </tr>
-                            <tr>
-                                <td>Fundamentos básicos de excel</td>
-                                <td>Capacitación básica de excel</td>
-                                <td>18/10/2023 </td>
-                                <td>Ramon Guevara</td>
-                            </tr>
-                            <tr>
-                                <td>Fundamentos básicos de excel</td>
-                                <td>Capacitación básica de excel</td>
-                                <td>18/10/2023 </td>
-                                <td>Alguien con Nombre Largo</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-
-        <div class=" card shadow p-3 mt-5 bg-body-tertiary rounded"><!-- TABLA DE CONTENIDO -->
-            <div class="card-body">
-                <h3 style="margin-bottom: 4%; margin-top: 2%; margin-left: 1%;">JULIO</h3>
-                <div class="mb-3 container">
-                    <table class="table aling-middle table-striped table-hover">
-                        <thead>
-                            <tr>
-                                <th scope="col">CAPACITACIÓN</th>
-                                <th scope="col">DESCRIPCIÓN</th>
-                                <th scope="col">FECHA ESTIMADA</th>
-                                <th scope="col">INSTRUCTOR</th>
-                            </tr>
-                        </thead>
-                        <tbody class="table-group-divider">
-                            <tr>
-                                <td>Fundamentos básicos de excel</td>
-                                <td>Capacitación básica de excel</td>
-                                <td>18/10/2023 </td>
-                                <td>Lizeth Vázquez</td>
-                            </tr>
-                            <tr>
-                                <td>Fundamentos básicos de excel</td>
-                                <td>Capacitación básica de excel</td>
-                                <td>18/10/2023 </td>
-                                <td>Ramon Guevara</td>
-                            </tr>
-                            <tr>
-                                <td>Fundamentos básicos de excel</td>
-                                <td>Capacitación básica de excel</td>
-                                <td>18/10/2023 </td>
-                                <td>Alguien con Nombre Largo</td>
-                            </tr>
-                            <tr>
-                                <td>Fundamentos básicos de excel</td>
-                                <td>Capacitación básica de excel</td>
-                                <td>18/10/2023 </td>
-                                <td>Ramon Guevara</td>
-                            </tr>
-                            <tr>
-                                <td>Fundamentos básicos de excel</td>
-                                <td>Capacitación básica de excel</td>
-                                <td>18/10/2023 </td>
-                                <td>Alguien con Nombre Largo</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-
-        <div class=" card shadow p-3 mt-5 bg-body-tertiary rounded"><!-- TABLA DE CONTENIDO -->
-            <div class="card-body">
-                <h3 style="margin-bottom: 4%; margin-top: 2%; margin-left: 1%;">AGOSTO</h3>
-                <div class="mb-3 container">
-                    <table class="table aling-middle table-striped table-hover">
-                        <thead>
-                            <tr>
-                                <th scope="col">CAPACITACIÓN</th>
-                                <th scope="col">DESCRIPCIÓN</th>
-                                <th scope="col">FECHA ESTIMADA</th>
-                                <th scope="col">INSTRUCTOR</th>
-                            </tr>
-                        </thead>
-                        <tbody class="table-group-divider">
-                            <tr>
-                                <td>Fundamentos básicos de excel</td>
-                                <td>Capacitación básica de excel</td>
-                                <td>18/10/2023 </td>
-                                <td>Lizeth Vázquez</td>
-                            </tr>
-                            <tr>
-                                <td>Fundamentos básicos de excel</td>
-                                <td>Capacitación básica de excel</td>
-                                <td>18/10/2023 </td>
-                                <td>Ramon Guevara</td>
-                            </tr>
-                            <tr>
-                                <td>Fundamentos básicos de excel</td>
-                                <td>Capacitación básica de excel</td>
-                                <td>18/10/2023 </td>
-                                <td>Alguien con Nombre Largo</td>
-                            </tr>
-                            <tr>
-                                <td>Fundamentos básicos de excel</td>
-                                <td>Capacitación básica de excel</td>
-                                <td>18/10/2023 </td>
-                                <td>Ramon Guevara</td>
-                            </tr>
-                            <tr>
-                                <td>Fundamentos básicos de excel</td>
-                                <td>Capacitación básica de excel</td>
-                                <td>18/10/2023 </td>
-                                <td>Alguien con Nombre Largo</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-
-        <div class=" card shadow p-3 mt-5 bg-body-tertiary rounded"><!-- TABLA DE CONTENIDO -->
-            <div class="card-body">
-                <h3 style="margin-bottom: 4%; margin-top: 2%; margin-left: 1%;">SEPTIEMBRE</h3>
-                <div class="mb-3 container">
-                    <table class="table aling-middle table-striped table-hover">
-                        <thead>
-                            <tr>
-                                <th scope="col">CAPACITACIÓN</th>
-                                <th scope="col">DESCRIPCIÓN</th>
-                                <th scope="col">FECHA ESTIMADA</th>
-                                <th scope="col">INSTRUCTOR</th>
-                            </tr>
-                        </thead>
-                        <tbody class="table-group-divider">
-                            <tr>
-                                <td>Fundamentos básicos de excel</td>
-                                <td>Capacitación básica de excel</td>
-                                <td>18/10/2023 </td>
-                                <td>Lizeth Vázquez</td>
-                            </tr>
-                            <tr>
-                                <td>Fundamentos básicos de excel</td>
-                                <td>Capacitación básica de excel</td>
-                                <td>18/10/2023 </td>
-                                <td>Ramon Guevara</td>
-                            </tr>
-                            <tr>
-                                <td>Fundamentos básicos de excel</td>
-                                <td>Capacitación básica de excel</td>
-                                <td>18/10/2023 </td>
-                                <td>Alguien con Nombre Largo</td>
-                            </tr>
-                            <tr>
-                                <td>Fundamentos básicos de excel</td>
-                                <td>Capacitación básica de excel</td>
-                                <td>18/10/2023 </td>
-                                <td>Ramon Guevara</td>
-                            </tr>
-                            <tr>
-                                <td>Fundamentos básicos de excel</td>
-                                <td>Capacitación básica de excel</td>
-                                <td>18/10/2023 </td>
-                                <td>Alguien con Nombre Largo</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-
-        <div class=" card shadow p-3 mt-5 bg-body-tertiary rounded"><!-- TABLA DE CONTENIDO -->
-            <div class="card-body">
-                <h3 style="margin-bottom: 4%; margin-top: 2%; margin-left: 1%;">OCTUBRE</h3>
-                <div class="mb-3 container">
-                    <table class="table aling-middle table-striped table-hover">
-                        <thead>
-                            <tr>
-                                <th scope="col">CAPACITACIÓN</th>
-                                <th scope="col">DESCRIPCIÓN</th>
-                                <th scope="col">FECHA ESTIMADA</th>
-                                <th scope="col">INSTRUCTOR</th>
-                            </tr>
-                        </thead>
-                        <tbody class="table-group-divider">
-                            <tr>
-                                <td>Fundamentos básicos de excel</td>
-                                <td>Capacitación básica de excel</td>
-                                <td>18/10/2023 </td>
-                                <td>Lizeth Vázquez</td>
-                            </tr>
-                            <tr>
-                                <td>Fundamentos básicos de excel</td>
-                                <td>Capacitación básica de excel</td>
-                                <td>18/10/2023 </td>
-                                <td>Ramon Guevara</td>
-                            </tr>
-                            <tr>
-                                <td>Fundamentos básicos de excel</td>
-                                <td>Capacitación básica de excel</td>
-                                <td>18/10/2023 </td>
-                                <td>Alguien con Nombre Largo</td>
-                            </tr>
-                            <tr>
-                                <td>Fundamentos básicos de excel</td>
-                                <td>Capacitación básica de excel</td>
-                                <td>18/10/2023 </td>
-                                <td>Ramon Guevara</td>
-                            </tr>
-                            <tr>
-                                <td>Fundamentos básicos de excel</td>
-                                <td>Capacitación básica de excel</td>
-                                <td>18/10/2023 </td>
-                                <td>Alguien con Nombre Largo</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-
-        <div class=" card shadow p-3 mt-5 bg-body-tertiary rounded"><!-- TABLA DE CONTENIDO -->
-            <div class="card-body">
-                <h3 style="margin-bottom: 4%; margin-top: 2%; margin-left: 1%;">NOVIEMBRE</h3>
-                <div class="mb-3 container">
-                    <table class="table aling-middle table-striped table-hover">
-                        <thead>
-                            <tr>
-                                <th scope="col">CAPACITACIÓN</th>
-                                <th scope="col">DESCRIPCIÓN</th>
-                                <th scope="col">FECHA ESTIMADA</th>
-                                <th scope="col">INSTRUCTOR</th>
-                            </tr>
-                        </thead>
-                        <tbody class="table-group-divider">
-                            <tr>
-                                <td>Fundamentos básicos de excel</td>
-                                <td>Capacitación básica de excel</td>
-                                <td>18/10/2023 </td>
-                                <td>Lizeth Vázquez</td>
-                            </tr>
-                            <tr>
-                                <td>Fundamentos básicos de excel</td>
-                                <td>Capacitación básica de excel</td>
-                                <td>18/10/2023 </td>
-                                <td>Ramon Guevara</td>
-                            </tr>
-                            <tr>
-                                <td>Fundamentos básicos de excel</td>
-                                <td>Capacitación básica de excel</td>
-                                <td>18/10/2023 </td>
-                                <td>Alguien con Nombre Largo</td>
-                            </tr>
-                            <tr>
-                                <td>Fundamentos básicos de excel</td>
-                                <td>Capacitación básica de excel</td>
-                                <td>18/10/2023 </td>
-                                <td>Ramon Guevara</td>
-                            </tr>
-                            <tr>
-                                <td>Fundamentos básicos de excel</td>
-                                <td>Capacitación básica de excel</td>
-                                <td>18/10/2023 </td>
-                                <td>Alguien con Nombre Largo</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-
-        <div class=" card shadow p-3 mt-5 bg-body-tertiary rounded"><!-- TABLA DE CONTENIDO -->
-            <div class="card-body">
-                <h3 style="margin-bottom: 4%; margin-top: 2%; margin-left: 1%;">DICIEMBRE</h3>
-                <div class="mb-3 container">
-                    <table class="table aling-middle table-striped table-hover">
-                        <thead>
-                            <tr>
-                                <th scope="col">CAPACITACIÓN</th>
-                                <th scope="col">DESCRIPCIÓN</th>
-                                <th scope="col">FECHA ESTIMADA</th>
-                                <th scope="col">INSTRUCTOR</th>
-                            </tr>
-                        </thead>
-                        <tbody class="table-group-divider">
-                            <tr>
-                                <td>Fundamentos básicos de excel</td>
-                                <td>Capacitación básica de excel</td>
-                                <td>18/10/2023 </td>
-                                <td>Lizeth Vázquez</td>
-                            </tr>
-                            <tr>
-                                <td>Fundamentos básicos de excel</td>
-                                <td>Capacitación básica de excel</td>
-                                <td>18/10/2023 </td>
-                                <td>Ramon Guevara</td>
-                            </tr>
-                            <tr>
-                                <td>Fundamentos básicos de excel</td>
-                                <td>Capacitación básica de excel</td>
-                                <td>18/10/2023 </td>
-                                <td>Alguien con Nombre Largo</td>
-                            </tr>
-                            <tr>
-                                <td>Fundamentos básicos de excel</td>
-                                <td>Capacitación básica de excel</td>
-                                <td>18/10/2023 </td>
-                                <td>Ramon Guevara</td>
-                            </tr>
-                            <tr>
-                                <td>Fundamentos básicos de excel</td>
-                                <td>Capacitación básica de excel</td>
-                                <td>18/10/2023 </td>
-                                <td>Alguien con Nombre Largo</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+    {%endif%}
+    <div class=" card shadow p-3 bg-body-tertiary rounded"><!-- TABLA DE CONTENIDO -->
+        <div class="card-body">
+            <h3 style="margin-bottom: 4%; margin-top: 2%; margin-left: 1%;">ENERO</h3>
+            <div class="mb-3 container">
+                <table class="table aling-middle table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">CAPACITACIÓN</th>
+                            <th scope="col">DESCRIPCIÓN</th>
+                            <th scope="col">FECHA ESTIMADA</th>
+                            <th scope="col">INSTRUCTOR</th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-group-divider">
+                        <tr>
+                            <td>Fundamentos básicos de excel</td>
+                            <td>Capacitación básica de excel</td>
+                            <td>18/10/2023 </td>
+                            <td>Lizeth Vázquez</td>
+                        </tr>
+                        <tr>
+                            <td>Fundamentos básicos de excel</td>
+                            <td>Capacitación básica de excel</td>
+                            <td>18/10/2023 </td>
+                            <td>Ramon Guevara</td>
+                        </tr>
+                        <tr>
+                            <td>Fundamentos básicos de excel</td>
+                            <td>Capacitación básica de excel</td>
+                            <td>18/10/2023 </td>
+                            <td>Alguien con Nombre Largo</td>
+                        </tr>
+                        <tr>
+                            <td>Fundamentos básicos de excel</td>
+                            <td>Capacitación básica de excel</td>
+                            <td>18/10/2023 </td>
+                            <td>Ramon Guevara</td>
+                        </tr>
+                        <tr>
+                            <td>Fundamentos básicos de excel</td>
+                            <td>Capacitación básica de excel</td>
+                            <td>18/10/2023 </td>
+                            <td>Alguien con Nombre Largo</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
 
-{% endblock%}
+    <div class=" card shadow p-3 mt-5 bg-body-tertiary rounded"><!-- TABLA DE CONTENIDO -->
+        <div class="card-body">
+            <h3 style="margin-bottom: 4%; margin-top: 2%; margin-left: 1%;">FEBRERO</h3>
+            <div class="mb-3 container">
+                <table class="table aling-middle table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">CAPACITACIÓN</th>
+                            <th scope="col">DESCRIPCIÓN</th>
+                            <th scope="col">FECHA ESTIMADA</th>
+                            <th scope="col">INSTRUCTOR</th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-group-divider">
+                        <tr>
+                            <td>Fundamentos básicos de excel</td>
+                            <td>Capacitación básica de excel</td>
+                            <td>18/10/2023 </td>
+                            <td>Lizeth Vázquez</td>
+                        </tr>
+                        <tr>
+                            <td>Fundamentos básicos de excel</td>
+                            <td>Capacitación básica de excel</td>
+                            <td>18/10/2023 </td>
+                            <td>Ramon Guevara</td>
+                        </tr>
+                        <tr>
+                            <td>Fundamentos básicos de excel</td>
+                            <td>Capacitación básica de excel</td>
+                            <td>18/10/2023 </td>
+                            <td>Alguien con Nombre Largo</td>
+                        </tr>
+                        <tr>
+                            <td>Fundamentos básicos de excel</td>
+                            <td>Capacitación básica de excel</td>
+                            <td>18/10/2023 </td>
+                            <td>Ramon Guevara</td>
+                        </tr>
+                        <tr>
+                            <td>Fundamentos básicos de excel</td>
+                            <td>Capacitación básica de excel</td>
+                            <td>18/10/2023 </td>
+                            <td>Alguien con Nombre Largo</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class=" card shadow p-3 mt-5 bg-body-tertiary rounded"><!-- TABLA DE CONTENIDO -->
+        <div class="card-body">
+            <h3 style="margin-bottom: 4%; margin-top: 2%; margin-left: 1%;">MARZO</h3>
+            <div class="mb-3 container">
+                <table class="table aling-middle table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">CAPACITACIÓN</th>
+                            <th scope="col">DESCRIPCIÓN</th>
+                            <th scope="col">FECHA ESTIMADA</th>
+                            <th scope="col">INSTRUCTOR</th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-group-divider">
+                        <tr>
+                            <td>Fundamentos básicos de excel</td>
+                            <td>Capacitación básica de excel</td>
+                            <td>18/10/2023 </td>
+                            <td>Lizeth Vázquez</td>
+                        </tr>
+                        <tr>
+                            <td>Fundamentos básicos de excel</td>
+                            <td>Capacitación básica de excel</td>
+                            <td>18/10/2023 </td>
+                            <td>Ramon Guevara</td>
+                        </tr>
+                        <tr>
+                            <td>Fundamentos básicos de excel</td>
+                            <td>Capacitación básica de excel</td>
+                            <td>18/10/2023 </td>
+                            <td>Alguien con Nombre Largo</td>
+                        </tr>
+                        <tr>
+                            <td>Fundamentos básicos de excel</td>
+                            <td>Capacitación básica de excel</td>
+                            <td>18/10/2023 </td>
+                            <td>Ramon Guevara</td>
+                        </tr>
+                        <tr>
+                            <td>Fundamentos básicos de excel</td>
+                            <td>Capacitación básica de excel</td>
+                            <td>18/10/2023 </td>
+                            <td>Alguien con Nombre Largo</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class=" card shadow p-3 mt-5 bg-body-tertiary rounded"><!-- TABLA DE CONTENIDO -->
+        <div class="card-body">
+            <h3 style="margin-bottom: 4%; margin-top: 2%; margin-left: 1%;">ABRIL</h3>
+            <div class="mb-3 container">
+                <table class="table aling-middle table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">CAPACITACIÓN</th>
+                            <th scope="col">DESCRIPCIÓN</th>
+                            <th scope="col">FECHA ESTIMADA</th>
+                            <th scope="col">INSTRUCTOR</th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-group-divider">
+                        <tr>
+                            <td>Fundamentos básicos de excel</td>
+                            <td>Capacitación básica de excel</td>
+                            <td>18/10/2023 </td>
+                            <td>Lizeth Vázquez</td>
+                        </tr>
+                        <tr>
+                            <td>Fundamentos básicos de excel</td>
+                            <td>Capacitación básica de excel</td>
+                            <td>18/10/2023 </td>
+                            <td>Ramon Guevara</td>
+                        </tr>
+                        <tr>
+                            <td>Fundamentos básicos de excel</td>
+                            <td>Capacitación básica de excel</td>
+                            <td>18/10/2023 </td>
+                            <td>Alguien con Nombre Largo</td>
+                        </tr>
+                        <tr>
+                            <td>Fundamentos básicos de excel</td>
+                            <td>Capacitación básica de excel</td>
+                            <td>18/10/2023 </td>
+                            <td>Ramon Guevara</td>
+                        </tr>
+                        <tr>
+                            <td>Fundamentos básicos de excel</td>
+                            <td>Capacitación básica de excel</td>
+                            <td>18/10/2023 </td>
+                            <td>Alguien con Nombre Largo</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class=" card shadow p-3 mt-5 bg-body-tertiary rounded"><!-- TABLA DE CONTENIDO -->
+        <div class="card-body">
+            <h3 style="margin-bottom: 4%; margin-top: 2%; margin-left: 1%;">MAYO</h3>
+            <div class="mb-3 container">
+                <table class="table aling-middle table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">CAPACITACIÓN</th>
+                            <th scope="col">DESCRIPCIÓN</th>
+                            <th scope="col">FECHA ESTIMADA</th>
+                            <th scope="col">INSTRUCTOR</th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-group-divider">
+                        <tr>
+                            <td>Fundamentos básicos de excel</td>
+                            <td>Capacitación básica de excel</td>
+                            <td>18/10/2023 </td>
+                            <td>Lizeth Vázquez</td>
+                        </tr>
+                        <tr>
+                            <td>Fundamentos básicos de excel</td>
+                            <td>Capacitación básica de excel</td>
+                            <td>18/10/2023 </td>
+                            <td>Ramon Guevara</td>
+                        </tr>
+                        <tr>
+                            <td>Fundamentos básicos de excel</td>
+                            <td>Capacitación básica de excel</td>
+                            <td>18/10/2023 </td>
+                            <td>Alguien con Nombre Largo</td>
+                        </tr>
+                        <tr>
+                            <td>Fundamentos básicos de excel</td>
+                            <td>Capacitación básica de excel</td>
+                            <td>18/10/2023 </td>
+                            <td>Ramon Guevara</td>
+                        </tr>
+                        <tr>
+                            <td>Fundamentos básicos de excel</td>
+                            <td>Capacitación básica de excel</td>
+                            <td>18/10/2023 </td>
+                            <td>Alguien con Nombre Largo</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class=" card shadow p-3 mt-5 bg-body-tertiary rounded"><!-- TABLA DE CONTENIDO -->
+        <div class="card-body">
+            <h3 style="margin-bottom: 4%; margin-top: 2%; margin-left: 1%;">JUNIO</h3>
+            <div class="mb-3 container">
+                <table class="table aling-middle table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">CAPACITACIÓN</th>
+                            <th scope="col">DESCRIPCIÓN</th>
+                            <th scope="col">FECHA ESTIMADA</th>
+                            <th scope="col">INSTRUCTOR</th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-group-divider">
+                        <tr>
+                            <td>Fundamentos básicos de excel</td>
+                            <td>Capacitación básica de excel</td>
+                            <td>18/10/2023 </td>
+                            <td>Lizeth Vázquez</td>
+                        </tr>
+                        <tr>
+                            <td>Fundamentos básicos de excel</td>
+                            <td>Capacitación básica de excel</td>
+                            <td>18/10/2023 </td>
+                            <td>Ramon Guevara</td>
+                        </tr>
+                        <tr>
+                            <td>Fundamentos básicos de excel</td>
+                            <td>Capacitación básica de excel</td>
+                            <td>18/10/2023 </td>
+                            <td>Alguien con Nombre Largo</td>
+                        </tr>
+                        <tr>
+                            <td>Fundamentos básicos de excel</td>
+                            <td>Capacitación básica de excel</td>
+                            <td>18/10/2023 </td>
+                            <td>Ramon Guevara</td>
+                        </tr>
+                        <tr>
+                            <td>Fundamentos básicos de excel</td>
+                            <td>Capacitación básica de excel</td>
+                            <td>18/10/2023 </td>
+                            <td>Alguien con Nombre Largo</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class=" card shadow p-3 mt-5 bg-body-tertiary rounded"><!-- TABLA DE CONTENIDO -->
+        <div class="card-body">
+            <h3 style="margin-bottom: 4%; margin-top: 2%; margin-left: 1%;">JULIO</h3>
+            <div class="mb-3 container">
+                <table class="table aling-middle table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">CAPACITACIÓN</th>
+                            <th scope="col">DESCRIPCIÓN</th>
+                            <th scope="col">FECHA ESTIMADA</th>
+                            <th scope="col">INSTRUCTOR</th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-group-divider">
+                        <tr>
+                            <td>Fundamentos básicos de excel</td>
+                            <td>Capacitación básica de excel</td>
+                            <td>18/10/2023 </td>
+                            <td>Lizeth Vázquez</td>
+                        </tr>
+                        <tr>
+                            <td>Fundamentos básicos de excel</td>
+                            <td>Capacitación básica de excel</td>
+                            <td>18/10/2023 </td>
+                            <td>Ramon Guevara</td>
+                        </tr>
+                        <tr>
+                            <td>Fundamentos básicos de excel</td>
+                            <td>Capacitación básica de excel</td>
+                            <td>18/10/2023 </td>
+                            <td>Alguien con Nombre Largo</td>
+                        </tr>
+                        <tr>
+                            <td>Fundamentos básicos de excel</td>
+                            <td>Capacitación básica de excel</td>
+                            <td>18/10/2023 </td>
+                            <td>Ramon Guevara</td>
+                        </tr>
+                        <tr>
+                            <td>Fundamentos básicos de excel</td>
+                            <td>Capacitación básica de excel</td>
+                            <td>18/10/2023 </td>
+                            <td>Alguien con Nombre Largo</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class=" card shadow p-3 mt-5 bg-body-tertiary rounded"><!-- TABLA DE CONTENIDO -->
+        <div class="card-body">
+            <h3 style="margin-bottom: 4%; margin-top: 2%; margin-left: 1%;">AGOSTO</h3>
+            <div class="mb-3 container">
+                <table class="table aling-middle table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">CAPACITACIÓN</th>
+                            <th scope="col">DESCRIPCIÓN</th>
+                            <th scope="col">FECHA ESTIMADA</th>
+                            <th scope="col">INSTRUCTOR</th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-group-divider">
+                        <tr>
+                            <td>Fundamentos básicos de excel</td>
+                            <td>Capacitación básica de excel</td>
+                            <td>18/10/2023 </td>
+                            <td>Lizeth Vázquez</td>
+                        </tr>
+                        <tr>
+                            <td>Fundamentos básicos de excel</td>
+                            <td>Capacitación básica de excel</td>
+                            <td>18/10/2023 </td>
+                            <td>Ramon Guevara</td>
+                        </tr>
+                        <tr>
+                            <td>Fundamentos básicos de excel</td>
+                            <td>Capacitación básica de excel</td>
+                            <td>18/10/2023 </td>
+                            <td>Alguien con Nombre Largo</td>
+                        </tr>
+                        <tr>
+                            <td>Fundamentos básicos de excel</td>
+                            <td>Capacitación básica de excel</td>
+                            <td>18/10/2023 </td>
+                            <td>Ramon Guevara</td>
+                        </tr>
+                        <tr>
+                            <td>Fundamentos básicos de excel</td>
+                            <td>Capacitación básica de excel</td>
+                            <td>18/10/2023 </td>
+                            <td>Alguien con Nombre Largo</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class=" card shadow p-3 mt-5 bg-body-tertiary rounded"><!-- TABLA DE CONTENIDO -->
+        <div class="card-body">
+            <h3 style="margin-bottom: 4%; margin-top: 2%; margin-left: 1%;">SEPTIEMBRE</h3>
+            <div class="mb-3 container">
+                <table class="table aling-middle table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">CAPACITACIÓN</th>
+                            <th scope="col">DESCRIPCIÓN</th>
+                            <th scope="col">FECHA ESTIMADA</th>
+                            <th scope="col">INSTRUCTOR</th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-group-divider">
+                        <tr>
+                            <td>Fundamentos básicos de excel</td>
+                            <td>Capacitación básica de excel</td>
+                            <td>18/10/2023 </td>
+                            <td>Lizeth Vázquez</td>
+                        </tr>
+                        <tr>
+                            <td>Fundamentos básicos de excel</td>
+                            <td>Capacitación básica de excel</td>
+                            <td>18/10/2023 </td>
+                            <td>Ramon Guevara</td>
+                        </tr>
+                        <tr>
+                            <td>Fundamentos básicos de excel</td>
+                            <td>Capacitación básica de excel</td>
+                            <td>18/10/2023 </td>
+                            <td>Alguien con Nombre Largo</td>
+                        </tr>
+                        <tr>
+                            <td>Fundamentos básicos de excel</td>
+                            <td>Capacitación básica de excel</td>
+                            <td>18/10/2023 </td>
+                            <td>Ramon Guevara</td>
+                        </tr>
+                        <tr>
+                            <td>Fundamentos básicos de excel</td>
+                            <td>Capacitación básica de excel</td>
+                            <td>18/10/2023 </td>
+                            <td>Alguien con Nombre Largo</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class=" card shadow p-3 mt-5 bg-body-tertiary rounded"><!-- TABLA DE CONTENIDO -->
+        <div class="card-body">
+            <h3 style="margin-bottom: 4%; margin-top: 2%; margin-left: 1%;">OCTUBRE</h3>
+            <div class="mb-3 container">
+                <table class="table aling-middle table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">CAPACITACIÓN</th>
+                            <th scope="col">DESCRIPCIÓN</th>
+                            <th scope="col">FECHA ESTIMADA</th>
+                            <th scope="col">INSTRUCTOR</th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-group-divider">
+                        <tr>
+                            <td>Fundamentos básicos de excel</td>
+                            <td>Capacitación básica de excel</td>
+                            <td>18/10/2023 </td>
+                            <td>Lizeth Vázquez</td>
+                        </tr>
+                        <tr>
+                            <td>Fundamentos básicos de excel</td>
+                            <td>Capacitación básica de excel</td>
+                            <td>18/10/2023 </td>
+                            <td>Ramon Guevara</td>
+                        </tr>
+                        <tr>
+                            <td>Fundamentos básicos de excel</td>
+                            <td>Capacitación básica de excel</td>
+                            <td>18/10/2023 </td>
+                            <td>Alguien con Nombre Largo</td>
+                        </tr>
+                        <tr>
+                            <td>Fundamentos básicos de excel</td>
+                            <td>Capacitación básica de excel</td>
+                            <td>18/10/2023 </td>
+                            <td>Ramon Guevara</td>
+                        </tr>
+                        <tr>
+                            <td>Fundamentos básicos de excel</td>
+                            <td>Capacitación básica de excel</td>
+                            <td>18/10/2023 </td>
+                            <td>Alguien con Nombre Largo</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class=" card shadow p-3 mt-5 bg-body-tertiary rounded"><!-- TABLA DE CONTENIDO -->
+        <div class="card-body">
+            <h3 style="margin-bottom: 4%; margin-top: 2%; margin-left: 1%;">NOVIEMBRE</h3>
+            <div class="mb-3 container">
+                <table class="table aling-middle table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">CAPACITACIÓN</th>
+                            <th scope="col">DESCRIPCIÓN</th>
+                            <th scope="col">FECHA ESTIMADA</th>
+                            <th scope="col">INSTRUCTOR</th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-group-divider">
+                        <tr>
+                            <td>Fundamentos básicos de excel</td>
+                            <td>Capacitación básica de excel</td>
+                            <td>18/10/2023 </td>
+                            <td>Lizeth Vázquez</td>
+                        </tr>
+                        <tr>
+                            <td>Fundamentos básicos de excel</td>
+                            <td>Capacitación básica de excel</td>
+                            <td>18/10/2023 </td>
+                            <td>Ramon Guevara</td>
+                        </tr>
+                        <tr>
+                            <td>Fundamentos básicos de excel</td>
+                            <td>Capacitación básica de excel</td>
+                            <td>18/10/2023 </td>
+                            <td>Alguien con Nombre Largo</td>
+                        </tr>
+                        <tr>
+                            <td>Fundamentos básicos de excel</td>
+                            <td>Capacitación básica de excel</td>
+                            <td>18/10/2023 </td>
+                            <td>Ramon Guevara</td>
+                        </tr>
+                        <tr>
+                            <td>Fundamentos básicos de excel</td>
+                            <td>Capacitación básica de excel</td>
+                            <td>18/10/2023 </td>
+                            <td>Alguien con Nombre Largo</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class=" card shadow p-3 mt-5 bg-body-tertiary rounded"><!-- TABLA DE CONTENIDO -->
+        <div class="card-body">
+            <h3 style="margin-bottom: 4%; margin-top: 2%; margin-left: 1%;">DICIEMBRE</h3>
+            <div class="mb-3 container">
+                <table class="table aling-middle table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">CAPACITACIÓN</th>
+                            <th scope="col">DESCRIPCIÓN</th>
+                            <th scope="col">FECHA ESTIMADA</th>
+                            <th scope="col">INSTRUCTOR</th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-group-divider">
+                        <tr>
+                            <td>Fundamentos básicos de excel</td>
+                            <td>Capacitación básica de excel</td>
+                            <td>18/10/2023 </td>
+                            <td>Lizeth Vázquez</td>
+                        </tr>
+                        <tr>
+                            <td>Fundamentos básicos de excel</td>
+                            <td>Capacitación básica de excel</td>
+                            <td>18/10/2023 </td>
+                            <td>Ramon Guevara</td>
+                        </tr>
+                        <tr>
+                            <td>Fundamentos básicos de excel</td>
+                            <td>Capacitación básica de excel</td>
+                            <td>18/10/2023 </td>
+                            <td>Alguien con Nombre Largo</td>
+                        </tr>
+                        <tr>
+                            <td>Fundamentos básicos de excel</td>
+                            <td>Capacitación básica de excel</td>
+                            <td>18/10/2023 </td>
+                            <td>Ramon Guevara</td>
+                        </tr>
+                        <tr>
+                            <td>Fundamentos básicos de excel</td>
+                            <td>Capacitación básica de excel</td>
+                            <td>18/10/2023 </td>
+                            <td>Alguien con Nombre Largo</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

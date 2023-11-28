@@ -8,32 +8,33 @@
 <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
 {% endblock %}
 
+
 {% block content%}
 <div class="p-0 m-0">
     <div class="card shadow p-3  bg-body-tertiary rounded ">
         <div class="card-body">
-            <h3 style="margin-bottom: 4%; margin-top: 2%; margin-left: .5%;">R E G I S T R O    D E    U S U A R I O</h3>
+            <h3 style="margin-bottom: 4%; margin-top: 2%; margin-left: .5%;">R E G I S T R O D E U S U A R I O</h3>
             <!-- ROW 1 FOR FIRST NAME, APELLIDO PATERNO Y MATERNO-->
             <div class="row">
                 <div class="col-12 col-md-4">
                     <div class="mb-3 container">
                         <label for="input_first_name" class="form-label">Nombre</label>
                         <input maxlength="25" type="text" class="form-control" id="input_first_name"
-                            placeholder="Nombre" required>
+                            placeholder="Nombre" value="{{user.first_name}}" readonly>
                     </div>
                 </div>
                 <div class="col-12 col-md-4">
                     <div class="mb-3 container">
                         <label for="input_mid_name" class="form-label">Primer Apellido</label>
                         <input maxlength="25" type="text" class="form-control" id="input_mid_name"
-                            placeholder="Primer apellido" required>
+                            placeholder="Primer apellido" value="{{last_name.0}}" readonly>
                     </div>
                 </div>
                 <div class="col-12 col-md-4">
                     <div class="mb-3 container">
                         <label for="input_last_name" class="form-label">Segundo Apellido</label>
                         <input maxlength="25" type="text" class="form-control" id="input_last_name"
-                            placeholder="Segundo apellido" required>
+                            placeholder="Segundo apellido" value="{{last_name.1}}" readonly>
                     </div>
                 </div>
             </div>
@@ -46,22 +47,14 @@
                         <label for="input_payroll_number" class="form-label">No. nómina</label>
                         <input maxlength="11" pattern="/^-?\d+\.?\d*$/"
                             onKeyPress="if(this.value.length==11) return false;" type="number" class="form-control"
-                            id="input_payroll_number" placeholder="No. nómina" required>
+                            id="input_payroll_number" placeholder="No. nómina" value="{{user.payroll_number}}"readonly>
                     </div>
                 </div>
                 <div class="col-12 col-md-4">
                     <div class="mb-3 container">
-                        <label for="input_password" class="form-label">Contraseña</label>
-                        <div class="input-group" >
-                            <div class="form-group col-10">
-                                <input maxlength="25" type="password" class="form-control" style="width: 100%;" id="input_password" placeholder="Contraseña" required>
-                            </div>
-                            <div class="form-group text-end col-2">
-                                <button type="button" id="mostrar" class="btn">
-                                    <img src="..\static\Images\eye_show.png" width="24px" height="24px">
-                                </button>
-                            </div>
-                        </div>
+                        <label for="input_email" class="form-label">Correo electrónico</label>
+                        <input maxlength="40" type="email" class="form-control" id="input_email"
+                            placeholder="Correo electrónico" value="{{user.email}}" readonly>  
                     </div>
                 </div>
                 <div class="col-12 col-md-4">
@@ -69,7 +62,7 @@
                         <label for="input_telephone_number" class="form-label">Número de teléfono</label>
                         <input maxlength="10" pattern="/^-?\d+\.?\d*$/"
                             onKeyPress="if(this.value.length==10) return false;" type="number" class="form-control"
-                            id="input_telephone_number" placeholder="Número de teléfono" required>
+                            id="input_telephone_number" placeholder="Número de teléfono" value="{{user.phone_number}}" readonly>
                     </div>
                 </div>
             </div>
@@ -80,52 +73,37 @@
                 <div class="col-12 col-md-4">
                     <div class="mb-3 container">
                         <label for="input_position" class="form-label">Puesto</label>
-                        <input maxlength="25" type="text" class="form-control" id="input_position" placeholder="Puesto"
-                            required>
+                        <input maxlength="25" type="text" class="form-control" id="input_position" value="{{user.position}}" placeholder="Puesto"
+                            readonly>
                     </div>
                 </div>
                 <div class="col-12 col-md-4">
                     <div class="mb-3 container">
-                        <label for="input_email" class="form-label">Correo electrónico</label>
-                        <input maxlength="40" type="email" class="form-control" id="input_email"
-                            placeholder="Correo electrónico" required>
-                    </div>
-                </div>
-                <div class="col-12 col-md-4">
-                    <div class="mb-3 container">
-                        <label for="select_area" class="form-label">Área</label>
-                        <select class="form-select" id="select_area" required>
-                            {% for area in areas%}
-                            <option value="a-{{area.id}}">{{area.name}}</option>
-                            {% endfor %}
+                        <label for="select_tipo_usuario" class="form-label">Tipo de usuario</label>
+                        <select class="form-select" id="select_tipo_usuario" readonly>
+                            <option value="2" {%if to_update_user_type == "Personal"%} selected {%endif%}>Personal</option>
+                            <option value="3" {%if to_update_user_type == "Jefe de departamento"%} selected {%endif%}>Jefe de departamento</option>
+                            <option value="1" {%if to_update_user_type == "Administrador"%} selected {%endif%}>Administrador</option>
                         </select>
                     </div>
                 </div>
 
-                <div class="row">
-                    <div class="col-12 col-md-4">
-                        <div class="mb-3 container">
-                            <label for="select_tipo_usuario" class="form-label">Tipo de usuario</label>
-                            <select class="form-select" id="select_tipo_usuario" required>
-                                <option value="2" selected>Personal</option>
-                                <option value="3">Jefe de departamento</option>
-                                <option value="1">Administrador</option>
-                                <option value="4">Capacitador</option>
-                            </select>
-                        </div>
+
+                <div class="col-12 col-md-4">
+                    <div class="mb-3 container">
+                        <label for="select_area" class="form-label">Área</label>
+                        <select class="form-select" id="select_area" readonly>
+                            <option value="{{user.area_id.id}}"selected>{{user.area_id.name}}</option>
+                        </select>
                     </div>
                 </div>
-                <!-- END OF ROW 4-->
+                <!-- END OF ROW 3-->
             </div>
-            <!-- ROW 5 ONLY FOR CANCEL AND REGISTER BUTTONS-->
+            <!-- ROW 4 ONLY FOR CANCEL AND REGISTER BUTTONS-->
             <div class="row d-flex flex-column">
                 <div class="col-12">
                     <div class="container-fluid" style="display: flex; justify-content: right;">
-                        <a href="../sca/show_user"><button id="button_cancelar" type="button" class="btn btn-danger">Cancelar</button></a>
-                        <button id="button_registrar" onClick="add_user()" type="button" class="btn btn-primary"
-                            style="margin-left: 2%;">Registrar</button>
-                    </div>
-                </div>
+                        <a href="/sca/show_user" ><button id="button_cancelar" type="button" class="btn btn-danger">Volver</button></a>
             </div>
         </div>
     </div>
@@ -139,20 +117,18 @@
         var first_name = $("#input_first_name").val();
         var last_name = $("#input_mid_name").val() + " " + $("#input_last_name").val();
         var payroll_number = $("#input_payroll_number").val();
-        var password = $("#input_password").val();
         var phone_number = $("#input_telephone_number").val();
         var position = $("#input_position").val();
         var email = $("#input_email").val();
-        var area = $("#select_area").val().split("-")[1];
+        var area = $("#select_area").val();
         var type = $("#select_tipo_usuario").val();
 
         $.ajax({
-            url: "../sca/add_user",
+            url: "/sca/update_user",
             data: {
                 "first_name": first_name,
                 "last_name": last_name,
                 "payroll_number": payroll_number,
-                "password": password,
                 "phone_number": phone_number,
                 "position": position,
                 "email": email,
@@ -161,7 +137,22 @@
             },
             type: "POST",
             success: function success() {
-                document.location.href = '../sca/show_user'
+                document.location.href = '/sca/show_user'
+            }
+        })
+    }
+
+    function passRecovery() {
+        var payroll_number = $("#input_payroll_number").val();
+
+        $.ajax({
+            url: "/sca/update_pass",
+            data: {
+                "payroll_number": payroll_number,
+            },
+            type: "POST",
+            success: function success() {
+                document.location.href = '/sca/show_user'
             }
         })
     }
@@ -176,5 +167,6 @@
         input_password.setAttribute("type", "password");
     });
 </script>
+
 
 {% endblock %}

@@ -1,0 +1,109 @@
+{% extends 'menu.html' %}
+
+{% block title %}Asistencia{% endblock %}
+{% block css_links %}
+<link rel="stylesheet" href="\static\CSS\general.css">
+<link rel="preconnect" href="https://fonts.googleapis.com/">
+<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+{% endblock %}
+
+{% block content%}
+<div class="card shadow p-3 bg-body-tertiary rounded"> <!-- FILTRO -->
+  <div class="card-body">
+    <div class="row">
+      <div class="col">
+        <h3 style="margin-bottom: 4%; margin-top: 2%; margin-left: 1%;">F I L T R O</h3>
+      </div>
+
+    </div>
+    <div class="row"> <!-- r1 -->
+      <div class="col-md-4 col-12">
+        <div class="mb-3 container">
+          <label for="input_name" class="form-label">Nombre</label>
+          <input maxlength="25" onKeyPress="if(this.value.length==25) return false;" type="text" class="form-control"
+            id="input_name" placeholder="Nombre">
+        </div>
+      </div>
+      <div class="col-md-4 col-10">
+      </div>
+
+
+      <!-- ROW 5 ONLY FOR CANCEL AND REGISTER BUTTONS-->
+      <div class="row d-flex flex-column">
+        <div class="col-12">
+          <div class="container-fluid" style="display: flex; justify-content: right; ">
+            <button id="button_filtrar" type="button" class="btn">FILTRAR</button>
+            <button id="button_cancelar" type="button" class="btn" style="margin-left: 2%;">BORRAR</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+  <!-- ATTENDEES TABLE -->
+  <div class="card container-fluid bg-body-tertiary table-responsive shadow mt-5">
+    <div class="col mt-3 mb-3 d-flex">
+      <a href="{% url 'exportar_csv' %}"><button id="button_gen_report" type="button" class="btn me-5 ms-auto ">GENERAR REPORTE</button></a>
+    </div>
+    <table class="table aling-middle table-striped table-hover align-self-center" id="table-users">
+      <thead>
+        <tr>
+          <th class="col-4" scope="col">NOMBRE</th>
+          <th class="col-6">TIPO DE EVALUACIÓN</th>
+          <th class="text-center col-2" scope="col">ESTADO</th>
+        </tr>
+      </thead>
+      <tbody class="table-group-divider">
+        {%for evaluation in evaluations%}
+        {%if evaluation.status != 2%}
+        <tr>
+          <td>{{evaluation.user_id.first_name}} {{evaluation.user_id.last_name}}</td>
+          <td>{%if evaluation.type == 0%}
+              Evaluación de eventos de capacitación
+              {%else%}
+              Evaluacion de eventos virtuales de capacitación
+              {%endif%}
+          </td>
+          <td class="text-center">
+            {%if evaluation.status == 1%}
+              Realizado
+            {%else%}
+              Pendiente
+            {% endif %}
+          </td>
+        </tr>
+        {%endif%}
+        {% endfor%}
+      </tbody>
+    </table>
+  </div>
+
+
+
+  {% endblock%}
+
+  {% block scripts%}
+  <script type="text/javascript">
+
+    function changeAttendance(user_id) {
+        var training_id = {{tid}}
+        var change= $(`#select_attendances-${user_id}`).val();
+
+
+        $.ajax({
+            url: "/sca/update_attendance",
+            data: {
+                "training_id":training_id,
+                "user_id":user_id,
+                "change":change
+            },
+            type: "POST",
+            success: function success() {
+                document.location.reload()
+            }
+        })
+    }
+  </script>
+  {% endblock%}

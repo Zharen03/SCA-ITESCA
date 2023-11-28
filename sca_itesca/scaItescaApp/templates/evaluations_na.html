@@ -1,0 +1,103 @@
+{% extends 'menu.html' %}
+
+{% block title %}Evaluaciones{% endblock %}
+{% block css_links %}
+<link rel="stylesheet" href="..\static\CSS\general.css">
+<link rel="preconnect" href="https://fonts.googleapis.com/">
+<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+{% endblock %}
+
+{% block content%}
+<div class="card shadow p-3  bg-body-tertiary rounded"> <!-- FILTRO -->
+  <div class="card-body">
+    <div class="row">
+      <form action="/sca/evaluations_na" method="post">
+      <div class="col">
+        <h3 style="margin-bottom: 4%; margin-top: 2%; margin-left: 1%;">F I L T R O</h3>
+      </div>
+      {% csrf_token %}
+
+      <div class="row"> <!-- r1 -->
+        <div class="col-12 col-md-4">
+          <div class="mb-3 container">
+            <label for="input_name_training" class="form-label">Nombre la Capacitación</label>
+            <input maxlength="25" onKeyPress="if(this.value.length==25) return false;" type="text" class="form-control"
+              id="input_name_training" placeholder="Nombre de la Capacitación" name="input_name_training">
+          </div>
+        </div>
+        <div class="col-12 col-md-4">
+          <div class="mb-3 container">
+            <label for="select_type_training" class="form-label">Tipo de Capacitación</label>
+            <select class="form-select" id="select_type_training" name="select_type_training" required>
+              <option value="2" selected>Seleccionar</option>
+              <option value="0">Capacitación Virtual</option>
+              <option value="1">Capacitación Presencial</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <!-- ROW 5 ONLY FOR CANCEL AND REGISTER BUTTONS-->
+      <div class="row d-flex flex-column">
+        <div class="col-12">
+          <div class="container-fluid" style="display: flex; justify-content: right; ">
+            <button id="button_filtrar" type="sumbit" class="btn">FILTRAR</button>
+            <a href="/sca/evaluations_na"><button id="button_cancelar" type="button" class="btn" style="margin-left: 2%;">BORRAR</button></a>
+          </div>
+        </div>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!-- EVALUATIONS TABLE -->
+<div class="card container-fluid bg-body-tertiary table-responsive shadow mt-5">
+  <div class="col mt-3 mb-3 d-flex">
+    <button id="button_gen_report" type="button" class="btn me-5 ms-auto ">GENERAR REPORTE</button>
+  </div>
+  <table class="table aling-middle table-striped table-hover align-self-center" id="table-users">
+    <thead>
+      <tr>
+        <th scope="col">NOMBRE DE CAPACITACIÓN</th>
+        <th scope="col">TIPO DE CAPACITACIÓN</th>
+        <th scope="col"> REALIZAR EVALUACIÓN </th>
+      </tr>
+    </thead>
+    <tbody class="table-group-divider">
+      {%for training in trainings%}
+      <tr>
+        <td>{{training.training.name}}</td>
+        <td>{% if training.training.modality %}
+              Presencial
+            {% else %}
+              Virtual
+            {%endif%}
+        </td>
+        <td>
+          {%if training.evaluation.status == 0%}
+            {%if training.training.modality %}
+              <form method="post" action="/sca/training_events_evaluation_form">
+                {% csrf_token %}
+                <input name="evaluation_id" value="{{training.evaluation.id}}" class="d-none">
+                <button type="sumbit" class="btn mt-1" id="button_ver"><img
+                src="\static\Images\ver-detalles.png" width="24px" height="24px" alt="Editar" onClick=""></button>
+              </form>
+            {%else%}
+              <form method="post" action="/sca/virtual_training_event_evaluation_form">
+                {% csrf_token %}
+                <input name="evaluation_id" value="{{training.evaluation.id}}" class="d-none">
+                <button type="sumbit" class="btn mt-1" id="button_ver"><img
+                src="\static\Images\ver-detalles.png" width="24px" height="24px" alt="Editar" onClick=""></button>
+              </form>
+            {%endif%}
+          {%else%}
+            Realizado
+          {%endif%}
+        </td>
+      </tr>
+      {% endfor%}
+    </tbody>
+  </table>
+</div>
+</div>
+{% endblock%}

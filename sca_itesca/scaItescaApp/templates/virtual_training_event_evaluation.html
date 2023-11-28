@@ -12,6 +12,7 @@
     <div class="card shadow p-3  bg-body-tertiary rounded">
         <div class="card-body">
             <h3 style="margin-bottom: 4%; margin-top: 2%; margin-left: 1%;">EVALUACIÓN DE EVENTOS DE CAPACITACIÓN VIRTUALES</h5>
+                {% if e_status == 0%}
                 <!-- ROW 1 FOR FIRST NAME, APELLIDO PATERNO Y MATERNO-->
                 <div class="row">
                     <p>Por favor responda el siguiente cuestionario de la manera más objetiva. Coloque un número del 1
@@ -19,12 +20,14 @@
                         del evento.</p>
                 </div>
 
-                <form action="">
+                <form method="post" action="/sca/virtual_training_event_evaluation">
+                    {% csrf_token %}
                     <!--QUESTION 1-->
+                    <input name="evaluation_id" value="{{eid}}" class="d-none">
                     <p>1. El acceso a la plataforma fue de forma sencilla:</p>
                     <div class="row mb-2">
                         <div class="col-2">
-                            <input type="radio" id="input_first_question_1" name="first_question" value="1">
+                            <input type="radio" id="input_first_question_1" name="first_question" value="1" required>
                             <label for="input_first_question_1">1</label>
                         </div>
                         <div class="col-2">
@@ -48,7 +51,7 @@
                     <div class="row mb-2">
                         <p>2. El contenido del curso fue de fácil entendimiento:</p>
                         <div class="col-2">
-                            <input type="radio" id="input_second_question_1" name="second_question" value="1">
+                            <input type="radio" id="input_second_question_1" name="second_question" value="1" required>
                             <label for="input_second_question_1">1</label>
                         </div>
                         <div class="col-2">
@@ -72,7 +75,7 @@
                     <div class="row mb-2">
                         <p>3. La presentación del tema fue interesante y amena:</p>
                         <div class="col-2">
-                            <input type="radio" id="input_third_question_1" name="third_question" value="1">
+                            <input type="radio" id="input_third_question_1" name="third_question" value="1" required>
                             <label for="input_third_question_1">1</label>
                         </div>
                         <div class="col-2">
@@ -96,7 +99,7 @@
                     <div class="row mb-2">
                         <p>4. Las instrucciones en las actividades de aprendizaje fueron claras:</p>
                         <div class="col-2">
-                            <input type="radio" id="input_fourth_question_1" name="fourth_question" value="1">
+                            <input type="radio" id="input_fourth_question_1" name="fourth_question" value="1" required>
                             <label for="input_fourth_question_1">1</label>
                         </div>
                         <div class="col-2">
@@ -120,7 +123,7 @@
                     <div class="row mb-2">
                         <p>5. Se brindó material de apoyo:</p>
                         <div class="col-2">
-                            <input type="radio" id="input_fifth_question_1" name="fifth_question" value="1">
+                            <input type="radio" id="input_fifth_question_1" name="fifth_question" value="1" required>
                             <label for="input_fifth_question_1">1</label>
                         </div>
                         <div class="col-2">
@@ -144,7 +147,7 @@
                     <div class="row mb-2">
                         <p>6. Los conocimientos y habilidades desarrollados tiene aplicación inmediata o a corto plazo en mi trabajo:</p>
                         <div class="col-2">
-                            <input type="radio" id="input_sixth_question_1" name="sixth_question" value="1">
+                            <input type="radio" id="input_sixth_question_1" name="sixth_question" value="1" required>
                             <label for="input_sixth_question_1">1</label>
                         </div>
                         <div class="col-2">
@@ -168,7 +171,7 @@
                     <div class="row mb-2">
                         <p>7. Mi participación en el presente curso:</p>
                         <div class="col-2">
-                            <input type="radio" id="input_seventh_question_1" name="seventh_question" value="1">
+                            <input type="radio" id="input_seventh_question_1" name="seventh_question" value="1" required>
                             <label for="input_seventh_question_1">1</label>
                         </div>
                         <div class="col-2">
@@ -196,11 +199,14 @@
                         <div class="col-12">
                             <div class="container" style="display: flex; justify-content: right;">
                                 <button id="button_cancelar" type="button" class="btn btn-danger">Cancelar</button>
-                                <button id="button_registrar" type="button" class="btn btn-primary" style="margin-left: 2%;">Enviar</button>
+                                <button id="button_registrar" type="sumbit" class="btn btn-primary" style="margin-left: 2%;">Enviar</button>
                             </div>
                         </div>
                     </div>
                 </form>
+                {%else%}
+                <p>Usted ya contestó esta evaluación</p>
+                {%endif%}
         </div>
     </div>
 </div>
@@ -214,7 +220,7 @@
 
 <script type="text/javascript">
                 
-    function add_evaluation(){
+    /*function add_evaluation(){
         var form = $('form').serialize();
         console.log(form);
         
@@ -242,7 +248,7 @@
                 //document.location.href = '../sca/virtual_training_event_evaluation';
             }
         });
-    } 
+    } */
 </script>
 
 {% endblock%}

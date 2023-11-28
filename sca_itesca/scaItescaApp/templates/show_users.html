@@ -10,90 +10,98 @@
 
   {% block content%}
   <div class="card shadow p-3  bg-body-tertiary rounded"> <!-- FILTRO -->
-    <div class="card-body">
-      <div class="row">
-        <div class="col">
-          <h3 style="margin-bottom: 4%; margin-top: 2%; margin-left: .5%;">F I L T R O</h3>
+    <form method="post" action="../sca/show_user">
+      {% csrf_token %}
+      <div class="card-body">
+        <div class="row">
+          <div class="col">
+            <h3 style="margin-bottom: 4%; margin-top: 2%; margin-left: .5%;">F I L T R O</h3>
+          </div>
+    
         </div>
-  
+        <div class="row"> <!-- r1 -->
+          <div class="col-md-4 col-12">
+            <div class="mb-3 container">
+              <label for="input_name" class="form-label">Nombre</label>
+              <input maxlength="25" onKeyPress="if(this.value.length==25) return false;" type="text" class="form-control"
+                id="input_name" name="input_name" placeholder="Nombre">
+            </div>
+          </div>
+          <div class="col-12 col-md-4">
+            <div class="mb-3 container">
+              <label for="input_lastname" class="form-label">Primer Apellido</label>
+              <input maxlength="25" onKeyPress="if(this.value.length==25) return false;" type="text" class="form-control"
+                id="input_lastname" name="input_lastname" placeholder="Primer Apellido">
+            </div>
+          </div>
+
+          <div class="col-md-4 col-12">
+            <div class="mb-3 container">
+              <label for="select_type_training" class="form-label">Segundo Apellido</label>
+              <input maxlength="25" onKeyPress="if(this.value.length==25) return false;" type="text" class="form-control"
+                id="input_2ndlastname" name="input_2ndlastname" placeholder="Segundo Apellido">
+            </div>
+          </div>
+
+          
+        </div>
+        
+        <div class="row"> <!-- r2 -->
+
+          <div class="col-md-4 col-12">
+            <div class="mb-3 container">
+              <label for="select_area" class="form-label">Área</label>
+              <select class="form-select mb-3" id="select_area" name="select_area" required>
+                {% for area in areas%}
+                  <option value="{{area.id}}">{{area.name}}</option>
+                {% endfor%}
+              </select>
+            </div>
+          </div>
+
+          <div class="col-md-4 col-12">
+            <div class="mb-3 container">
+              <label for="select_training" class="form-label">Capacitación</label>
+              <select class="form-select mb-3" id="select_training" name="select_training" required>
+                {% for training in trainings%}
+                  <option value="{{training.id}}">{{training.name}}</option>
+                {% endfor%}
+              </select>
+            </div>
+          </div>
+    
+          <div class="col-md-4 col-12">
+            <div class="mb-3 container">
+              <label for="select_min_training" class="form-label">Capacitación Obligatoria</label>
+              <select class="form-select" id="select_min_training" name="select_min_training" required>
+                <option selected value="1">General realizada</option>
+                <option value="2">Igualdad de genero realizada</option>
+                <option value="3">General pendiente</option>
+                <option value="4">Igualdad de genero pendiente</option>
+                <option value="5">Ambas realizadas</option>
+                <option value="6">Ninguna realizada</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <!-- ROW 5 ONLY FOR CANCEL AND REGISTER BUTTONS-->
+        <div class="row d-flex flex-column" >
+          <div class="col-12">
+            <div class="container-fluid" style="display: flex; justify-content: right; ">
+              <button id="button_filtrar" type="sumbit" class="btn" onClick="">FILTRAR</button>
+              <a href="../sca/show_user"><button id="button_cancelar" type="button" class="btn" style="margin-left: 2%;">BORRAR</button></a>  
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="row"> <!-- r1 -->
-        <div class="col-md-4 col-12">
-          <div class="mb-3 container">
-            <label for="input_name" class="form-label">Nombre</label>
-            <input maxlength="25" onKeyPress="if(this.value.length==25) return false;" type="text" class="form-control"
-              id="input_name" placeholder="Nombre">
-          </div>
-        </div>
-        <div class="col-12 col-md-4">
-          <div class="mb-3 container">
-            <label for="input_lastname" class="form-label">Primer Apellido</label>
-            <input maxlength="25" onKeyPress="if(this.value.length==25) return false;" type="text" class="form-control"
-              id="input_lastname" placeholder="Apellido">
-          </div>
-        </div>
-        <div class="col-md-4 col-12">
-          <div class="mb-3 container">
-            <label for="select_area" class="form-label">Área</label>
-            <select class="form-select mb-3" id="select_area" required>
-              <option selected>Por definir...</option>
-              <option value="1">Por definir...</option>
-              <option value="2">Por definir...</option>
-            </select>
-          </div>
-        </div>
-      </div>
-  
-      <div class="row"> <!-- r2 -->
-        <div class="col-md-4 col-12">
-          <div class="mb-3 container">
-            <label for="select_training" class="form-label">Capacitación</label>
-            <select class="form-select mb-3" id="select_training" required>
-              <option selected>Por definir...</option>
-              <option value="1">Por definir...</option>
-              <option value="2">Por definir...</option>
-            </select>
-          </div>
-        </div>
-  
-        <div class="col-md-4 col-12">
-          <div class="mb-3 container">
-            <label for="select_type_training" class="form-label">Tipo de Capacitación</label>
-            <select class="form-select mb-3" id="select_type_training" required>
-              <option selected>Por definir...</option>
-              <option value="1">Por definir...</option>
-              <option value="2">Por definir...</option>
-            </select>
-          </div>
-        </div>
-  
-        <div class="col-md-4 col-12">
-          <div class="mb-3 container">
-            <label for="select_min_training" class="form-label">Capacitación Obligatoria</label>
-            <select class="form-select" id="select_min_training" required>
-              <option selected>Por definir...</option>
-              <option value="1">Por definir...</option>
-              <option value="2">Por definir...</option>
-            </select>
-          </div>
-        </div>
-      </div>
-      <!-- ROW 5 ONLY FOR CANCEL AND REGISTER BUTTONS-->
-      <div class="row d-flex flex-column" >
-        <div class="col-12">
-          <div class="container-fluid" style="display: flex; justify-content: right; ">
-            <button id="button_filtrar" type="button" class="btn">FILTRAR</button>
-            <button id="button_cancelar" type="button" class="btn" style="margin-left: 2%;">BORRAR</button>  
-          </div>
-        </div>
-      </div>
-    </div>
+    </form>
   </div>
   
   <!-- USERS TABLE -->
   <div class="card container-fluid bg-body-tertiary table-responsive shadow mt-5">
-    <div class="col mt-3 mb-3 d-flex">
-      <button id="button_gen_report" type="button" class="btn me-5 ms-auto ">GENERAR REPORTE</button>
+    <div class="col mt-3 mb-3 text-end">
+      <a href="../sca/add_user_form"><button id="button_gen_report" type="button" class="btn me-2 ms-auto">NUEVO USUARIO</button></a>
+      <a href="{% url 'exportar_csv' %}"><button id="button_gen_report" type="button" class="btn ms-auto ">GENERAR REPORTE</button></a>
     </div>
     <table class="table aling-middle table-striped table-hover align-self-center" id="table-users">
       <thead>
@@ -101,87 +109,90 @@
           <th scope="col">NOMBRE</th>
           <th scope="col">APELLIDO</th>
           <th scope="col">CORREO</th>
-          <th scope="col"> GENERAL </th>
-          <th class="aling-start" scope="col"> IGUALDAD DE GÉNERO </th>
-          <th scope="col"> </th>
+          <th class="text-center" scope="col">GENERAL</th>
+          <th class="text-center" scope="col"> IGUALDAD DE GÉNERO </th>
+          <th class="text-center" scope="col"> OPCIONES</th>
         </tr>
       </thead>
       <tbody class="table-group-divider">
-        <tr>
-          <td>user.first_name</td>
-          <td>user.last_name</td>
-          <td>user.email</td>
-          <td>
-            <svg xmlns="http://www.w3.org/2000/svg" height="1.25em"
-              viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-              <style>
-                svg {
-                  fill: #005eff
-                }
-              </style>
-              <path
-                d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z" />
-            </svg>
-  
-          </td>
-          <td>
-            <svg xmlns="http://www.w3.org/2000/svg" height="1.25em"
-              viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-              <style>
-                svg {
-                  fill: #005eff
-                }
-              </style>
-              <path
-                d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z" />
-            </svg>
-          </td>
-          <td>
-            <button type="button" name="button_ver_detalles" id="button_ver_detalles"><img src="..\static\Images\ver-detalles.png" width="24px" height="24px" alt="Inicio"></button>
-            <button type="button" name="button_editar" id="button_editar"><img src="..\static\Images\editar.png" width="24px" height="24px" alt="Inicio"></button>
-            <button type="button" name="button_eliminar" id="button_eliminar"><img src="..\static\Images\eliminar.png" width="24px" height="24px" alt="Inicio"></button>
-          </td>
-        </tr>
         {%for user in users_list%}
         <tr>
           <td>{{user.first_name}}</td>
           <td>{{user.last_name}}</td>
           <td>{{user.email}}</td>
-          <td>
-            {% if user.min_general %}
-            <svg xmlns="http://www.w3.org/2000/svg" height="1.25em"
-              viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-              <style>
-                svg {
-                  fill: #005eff
-                }
-              </style>
-              <path
-                d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z" />
-            </svg>
-            {% endif%}
+          <td class="text-center">
+            {#{% if user.min_general %}#}
+              <img src="..\static\Images\check.png" width="24px" height="24px" alt="Hecho">
+            {#{% endif%}#}
           </td>
-          <td>
-            {% if user.min_gender %}
-            <svg xmlns="http://www.w3.org/2000/svg" height="1.25em"
-              viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-              <style>
-                svg {
-                  fill: #005eff
-                }
-              </style>
-              <path
-                d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z" />
-            </svg>
-            {% endif%}
+          <td class="text-center">
+            {#{% if user.min_gender %}#}
+              <img src="..\static\Images\check.png" width="24px" height="24px" alt="Hecho">
+              {#{% endif%}#}
           </td>
-          <td>
-            <button type="button" class="btn btn-warning mt-1"> </button>
-            <button type="button" class="btn btn-danger ms-auto py-auto mt-1"> </button>
+          <td class="text-center">
+            <a href="/sca/select_user/{{user.payroll_number}}/"> <button type="button" name="button_ver_detalles" id="button_ver_detalles" ><img src="..\static\Images\ver-detalles.png" width="24px" height="24px" alt="Ver detalles"></button></a>
+            <a href="/sca/update_user_form/{{user.payroll_number}}/"><button type="button" name="button_editar" id="button_editar"><img src="..\static\Images\editar.png" width="24px" height="24px" alt="Editar"></button></a>
+            <button type="button" name="button_eliminar" id="button_eliminar" data-bs-toggle="modal" data-bs-target="#modal_remove-{{user.payroll_number}}"><img src="..\static\Images\eliminar.png" width="24px" height="24px" alt="Eliminar"></button>
           </td>
         </tr>
+        <!-- Modal -->
+        <div class="modal fade" id="modal_remove-{{user.payroll_number}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="modal_pass_recoveryLabel" aria-hidden="true">
+          <div class="modal-dialog">
+              <div class="modal-content">
+                  <div class="modal-header">
+                      <h5 class="modal-title" id="modal_pass_recoveryLabel">RECUPERAR CONTRASEÑA</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                      <label class="form-label">¿Esta seguro de querer eliminar al usuario {{user.first_name}} {{user.last_name}}? </label>
+                  </div>
+                  <div class="modal-footer">
+                      <button id="button_cancelar" type="button" class="btn" style="margin-left: 2%;">Cancelar</button>
+                      <form method="post" action="/sca/remove_user">
+                        {% csrf_token %}
+                        <input name="payroll_number" value="{{user.payroll_number}}" class="d-none">
+                        <button type="sumbit" id="button_registrar" class="btn" data-bs-dismiss="modal">Aceptar</button>
+                      </form>
+                  </div>
+              </div>
+          </div>
+        </div>
         {% endfor%}
       </tbody>
     </table>
   </div>
-  {% endblock%}
+
+  {% endblock %}
+
+  {% block scripts %}
+  <script type="text/javascript">
+    function filtrar(){
+      // input_2ndlastname
+        var name = $("#input_name").val()
+        var last_name = $("#input_lastname").val()
+        var Sec_last_name = $("#input_2ndlastname").val()
+        var area = $("#select_area").val().split("-")[1];
+        var training = $("#select_training").val();
+        var min_training = $("#select_min_training").val();
+
+        $.ajax({
+            url: "../sca/show_user",
+            data: {
+                "filtro": true,
+                "first_name": name,
+                "last_name": last_name,
+                "Sec_last_name": Sec_last_name,
+                "area": area,
+                "training": training,
+                "min_training": min_training
+            },
+            type: "POST",
+            success: function success() {
+
+            }
+        })
+    }
+  </script>
+  {% endblock %}

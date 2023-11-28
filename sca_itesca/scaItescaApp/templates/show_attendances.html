@@ -2,7 +2,7 @@
 
 {% block title %}Asistencia{% endblock %}
 {% block css_links %}
-<link rel="stylesheet" href="..\static\CSS\general.css">
+<link rel="stylesheet" href="\static\CSS\general.css">
 <link rel="preconnect" href="https://fonts.googleapis.com/">
 <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
@@ -62,50 +62,76 @@
     <div class="col mt-3 mb-3 d-flex">
       <button id="button_gen_report" type="button" class="btn me-5 ms-auto ">GENERAR REPORTE</button>
     </div>
-    <table class="table aling-middle table-striped table-hover align-self-center">
+    <table class="table aling-middle table-striped table-hover align-self-center" id="table-users">
       <thead>
         <tr>
           <th scope="col">NOMBRE</th>
           <th scope="col">ASISTENCIA</th>
-          <th scope="col">MODIFICAR ASISTENCIA </th>
+          <th class="text-center" scope="col">MODIFICAR ASISTENCIA </th>
         </tr>
       </thead>
       <tbody class="table-group-divider">
-        {%for userTraining in users_list%}
+        {%for user in attendance_list%}
         <tr>
-          <td>{{userTraining.name}}</td>
-          <td>{{userTraining.attendance}}</td>
-          <td>
-            <button type="button" data-bs-toggle="modal" data-bs-target="#modal_edit_attendances" class="btn mt-1" id="button_editar"><img
-              src="..\static\Images\editar.png" width="24px" height="24px" alt="Inicio"></button>
+          <td>{{user.name}}</td>
+          <td>{{user.attendance}}</td>
+          <td class="text-center">
+            <button type="button" data-bs-toggle="modal" data-bs-target="#modal_edit_attendances-{{user.id}}" class="btn mt-1" id="button_editar"><img
+              src="\static\Images\editar.png" width="24px" height="24px" alt="Editar" onClick=""></button>
           </td>
         </tr>
+        <!-- Modal -->
+          <div class="modal fade" id="modal_edit_attendances-{{user.id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="modal_edit_attendances-{{user.id}}" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modal_edit_attendances">EDITAR ASISTENCIA</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <label class="form-label">Seleccione el estado de la asistencia del usuario: </label>
+                        <select class="form-select" id="select_attendances-{{user.id}}" required>
+                          <option value="1" selected>Asistió</option>
+                          <option value="0">No asistió</option>
+                        </select>
+                    </div>
+                    
+                    <div class="modal-footer">
+                        <button type="button" id="button_registrar" class="btn" data-bs-dismiss="modal" onClick="changeAttendance({{user.id}})">Aceptar</button>
+                    </div>
+                </div>
+            </div>
+          </div>
         {% endfor%}
       </tbody>
     </table>
   </div>
 
-<!-- Modal -->
-<div class="modal fade" id="modal_edit_attendances" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-aria-labelledby="modal_edit_attendances" aria-hidden="true">
-<div class="modal-dialog">
-    <div class="modal-content">
-        <div class="modal-header">
-            <h5 class="modal-title" id="modal_edit_attendances">EDITAR ASISTENCIA</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-            <label class="form-label">Seleccione el estado de la asistencia del usuario: </label>
-            <select class="form-select" id="select_attendances" required>
-              <option value="2" selected>Asistió</option>
-              <option value="1">No asistió</option>
-            </select>
-        </div>
-        
-        <div class="modal-footer">
-            <button type="button" id="button_registrar" class="btn" data-bs-dismiss="modal">Aceptar</button>
-        </div>
-    </div>
-</div>
-</div>
+
+
+  {% endblock%}
+
+  {% block scripts%}
+  <script type="text/javascript">
+
+    function changeAttendance(user_id) {
+        var training_id = {{tid}}
+        var change= $(`#select_attendances-${user_id}`).val();
+
+
+        $.ajax({
+            url: "/sca/update_attendance",
+            data: {
+                "training_id":training_id,
+                "user_id":user_id,
+                "change":change
+            },
+            type: "POST",
+            success: function success() {
+                document.location.reload()
+            }
+        })
+    }
+  </script>
   {% endblock%}

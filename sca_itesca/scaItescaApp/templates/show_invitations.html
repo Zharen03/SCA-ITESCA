@@ -12,17 +12,19 @@
 {% block content%}
 <div class="col-12 mb-3" style="align-items: end;">
     <div class="container-fluid" style="display: flex; justify-content: right; ">
-        <button id="button_register_attendance" type="button" class="btn">REGISTRAR ASISTENCIA</button>
+        <button id="button_register_attendance" data-bs-toggle="modal" data-bs-target="#modal_set_attendances" type="button" class="btn">REGISTRAR ASISTENCIA</button>
     </div>
 </div>
 
+{% for invitation in invitation_list%}
 <div class="card shadow p-3  bg-body-tertiary rounded mb-5">
     <!-- CAPACITACIÓN OBLIGATORIA -->
     <!-- NOMBRE DE CAPACITACIÓN -->
+    
     <div class="card-body">
         <div class="row">
             <div class="col">
-                <h3 style="margin-bottom: 4%; margin-top: 2%; margin-left: 1%;"> <strong>FUNDAMENTOS DE EXCEL </strong></h3>
+                <h3 style="margin-bottom: 4%; margin-top: 2%; margin-left: 1%;"> <strong>{{invitation.training_info.name}} </strong></h3>
             </div>
 
         </div>
@@ -31,7 +33,7 @@
             <div class="col-md-4 col-12">
                 <div class="mb-3">
                     <label class="form-label"><strong>Instructor: </strong></label>
-                    <label class="form-label">Jackeline Vázquez Méndez</label>
+                    <label class="form-label">{{invitation.training_info.trainer}}</label>
 
                 </div>
             </div>
@@ -39,7 +41,11 @@
             <div class="col-md-4 col-12">
                 <div class="mb-3 ">
                     <label class="form-label"><strong>Horario: </strong></label>
-                    <label class="form-label">Viernes 20-10-2023 10:00 hrs</label>
+                    <label class="form-label">
+                        {%for schedule in invitation.schedule%}
+                            {{schedule.date}}: {{schedule.time}} <br>
+                        {%endfor%}
+                    </label>
 
                 </div>
             </div>
@@ -52,9 +58,13 @@
             <div class="col">
                 <div class="mb-3 ">
                     <label class="form-label"><strong>Modalidad: </strong></label>
-                    <label class="form-label">Virtual</label>
-                    <a href="#">https://us02web.zoom.us/j/82892390591?pwd=RGlyeThGTFpJZkREQjVvT2JBOUdqUT09</a>
-
+                    <label class="form-label">
+                        {% if invitation.training_info.modality%}
+                            Presencial
+                        {%else%}
+                            Virtual
+                        {%endif%}
+                    </label>
                 </div>
             </div>
         </div>
@@ -63,8 +73,7 @@
             <div class="col-md-12 col-12">
                 <div class="mb-3">
                     <label class="form-label"><strong>Descripción: </strong></label>
-                    <label class="form-label">En este curso se aprenderán las herramientas más habituales de Microsoft Excel, desde lo más básico a los gráficos, funciones y tablas de datos.</label>
-
+                    <label class="form-label">{{invitation.training_info.description}}</label>
                 </div>
             </div>
         </div>
@@ -83,13 +92,25 @@
         <!-- ROW 4 PARA BOTONES DE ASISTIR / ME INTERESA-->
         <div class="row d-flex flex-column">
             <div class="col-12">
+                {% if invitation.invitation_info.status == "Obligatoria" or invitation.inscrito%}
                 <div class="container-fluid" style="display: flex; justify-content: right; ">
                     <button id="button_assist" type="button" class="btn">ASISTIR</button>
                 </div>
+                {% else %}
+                <div class="container-fluid" style="display: flex; justify-content: right; ">
+                    <form method="post" action="/sca/set_user_training">
+                        {% csrf_token %}
+                        <input name="training_id" value="{{invitation.training_info.id}}" class="d-none">
+                        
+                        <button id="button_interested" type="sumbit" class="btn">ME INTERESA</button>
+                    </form>
+                </div>
+                {% endif %}
             </div>
         </div>
     </div>
 </div>
+{% endfor %}
 
 <!-- CAPACITACIÓN OPCIONAL -->
 <div class="card shadow p-3  bg-body-tertiary rounded">
@@ -166,4 +187,46 @@
     </div>
 </div>
 
+<div class="modal fade" id="modal_set_attendances" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="modal_set_attendances" aria-hidden="true">
+          <div class="modal-dialog">
+              <div class="modal-content">
+                  <div class="modal-header">
+                      <h5 class="modal-title" id="modal_set_attendances">EDITAR ASISTENCIA</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                      <label class="form-label">Ingrese el codigo de asistencia: </label>
+                      <input maxlength="25" onKeyPress="if(this.value.length==25) return false;" type="text" class="form-control"
+                      id="input_attendance_code" placeholder="attendance_code">
+                  </div>
+                  
+                  <div class="modal-footer">
+                      <button type="button" id="button_registrar" class="btn" data-bs-dismiss="modal" onClick="setAttendance()">Aceptar</button>
+                  </div>
+              </div>
+          </div>
+        </div>
 {% endblock%}
+
+{% csrf_token %}
+
+{%block scripts%}
+<script type="text/javascript">
+
+  function setAttendance() {
+      var attendance_code= $('#input_attendance_code').val();
+
+      $.ajax({
+          url: "/sca/set_attendance",
+          data: {
+              "attendance_code":attendance_code,
+          },
+          type: "POST",
+          success: function success() {
+              document.location.reload()
+          }
+      })
+  }
+</script>
+{%endblock%}
