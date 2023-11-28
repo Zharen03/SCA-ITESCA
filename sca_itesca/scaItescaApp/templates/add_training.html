@@ -1,0 +1,293 @@
+{% extends 'menu.html' %}
+
+{% block title %}Agregar nueva capacitacion{% endblock %}
+{% block css_links %}
+
+
+<link rel="stylesheet" href="../static/CSS/general.css">
+<link rel="stylesheet" href="../static/CSS/training_event_evaluation_CSS.css">
+{% endblock %}
+
+
+{% block content%}
+<div>
+    <div class="card shadow p-4  bg-body-tertiary rounded">
+        <div class="card-body">
+            <h3 style="margin-bottom: 4%; margin-top: 2%;">AGREGAR NUEVA CAPACITACIÓN</h5>
+                <form action="" class="">
+                    <!--QUESTION 1-->
+                    <div class="row mb-2">
+                        <!--TRAINING NAME-->
+                        <div class="col-sm-4">
+                            <div class="mb-3">
+                                <label for="input_training_name" class="form-label">Nombre de la capacitación</label>
+                                <input maxlength="250" type="text" class="form-control" id="input_training_name"
+                                    placeholder="Nombre de la capacitación" required>
+                            </div>
+                        </div>
+                        <!--TRAINER NAME-->
+                        <div class="col-sm-4">
+                            <div class="mb-3">
+                                <label for="input_trainer_name" class="form-label">Nombre del instructor</label>
+                                <input maxlength="70" type="text" class="form-control" id="input_trainer_name"
+                                    placeholder="Nombre del instructor" required>
+                            </div>
+                        </div>
+                        <!--DATE PICKER-->
+                        <div class="col-sm-4">
+                            <div class="col-12">
+                                <div class="row">
+                                    <div class="col-sm-12" style="align-items: center">
+                                        <label for="input_date" class="form-label">Fecha</label>
+                                        <input type="date" class="form-control" id="input_date" name="input_date">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--TIME PICKER-->
+                        <div class="col-sm-4 mt-3">
+                            <div class="col-12">
+                                <div class="row">
+                                    <div class="col-sm-12" style="align-items: center">
+                                        <label for="input_time" class="form-label">Hora</label></br>
+                                        <input type="time" id="input_time" class="form-control" name="input_time">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--DROPDOWN FOR TRAINING ON-SITE OR VIRTUAL-->
+                        <div class="col-sm-4 mt-3">
+                            <div class="col-12">
+                                <div class="row">
+                                    <div class="col-sm-12" style="align-items: center">
+                                        <label for="input_training_onsite_virtual"
+                                            class="form-label">Modalidad</label></br>
+                                        <select name="input_training_onsite_virtual" class="form-control"
+                                            id="input_training_onsite_virtual">
+                                            <option class="form-label" value="Presencial">Presencial</option>
+                                            <option class="form-label" value="Virtual">Virtual</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--DROPDOWN FOR GENERAL OR GENER EQUALITY-->
+                        <div class="col-sm-4 mt-3">
+                            <div class="col-12">
+                                <div class="row">
+                                    <div class="col-sm-12" style="align-items: center">
+                                        <label for="input_training_type" class="form-label">Tipo de
+                                            capacitación</label></br>
+                                        <select name="input_training_type" class="form-control"
+                                            id="input_training_type">
+                                            <option class="form-label" value="General">General</option>
+                                            <option class="form-label" value="Igualdad de genero">Igualdad de género
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--DROPDOWN FOR TRAINING AREA-->
+                        <div class="col-sm-4 mt-3">
+                            <div class="col-12">
+                                <div class="row">
+                                    <div class="col-sm-12" style="align-items: center">
+                                        <label for="input_training_area" class="form-label">Área a
+                                            capacitar</label></br>
+                                        <select name="input_training_area" class="form-control"
+                                            id="input_training_area">
+                                            {% for area in areas%}
+                                            <option class="form-label" value="{{area.id}}">{{area.name}}</option>
+                                            {% endfor%}
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--DROPDOWN FOR TRAINING STATE: MANDATORY OR PUBLIC-->
+                        <div class="col-sm-4 mt-3">
+                            <div class="col-12">
+                                <div class="row">
+                                    <div class="col-sm-12" style="align-items: center">
+                                        <label for="input_training_state" class="form-label">Estado</label></br>
+                                        <select name="input_training_state" class="form-control"
+                                            id="input_training_state">
+                                            <option class="form-label" value="Publica">Pública</option>
+                                            <option class="form-label" value="Obligatoria">Obligatoria</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--DROPDOWN FOR VISIBILITY: YES OR NO-->
+                        <div class="col-sm-4 mt-3">
+                            <div class="col-12">
+                                <div class="row">
+                                    <div class="col-sm-12" style="align-items: center">
+                                        <label for="input_visibility" class="form-label">Visibilizar</label></br>
+                                        <select name="input_visibility" class="form-control" id="input_visibility">
+                                            <option class="form-label" value="Si">Si</option>
+                                            <option class="form-label" value="No">No</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--TEXT AREA FOR DESCRIPTION-->
+                        <div class="col-12 mt-3">
+                            <div class="col-12">
+                                <div class="row">
+                                    <div class="col-sm-12" style="align-items: center">
+                                        <label for="input_description" class="form-label">Descripción</label></br>
+                                        <textarea class="form-control" id="input_description" rows="3"
+                                            maxlength="250"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--BUTTON TO CHOOSE FILES TO UPLOAD-->
+                        <div class="col-12 mt-3">
+                            <div class="col-12">
+                                <div class="row">
+                                    <div class="col-sm-12" style="align-items: center">
+                                        <div class="mb-3">
+                                            <label for="input_choose_file" class="form-label">Archivos adjuntos</label>
+                                            <input class="form-control" type="file" id="input_choose_file" multiple>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+
+                    <!--Buttons to sumbit or cancel the form-->
+                    <div class="row d-flex flex-column mt-5">
+                        <div class="col-12">
+                            <div class="" style="display: flex; justify-content: right;">
+                                <a href="../sca/training_history_ad"><button id="button_cancelar" type="button" class="btn btn-danger">Cancelar</button></a>
+                                <button id="button_registrar" type="button" class="btn btn-primary" onClick="addTraining()"
+                                    style="margin-left: 2%;">Enviar</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+        </div>
+    </div>
+</div>
+
+
+<!--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>-->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+{% endblock %}
+
+{% block scripts%}
+<script>
+   /* training = {
+        name: "",//
+        description: "",//
+        modality: true,//
+        general: true,//
+        internal: true,
+        status: true,
+        attendance_code: ""
+        visible: true,
+        area_id: 0
+    }*/
+
+   /* invitation = {
+        description: "",
+        training: "",
+        optional: true,
+        status: true
+    }*/
+
+    function randomCode() {
+        const caracteres = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+        let codigo = '';
+        for (let i = 0; i < 5; i++) {
+          const caracterAleatorio = caracteres.charAt(Math.floor(Math.random() * caracteres.length));
+          codigo += caracterAleatorio;
+        }
+        return codigo;
+    }
+
+    function uploadFile(training_id){
+        console.log(training_id)
+        var files = $('#input_choose_file').prop('files')
+        $.ajax({
+            url: "../sca/upload_file",
+            data: {
+                "tid": training_id,
+                "files": files,
+            },
+            processData: false,
+            contentType: false,
+            type: "POST",
+            success: function success(){
+                //document.location.href = '../sca/training_history_ad'
+            }
+            
+
+        })
+    }
+
+    function addTraining(){
+        var name = $("#input_training_name").val()
+        var trainer = $("#input_trainer_name").val()
+        var time = $("#input_time").val()
+        var date = $("#input_date").val()
+        var description = $("#input_description").val()
+        var modality = $("#input_training_onsite_virtual").val()=="Presencial" //true Presencial
+        var general = $("#input_training_type").val() == "General" //true si es General
+        var internal = true //no aparece en algún input
+        var status = true //el status que aparece en el formato es la obligatoriedad, que pertenece a las invitaciones
+        var attendance_code = randomCode()
+        //var visible = $("#input_visibility").val() =="Si" //true si es visible VISIBLE ES PARA LAS INVITACIONES
+        var area_id = $("#input_training_area").val()
+        var optional = $("#input_training_state").val()
+        
+
+        $.ajax({
+            url: "../sca/add_training",
+            data: {
+                "name": name,
+                "trainer": trainer,
+                "time": time,
+                "date": date,
+                "description": description,
+                "modality": modality,
+                "general" :general,
+                "internal": internal,
+                "status": status,
+                "attendance_code": attendance_code,
+                "area_id": area_id,
+                "optional": optional,
+            },
+            type: "POST",
+            success: function success(training_id){
+                //uploadFile(training_id)
+                document.location.href = '../sca/training_history_ad'
+            }
+            
+
+        })
+
+    }
+
+
+</script>
+{% endblock%}

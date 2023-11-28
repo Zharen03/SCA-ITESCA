@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <title>Inicio de Sesión</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="..\static\CSS\login_CSS.css" type="text/css">
+    <link rel="stylesheet" href="..\static\CSS\general.css" type="text/css">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"
+        integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
+</head>
+
+<body class="row" style="background-color: #4F6BFF;">
+    <div class="col-lg-4 hidden-xs px-0">
+    </div>
+    <div class="card shadow col-lg-4 col-12 p-3 bg-body-tertiary rounded"> <!-- LOGIN -->
+        <div class="card-body">
+            <form method="post" action="../sca/login_auth?next={{next}}">
+                <div class="row">
+                    <div class="col-12" id="header-card">
+                        <h1 class="text-center mb-5" style=" margin-top: 2%; color: #4D4D4D;"><img width="64" height="64"
+                                src="..\static\Images_Login\logoITESCA.png" /><b> S C A</b>
+                        </h1>
+                        <div class="row"> <!-- r1 -->
+                            <div class="col-12">
+                                <div class="mb-3 container">
+                                    <label for="input_payroll" class="form-label"><b>NÚMERO DE NÓMINA</b> </label>
+                                    <div class="input-group">
+                                        <div class="form-group col-10">
+                                            <input type="password" id="input_payroll" class="form-control" name="payroll_number" placeholder="Número de nómina">
+                                        </div>
+                                        <div class="form-group text-center col-2">
+                                            <button type="button" id="mostrar_payroll" class="btn">
+                                                <img src="..\static\Images\Images_Login\ver.png" width="24px" height="24px">
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row"> <!-- r2 -->
+                            <div class="col-12">
+                                <div class="mb-3 container ">
+                                    <label for="input_password" class="form-label"><b>CONTRASEÑA</b></label>
+                                    <div class="input-group ">
+                                        <div class="form-group col-10">
+                                            <input type="password" id="input_password" name="password" class="form-control" placeholder="Número de nómina">
+                                       </div>
+                                    
+                                        <div class="form-group text-center col-2">
+                                                <button type="button" id="mostrar_password" class="btn">
+                                                    <img src="..\static\Images\Images_Login\ver.png" width="24px" height="24px">
+                                                </button>
+                                        </div>
+                                        <a href="../sca/pass_recovery"><label class="form-label" ><u><b>¿Olvidaste tu contraseña?</b></u></label></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row"> <!-- r3 -->
+                            <div class="col-12 d-flex justify-content-center align-items-center" style="margin-top: 10%;">
+                                <button id="button_registrar"type="sumbit" class="btn" action="">I N I C I A R</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="col-lg-4 hidden-xs px-0">
+    </div>
+</body>
+
+<script type="text/javascript">
+    // primero seleccionamos el elemento id del button
+        mostrar_payroll.addEventListener("mousedown", ( ) =>{
+        // Eliminamos su type del input
+            input_payroll.removeAttribute("type");
+        });
+        mostrar_payroll.addEventListener("mouseup", ( ) => {
+        // Agregamos type de input
+            input_payroll.setAttribute("type", "password");
+        });
+
+        mostrar_password.addEventListener("mousedown", ( ) =>{
+        // Eliminamos su type del input
+        input_password.removeAttribute("type");
+        });
+        mostrar_password.addEventListener("mouseup", ( ) => {
+        // Agregamos type de input
+        input_password.setAttribute("type", "password");
+        });
+</script>
+</html>

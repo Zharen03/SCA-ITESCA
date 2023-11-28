@@ -1,0 +1,100 @@
+{% extends 'menu.html' %}
+
+{% block title %}Ver Resumen{% endblock %}
+{% block css_links %}
+<link rel="stylesheet" href="..\static\CSS\general.css">
+{% endblock %}
+
+{% block content%}
+
+<div class="p-0 m-0">
+    <div class=" card shadow p-3 bg-body-tertiary rounded "><!-- TABLA DE CONTENIDO -->
+        <div class="card-body">
+            <h3 style="margin-bottom: 4%; margin-top: 2%; margin-left: 1%;">RESUMEN DE EVALUACIONES</h3>
+            <div class="mb-3 container">
+                <div class="row d-flex flex-column">
+                    <div class="col-12">
+                        <div class="container-fluid" style="display: flex; justify-content: right; ">
+                            <button id="button_gen_report" type="button" class="my-3 btn ">VER RESUMEN</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!--<div style="margin-left: 5%; margin-right: 5%;"> -->
+                <table class="table aling-middle table-striped table-hover align-self-center" id="table-users">
+                    <thead style="text-align: center;">
+                        <tr>
+                            <th scope="col">NÚMERO DE EVALUACIÓN</th>
+                            <th scope="col">VER DETALLES</th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-group-divider" style="text-align: center;">
+                        <tr>
+                            <td>1</td>
+                            <td>
+                                <button type="button" class="btn mt-1" id="button_ver_detalles"><img src="..\static\Images\ver-detalles.png" width="24px" height="24px" alt="Inicio"></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style=" margin-left: 50%;">2</td>
+                            <td>
+                                <button type="button" class="btn mt-1" id="button_ver_detalles"><img src="..\static\Images\ver-detalles.png" width="24px" height="24px" alt="Inicio"></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>
+                                <button type="button" class="btn mt-1" id="button_ver_detalles"><img src="..\static\Images\ver-detalles.png" width="24px" height="24px" alt="Inicio"></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>
+                                <button type="button" class="btn mt-1" id="button_ver_detalles"><img src="..\static\Images\ver-detalles.png" width="24px" height="24px" alt="Inicio"></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>
+                                <button type="button" class="btn mt-1" id="button_ver_detalles"><img src="..\static\Images\ver-detalles.png" width="24px" height="24px" alt="Inicio"></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td>
+                                <button type="button" class="btn mt-1" id="button_ver_detalles"><img src="..\static\Images\ver-detalles.png" width="24px" height="24px" alt="Inicio"></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td>
+                                <button type="button" class="btn mt-1" id="button_ver_detalles"><img src="..\static\Images\ver-detalles.png" width="24px" height="24px" alt="Inicio"></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>8</td>
+                            <td>
+                                <button type="button" class="btn mt-1" id="button_ver_detalles"><img src="..\static\Images\ver-detalles.png" width="24px" height="24px" alt="Inicio"></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>9</td>
+                            <td>
+                                <button type="button" class="btn mt-1" id="button_ver_detalles"><img src="..\static\Images\ver-detalles.png" width="24px" height="24px" alt="Inicio"></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>10</td>
+                            <td>
+                                <button type="button" class="btn mt-1" id="button_ver_detalles"><img src="..\static\Images\ver-detalles.png" width="24px" height="24px" alt="Inicio"></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <!--</div>-->
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock%}

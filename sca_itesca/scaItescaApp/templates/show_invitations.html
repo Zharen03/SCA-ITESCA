@@ -1,0 +1,232 @@
+{% extends 'menu.html' %}  
+
+
+{% block title %}Invitaciones{% endblock %}
+{% block css_links %}
+<link rel="stylesheet" href="..\static\CSS\general.css">
+<link rel="preconnect" href="https://fonts.googleapis.com/">
+<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet"> 
+{% endblock %}
+
+{% block content%}
+<div class="col-12 mb-3" style="align-items: end;">
+    <div class="container-fluid" style="display: flex; justify-content: right; ">
+        <button id="button_register_attendance" data-bs-toggle="modal" data-bs-target="#modal_set_attendances" type="button" class="btn">REGISTRAR ASISTENCIA</button>
+    </div>
+</div>
+
+{% for invitation in invitation_list%}
+<div class="card shadow p-3  bg-body-tertiary rounded mb-5">
+    <!-- CAPACITACIÓN OBLIGATORIA -->
+    <!-- NOMBRE DE CAPACITACIÓN -->
+    
+    <div class="card-body">
+        <div class="row">
+            <div class="col">
+                <h3 style="margin-bottom: 4%; margin-top: 2%; margin-left: 1%;"> <strong>{{invitation.training_info.name}} </strong></h3>
+            </div>
+
+        </div>
+        <div class="row">
+            <!-- r2 NOMBRE DEL INSTRUCTOR | HORARIO |  MODALIDAD -->
+            <div class="col-md-4 col-12">
+                <div class="mb-3">
+                    <label class="form-label"><strong>Instructor: </strong></label>
+                    <label class="form-label">{{invitation.training_info.trainer}}</label>
+
+                </div>
+            </div>
+
+            <div class="col-md-4 col-12">
+                <div class="mb-3 ">
+                    <label class="form-label"><strong>Horario: </strong></label>
+                    <label class="form-label">
+                        {%for schedule in invitation.schedule%}
+                            {{schedule.date}}: {{schedule.time}} <br>
+                        {%endfor%}
+                    </label>
+
+                </div>
+            </div>
+
+
+
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <div class="mb-3 ">
+                    <label class="form-label"><strong>Modalidad: </strong></label>
+                    <label class="form-label">
+                        {% if invitation.training_info.modality%}
+                            Presencial
+                        {%else%}
+                            Virtual
+                        {%endif%}
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <!-- r2 DESCRIPCIÓN DE LA CAPACITACIÓN -->
+            <div class="col-md-12 col-12">
+                <div class="mb-3">
+                    <label class="form-label"><strong>Descripción: </strong></label>
+                    <label class="form-label">{{invitation.training_info.description}}</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- r3 ARCHIVOS ADJUNTOS LABEL -->
+            <div class="col-12">
+                <div class="mb-3">
+                    <label for="input_position" class="form-label"> <strong>Archivos adjuntos: </strong></label>
+                    <hr>
+                    <a href="#">Manual de excel 2023.pdf</a> <br>
+                    <a href="#">Manual de instalación MS Office.pdf</a>
+                </div>
+            </div>
+        </div>
+        <!-- ROW 4 PARA BOTONES DE ASISTIR / ME INTERESA-->
+        <div class="row d-flex flex-column">
+            <div class="col-12">
+                {% if invitation.invitation_info.status == "Obligatoria" or invitation.inscrito%}
+                <div class="container-fluid" style="display: flex; justify-content: right; ">
+                    <button id="button_assist" type="button" class="btn">ASISTIR</button>
+                </div>
+                {% else %}
+                <div class="container-fluid" style="display: flex; justify-content: right; ">
+                    <form method="post" action="/sca/set_user_training">
+                        {% csrf_token %}
+                        <input name="training_id" value="{{invitation.training_info.id}}" class="d-none">
+                        
+                        <button id="button_interested" type="sumbit" class="btn">ME INTERESA</button>
+                    </form>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
+
+<!-- CAPACITACIÓN OPCIONAL -->
+<div class="card shadow p-3  bg-body-tertiary rounded">
+    <!-- NOMBRE DE CAPACITACIÓN -->
+    <div class="card-body">
+        <div class="row">
+            <div class="col">
+                <h3 style="margin-bottom: 4%; margin-top: 2%; margin-left: 1%;"> <strong>HABILIDADES PARA LA COMUNICACIÓN ORAL Y ESCRITA </strong></h3>
+            </div>
+
+        </div>
+        <div class="row">
+            <!-- r2 NOMBRE DEL INSTRUCTOR | HORARIO |  MODALIDAD -->
+            <div class="col-md-4 col-12">
+                <div class="mb-3">
+                    <label class="form-label"><strong>Instructor: </strong></label>
+                    <label class="form-label">Mtro. Bruno Pablos Lugo</label>
+
+                </div>
+            </div>
+
+            <div class="col-md-4 col-12">
+                <div class="mb-3">
+                    <label class="form-label"><strong>Horario: </strong></label>
+                    <label class="form-label">Jueves 19-10-2023 9:00 hrs</label>
+
+                </div>
+            </div>
+
+
+
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <div class="mb-3">
+                    <label class="form-label"><strong>Modalidad: </strong></label>
+                    <label class="form-label">Presencial</label>
+                    
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <!-- r2 DESCRIPCIÓN DE LA CAPACITACIÓN -->
+            <div class="col-md-12 col-12">
+                <div class="mb-3">
+                    <label class="form-label"><strong>Descripción: </strong></label>
+                    <label class="form-label">En este curso se aprenderán las herramientas básicas para la comunicación y expresión oral y escrita.</label>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- r3 ARCHIVOS ADJUNTOS LABEL -->
+            <div class="col-12">
+                <div class="mb-3">
+                    <label for="input_position" class="form-label"> <strong>Archivos adjuntos: </strong></label>
+                    <hr>
+                    <a href="#">Manual de lectura y redacción.pdf</a> <br>
+                    <a href="#">Ejercicios de gramática.pdf</a>
+                </div>
+            </div>
+        </div>
+        <!-- ROW 4 PARA BOTONES DE ASISTIR / ME INTERESA-->
+        <div class="row d-flex flex-column">
+            <div class="col-12">
+                <div class="container-fluid" style="display: flex; justify-content: right; ">
+                    <button id="button_interested" type="button" class="btn">ME INTERESA</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modal_set_attendances" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="modal_set_attendances" aria-hidden="true">
+          <div class="modal-dialog">
+              <div class="modal-content">
+                  <div class="modal-header">
+                      <h5 class="modal-title" id="modal_set_attendances">EDITAR ASISTENCIA</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                      <label class="form-label">Ingrese el codigo de asistencia: </label>
+                      <input maxlength="25" onKeyPress="if(this.value.length==25) return false;" type="text" class="form-control"
+                      id="input_attendance_code" placeholder="attendance_code">
+                  </div>
+                  
+                  <div class="modal-footer">
+                      <button type="button" id="button_registrar" class="btn" data-bs-dismiss="modal" onClick="setAttendance()">Aceptar</button>
+                  </div>
+              </div>
+          </div>
+        </div>
+{% endblock%}
+
+{% csrf_token %}
+
+{%block scripts%}
+<script type="text/javascript">
+
+  function setAttendance() {
+      var attendance_code= $('#input_attendance_code').val();
+
+      $.ajax({
+          url: "/sca/set_attendance",
+          data: {
+              "attendance_code":attendance_code,
+          },
+          type: "POST",
+          success: function success() {
+              document.location.reload()
+          }
+      })
+  }
+</script>
+{%endblock%}

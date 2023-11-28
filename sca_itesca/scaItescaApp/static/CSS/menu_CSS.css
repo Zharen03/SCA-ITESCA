@@ -9,13 +9,12 @@
 /*Side menu*/
 .menu_container{
     max-height: 100vh;
-
     position: sticky;
     top: 0px;
 
     border-bottom: 1px solid black;
     overflow-y: scroll;
-    
+    z-index: 10;
 }
 
 .menu_controller{
@@ -39,10 +38,11 @@
 }
 
 .menu_element p{
+    opacity: 0;
     color: white;
-    font-size: 14px;
+    font-size: 4px;
     font-weight: bold;
-    transition: font-size .5s;
+    transition: font-size .5s, opacity .5s;
 }
 
 .menu_element img{
@@ -55,21 +55,18 @@
 }
 
 .menu_element .btn:hover p{
-    display: inline;
-    font-size: 16px;
+    
+    visibility: visible;
+    opacity: 1;
+    font-size: .8vw;
     text-decoration: underline;
-    transition: font-size .5s;
+    transition: font-size .5s, opacity .5s;
 }
 
 .menu_element .btn:hover img{
-    width: 56px;
-    height: 56px;
-    transition: height .5s, width .75s;
-}
-
-/*Drawable (offcanvas)*/
-.offcanvas-body .btn{
-    
+    width: 52px;
+    height: 52px;
+    transition: height .75s, width .75s;
 }
 
 .offcanvas-container{
@@ -78,13 +75,13 @@
 
 /*User bar*/
 .user_bar{
-    max-height: 60px;
-    min-height: 60px;
+    max-height: 66px;
+    min-height: 66px;
     border-bottom: 2px solid #4F6BFF;
-
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+    position: sticky;
+    top: 0px;
+    background-color: white;
+    z-index: 10;
 }
 
 .dropdown-toggle:hover{
@@ -95,20 +92,21 @@
 
 /*Page container*/
 .page_content{
-    min-height: calc(120vh - 60px);
+    min-height: calc(100vh - 66px);
+    overflow-y: scroll;
 }
-
-
-
-
-
-
-
-
-
-
 
 /*A scroll utility*/
 ::-webkit-scrollbar {
     display: none;
 }
+
+@media (min-width: 900px) {
+    .menu_container{
+        max-width: 100px;
+    }
+
+    .user_bar{
+        width: calc(100vw - 100px);
+    }
+  }

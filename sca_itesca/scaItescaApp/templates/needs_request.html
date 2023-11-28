@@ -1,0 +1,168 @@
+{% extends 'menu.html' %}
+{% block title%}Solicitud de Necesidades de Capacitación {% endblock %}
+
+{% block css_links %}
+    <link rel="stylesheet" href="../static/CSS/general.css"> 
+    <link rel="preconnect" href="https://fonts.googleapis.com/" >
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+{% endblock %}
+
+{% block content%}
+    <div class="p-0 m-0">
+        <div class="card shadow p-3  bg-body-tertiary rounded">
+            <div class="card-body">
+                <h3 style="margin-bottom: 4%; margin-top: 2%; margin-left: 1%;">SOLICITUD DE NECESIDADES DE CAPACITACIÓN</h5>
+                    <!-- ROW 1 PARA TIPO DE EVENTO, NOMBRE DEL EVENTO Y NÚMERO DE PERSONAS-->
+                    <div class="row">
+                        <div class="col-12 col-md-4">
+                            <div class="mb-3 container">
+                                <label for="select_event_type" class="form-label">Tipo de evento</label>
+                                <select class="form-select" id="select_event_type" required>
+                                    <option selected value="Curso">Curso</option>
+                                    <option value="Congreso">Congreso</option>
+                                    <option value="Taller">Taller</option>
+                                    <option value="Otro">Otro</option>
+                                </select>
+
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <div class="mb-3 container">
+                                <label for="input_event_name" class="form-label">Nombre del evento</label>
+                                <input maxlength="25" type="text" class="form-control" id="input_event_name" placeholder="Nombre del evento" required>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <div class="mb-3 container">
+                                <label for="input_attendees_number" class="form-label">Número de personas que asistirán</label>
+                                <input maxlength="3" type="number" class="form-control" onKeyPress="if(this.value.length==3) return false;" id="input_attendees_number" placeholder="Número de personas que asistirán" required>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END OF ROW 1-->
+
+                    <!-- ROW 2 PARA INVERSIÓN POR PERSONA, DURACIÓN DEL EVENTO Y RESULTADOS ESPERADOS-->
+                    <div class="row">
+                        <div class="col-12 col-md-4">
+                            <div class="mb-3 container">
+                                <label for="input_investment_person" class="form-label">Inversión por persona</label>
+                                <input maxlength="11" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==11) return false;" type="number" class="form-control" id="input_investment_person" placeholder="Inversión por persona" required>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <div class="mb-3 container">
+                                <label for="input_event_duration" class="form-label">Duración del evento en horas</label>
+                                <input maxlength="10" type="number" class="form-control" id="input_event_duration" placeholder="Duración del evento" required>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <div class="mb-3 container">
+                                <label for="select_period" class="form-label">Periodo de implementación</label>
+                                <select class="form-select" id="select_period" required>
+                                    <option selected value="Semestre Enero-Junio">Semestre Enero-Junio</option>
+                                    <option value="Verano">Verano</option>
+                                    <option value="Semestre Agosto-Diciembre">Semestre Agosto-Diciembre</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END OF ROW 2-->
+
+                    <!-- ROW 3 PARA PERIODO DE IMPLEMENTACIÓN E INFORMACIÓN COMPLEMENTARIA-->
+                    <div class="row">
+                        <div class="col-12 col-md-4">
+                            <div class="mb-3 container">   
+                                <label for="textarea_expected_results" class="form-label">Resultados esperados</label>
+                                <textarea class="form-control" id="textarea_expected_results" placeholder="Resultados esperados" required></textarea>
+                                <div class="form-text"> Impacto de la capacitación</div>
+
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <div class="mb-3 container">
+                                <label for="textarea_complementary_information" class="form-label">Información complementaria</label>
+                                <textarea class="form-control" id="textarea_complementary_information" placeholder="Información complementaria" required></textarea>
+                            </div>
+                        </div>
+                        <!-- END OF ROW 3-->
+                    </div>
+
+                    <!-- ROW 5 ONLY FOR CANCEL AND REGISTER BUTTONS-->
+                    <div class="row d-flex flex-column">
+                        <div class="col-12">
+                            <div class="container" style="display: flex; justify-content: right;">
+                                <button id="button_cancelar" type="button" class="btn btn-danger">Cancelar</button>
+                                <button id="button_registrar" type="button" class="btn btn-primary" style="margin-left: 2%;" onclick="add_Needs_Request()">Enviar</button>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts%}
+<script type="text/javascript">
+    needs_request = {
+        user: 1,
+        questions: [
+        {
+            question_id: 1,
+            answer:""
+        },
+        {
+            question_id: 2,
+            answer:""
+        },
+        {
+            question_id: 3,
+            answer:""
+        },
+        {
+            question_id: 4,
+            answer:""
+        },
+        {
+            question_id: 5,
+            answer:""
+        },
+        {
+            question_id: 6,
+            answer:""
+        },
+        {
+            question_id: 7,
+            answer:""
+        },
+        {
+            question_id: 8,
+            answer:""
+        }],
+        status: true
+    }
+
+    function add_Needs_Request(){
+        needs_request.questions[0].answer = document.getElementById('select_event_type').value;
+        needs_request.questions[1].answer = document.getElementById('input_event_name').value;
+        needs_request.questions[2].answer = document.getElementById('input_attendees_number').value;
+        needs_request.questions[3].answer = document.getElementById('input_investment_person').value;
+        needs_request.questions[4].answer = document.getElementById('input_event_duration').value;
+        needs_request.questions[5].answer = document.getElementById('select_period').value;
+        needs_request.questions[6].answer = document.getElementById('textarea_expected_results').value;
+        needs_request.questions[7].answer = document.getElementById('textarea_complementary_information').value;
+        
+        console.log(JSON.stringify(needs_request))
+        $.ajax({
+            url: "../sca/add_needs_request",
+            data: JSON.stringify(needs_request),
+            type: "POST",
+            success: function success(){
+                document.location.href='../sca/show_dnc'
+            }
+        });
+    }
+</script>
+{% endblock %}

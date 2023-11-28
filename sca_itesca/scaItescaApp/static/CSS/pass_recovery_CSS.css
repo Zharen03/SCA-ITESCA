@@ -1,0 +1,38 @@
+
+@media (min-height: 900px) {
+  .card{
+    height:42vh;
+  }
+}
+
+@media (max-height: 900px) {
+  .card{
+    height:50vh;
+  }
+}
+
+@media (min-width: 991px) {
+  .card{
+    margin-top:10%;
+  }
+}
+
+@media (max-width: 991px) {
+  .card{
+    margin-top:0%;
+    height: 98.5vh;
+  }
+}
+
+body {
+  background-color: #4F6BFF;
+  /*background: linear-gradient(#4F6BFF, white);*/
+}
+
+#header-card{
+  margin-bottom: 10%;
+}
+
+label {
+  color: #4D4D4D;
+}
