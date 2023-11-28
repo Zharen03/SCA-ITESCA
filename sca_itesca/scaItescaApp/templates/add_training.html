@@ -167,7 +167,7 @@
                             </div>
                         </div>
                     </div>
-
+                    
 
                     <!--Buttons to sumbit or cancel the form-->
                     <div class="row d-flex flex-column mt-5">
@@ -183,6 +183,7 @@
         </div>
     </div>
 </div>
+
 
 <!--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
@@ -224,6 +225,26 @@
         return codigo;
     }
 
+    function uploadFile(training_id){
+        console.log(training_id)
+        var files = $('#input_choose_file').prop('files')
+        $.ajax({
+            url: "../sca/upload_file",
+            data: {
+                "tid": training_id,
+                "files": files,
+            },
+            processData: false,
+            contentType: false,
+            type: "POST",
+            success: function success(){
+                //document.location.href = '../sca/training_history_ad'
+            }
+            
+
+        })
+    }
+
     function addTraining(){
         var name = $("#input_training_name").val()
         var trainer = $("#input_trainer_name").val()
@@ -236,8 +257,9 @@
         var status = true //el status que aparece en el formato es la obligatoriedad, que pertenece a las invitaciones
         var attendance_code = randomCode()
         //var visible = $("#input_visibility").val() =="Si" //true si es visible VISIBLE ES PARA LAS INVITACIONES
-        var area_id = $("#input_training_area").val() //Por default puse 0
+        var area_id = $("#input_training_area").val()
         var optional = $("#input_training_state").val()
+        
 
         $.ajax({
             url: "../sca/add_training",
@@ -253,14 +275,19 @@
                 "status": status,
                 "attendance_code": attendance_code,
                 "area_id": area_id,
-                "optional": optional
+                "optional": optional,
             },
             type: "POST",
-            success: function success(){
-                document.location.href = '../sca/training_history_ad'
+            success: function success(training_id){
+                uploadFile(training_id)
+                //document.location.href = '../sca/training_history_ad'
             }
+            
+
         })
 
     }
+
+
 </script>
 {% endblock%}

@@ -51,7 +51,6 @@
             <div class="mb-3 container">
               <label for="select_area" class="form-label">Área</label>
               <select class="form-select mb-3" id="select_area" name="select_area" required>
-                <option selected>Por definir...</option>
                 {% for area in areas%}
                   <option value="a-{{area.id}}">{{area.name}}</option>
                 {% endfor%}

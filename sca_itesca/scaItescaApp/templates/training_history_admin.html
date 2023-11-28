@@ -56,19 +56,24 @@
             <table class="table rounded" id="table-users">
                 <thead>
                     <tr>
-                        <th class="col-4">Nombre</th>
-                        <th class="col-4">Fecha</th>
-                        <th class="col-4">Tipo</th>
-                        <th class="col-4">Asistencia</th>
+                        <th class="col-3">Nombre</th>
+                        <th class="col-3">Fecha</th>
+                        <th class="col-3">Tipo</th>
+                        <th class="col-3">Codigo</th>
+                        <th class="col-3">Asistencia</th>
                     </tr>
                 </thead>
                 <tbody>
                     {%for training in training_ad_list%}
                         <tr>
-                            <td>{{training.training_Name}}</td>
-                            <td>{{training.training_Date}}</td>
-                            <td>{{training.training_Type}}</td>
-                            <td>{{training.training_Attendance}}</td>
+                            <td>{{training.training.name}}</td>
+                            <td>{%for date in training.date%}
+                                    {{date.day}}
+                                {%endfor%}
+                                </td>
+                            <td>{{training.type}}</td>
+                            <td>{{training.training.attendance_code}}</td>
+                            <td><a href="../sca/show_attendances/{{training.training.id}}/"><button type="button" class="btn btn-primary btn-sm">Ver asistentes</button></td>
                         </tr>
                     {% endfor%}
                     <!-- <tr>

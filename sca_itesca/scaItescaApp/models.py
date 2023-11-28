@@ -68,7 +68,8 @@ class Evaluation(models.Model):
     type = models.IntegerField()
     training_id = models.ForeignKey(Training, on_delete=models.CASCADE)
     user_id = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-
+    status = models.IntegerField()
+    
 class Date_Training(models.Model):
     training_id = models.ForeignKey(Training, on_delete=models.CASCADE)
     date_id = models.ForeignKey(Date, on_delete=models.CASCADE)
@@ -93,7 +94,7 @@ class Needs_Request(models.Model):
     status = models.BooleanField()
 
 class File(models.Model):
-    url = models.URLField()
+    file = models.FileField(upload_to='documents/', null=True)
     training_id = models.ForeignKey(Training, on_delete=models.CASCADE)
     
     

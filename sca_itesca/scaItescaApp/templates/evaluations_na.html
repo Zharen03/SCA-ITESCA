@@ -57,21 +57,39 @@
       <tr>
         <th scope="col">NOMBRE DE CAPACITACIÓN</th>
         <th scope="col">TIPO DE CAPACITACIÓN</th>
-        <th scope="col"> VER DETALLES </th>
+        <th scope="col"> REALIZAR EVALUACIÓN </th>
       </tr>
     </thead>
     <tbody class="table-group-divider">
       {%for training in trainings%}
       <tr>
-        <td>{{training.name}}</td>
-        <td>{% if training.modality %}
+        <td>{{training.training.name}}</td>
+        <td>{% if training.training.modality %}
               Presencial
             {% else %}
               Virtual
             {%endif%}
         </td>
         <td>
-          <a href="/sca/show_evaluations/{{training.id}}/"><button type="button" class="btn mt-1"  id="button_ver_detalles"><img src="\static\Images\ver-detalles.png" width="24px" height="24px" alt="Inicio"> </button></a>
+          {%if training.evaluation.status == 0%}
+            {%if training.training.modality %}
+              <form method="post" action="/sca/training_events_evaluation_form">
+                {% csrf_token %}
+                <input name="evaluation_id" value="{{training.evaluation.id}}" class="d-none">
+                <button type="sumbit" class="btn mt-1" id="button_ver"><img
+                src="\static\Images\ver-detalles.png" width="24px" height="24px" alt="Editar" onClick=""></button>
+              </form>
+            {%else%}
+              <form method="post" action="/sca/virtual_training_event_evaluation_form">
+                {% csrf_token %}
+                <input name="evaluation_id" value="{{training.evaluation.id}}" class="d-none">
+                <button type="sumbit" class="btn mt-1" id="button_ver"><img
+                src="\static\Images\ver-detalles.png" width="24px" height="24px" alt="Editar" onClick=""></button>
+              </form>
+            {%endif%}
+          {%else%}
+            Realizado
+          {%endif%}
         </td>
       </tr>
       {% endfor%}
