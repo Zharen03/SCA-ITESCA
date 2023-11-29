@@ -245,3 +245,8 @@ h3 {
     border: 0;
     color: inherit;
 }
+
+.card::-webkit-scrollbar {
+    display: block;
+    width: 2px;
+}
