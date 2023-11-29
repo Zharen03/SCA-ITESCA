@@ -13,7 +13,8 @@
 
 @media (min-width: 991px) {
   .card{
-    margin-top:10%;
+    margin-top: 10vh;
+    overflow: scroll;
   }
 }
 
@@ -21,6 +22,7 @@
   .card{
     margin-top:0%;
     height: 98.5vh;
+    
   }
 }
 
@@ -29,12 +31,8 @@ body {
   /*background: linear-gradient(#4F6BFF, white);*/
 }
 
-#header-card{
-  margin-bottom: 10%;
-}
-
 input {
-  margin-bottom: 5%;
+  margin-bottom: 1vh;
 }
 
 label {

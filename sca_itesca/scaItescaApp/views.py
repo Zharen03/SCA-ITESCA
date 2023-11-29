@@ -12,22 +12,7 @@ from .models import *
 import datetime
 from http import HTTPStatus
 from .forms import *
-
-#Resource
-class UserResource(resources.ModelResource):
-    class Meta:
-        model = User
-        fields = ("payroll_number", "first_name", "last_name", "email", "phone_number", "is_active") 
-
-class CapacitationResource(resources.ModelResource):
-    class Meta:
-        model = Training
-        fields = ("name", "trainer", "modality") 
-
-class EvaluationsResource(resources.ModelResource):
-    class Meta:
-        model = Evaluation
-        fields = ("user_id", "status") 
+from .admin import *
 
 #export
 class UsersCSV(View):
@@ -135,19 +120,21 @@ def pass_recovery(request):
 @login_required
 def showUser(request):
     post = request.POST
+    print(post)
     users = User.objects.filter(is_active=True)
     if "input_name" in request.POST.keys():
         if not request.POST["input_name"] == "":
             users = users.filter(first_name=post["input_name"])
         if not post["input_lastname"] == "":
             users = users.filter(last_name__contains=post["input_lastname"])
-        if not post["inpur_2lastname"] =="":
+        if not post["input_2ndlastname"] =="":
             users = users.filter(last_name__contains=post["input_2lastname"])
-        if not post["select_area"] == "":
+        if not post["select_area"] == "-1":
             obj_area = Area.objects.filter(id=post["select_area"])[0]
             users = users.filter(area_id = obj_area)
         if not post["select_min_training"] == "5":
-            pass
+            if post["select_min_training"] == "1":
+                pass
 
     else:
         users = users.values()
@@ -168,7 +155,7 @@ def addUserForm(request):
     areas = Area.objects.all().values()    
     context = {
         "areas": areas,
-        'user_type': userTypeTest(request.user),
+        #'user_type': userTypeTest(request.user),
     }
     return HttpResponse(template.render(context, request))
 
@@ -179,8 +166,12 @@ def addUser(request):
     print(post)
     area = Area.objects.filter(id=int(post["area"]))[0]
     print(area)
+    password = post["password"]
+    if password == "":
+        password = post["payroll_number"]+"23"
+        
     
-    new_user = User.objects.create_user(post['payroll_number'], post["email"], post['password'], payroll_number = post['payroll_number'], 
+    new_user = User.objects.create_user(post['payroll_number'], post["email"], password, payroll_number = post['payroll_number'], 
                                         first_name = post["first_name"], last_name = post["last_name"], position = post["position"],
                                         phone_number = post["phone_number"], min_gender = False, min_general = False, role = int(post["type"]),
                                         area_id = area)                                                                                             
@@ -653,6 +644,7 @@ def showInvitations(request):
         invitation_list.append({"invitation_info":obj_invitation, "relation":invitation, "training_info":obj_training, "schedule": date_list, "inscrito": inscrito})
     context = {
             "invitation_list": invitation_list,
+            "c_invitations": len(invitation_list),
             'user_type': userTypeTest(request.user),
         }
     return HttpResponse(template.render(context, request))
@@ -670,6 +662,14 @@ def setAttendance(request):
         user_training = User_Training.objects.filter(training_id=obj_training[0])
         user_training = user_training.filter(user_id=request.user)[0]
         user_training.attendance = True
+        if(obj_training[0].general):
+            if not request.user.min_general:
+                request.user.min_general = True
+                request.user.save()
+        else:
+            if not request.user.min_genero:
+                request.user.min_genero = True
+                request.user.save()
         print(user_training)
         user_training.save()
     else:
