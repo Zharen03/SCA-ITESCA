@@ -4,6 +4,7 @@ from .views import UsersCSV, EvaluationCSV
 from . import views
 
 urlpatterns = [
+    #path("", views.loginView),
     path("sca/add_question", views.addQuestion, name="add_question"),
     path("sca/add_area", views.addArea, name="add_area"),
     path('sca/add_group', views.addGroup),
@@ -62,6 +63,6 @@ urlpatterns = [
     
     path('sca/upload_file', views.uploadFile, name="upload_file"),
 
-    path('exportar-csv/', UsersCSV.as_view(), name='exportar_csv'),
-    path('exportar-csv-evaluation/', EvaluationCSV.as_view(), name='exportar_csv_evaluation'),
+    path('exportar-csv', UsersCSV.as_view(), name='exportar_csv'),
+    path('exportar-csv-evaluation', EvaluationCSV.as_view(), name='exportar_csv_evaluation'),
 ]

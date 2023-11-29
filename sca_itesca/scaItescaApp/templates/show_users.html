@@ -51,7 +51,8 @@
           <div class="col-md-4 col-12">
             <div class="mb-3 container">
               <label for="select_area" class="form-label">Área</label>
-              <select class="form-select mb-3" id="select_area" name="select_area" required>
+              <select class="form-select mb-3" id="select_area" name="select_area">
+                  <option value="-1">Seleccionar</option>
                 {% for area in areas%}
                   <option value="{{area.id}}">{{area.name}}</option>
                 {% endfor%}
@@ -62,7 +63,8 @@
           <div class="col-md-4 col-12">
             <div class="mb-3 container">
               <label for="select_training" class="form-label">Capacitación</label>
-              <select class="form-select mb-3" id="select_training" name="select_training" required>
+              <select class="form-select mb-3" id="select_training" name="select_training">
+                <option value="-1">Seleccionar</option>
                 {% for training in trainings%}
                   <option value="{{training.id}}">{{training.name}}</option>
                 {% endfor%}
@@ -101,7 +103,7 @@
   <div class="card container-fluid bg-body-tertiary table-responsive shadow mt-5">
     <div class="col mt-3 mb-3 text-end">
       <a href="../sca/add_user_form"><button id="button_gen_report" type="button" class="btn me-2 ms-auto">NUEVO USUARIO</button></a>
-      <a href="{% url 'exportar_csv' %}"><button id="button_gen_report" type="button" class="btn ms-auto ">GENERAR REPORTE</button></a>
+      <a href="{% url 'exportar_csv' %}"><button id="button_gen_report" type="button" class="btn ms-auto" onClick="">GENERAR REPORTE</button></a>
     </div>
     <table class="table aling-middle table-striped table-hover align-self-center" id="table-users">
       <thead>
@@ -121,14 +123,14 @@
           <td>{{user.last_name}}</td>
           <td>{{user.email}}</td>
           <td class="text-center">
-            {#{% if user.min_general %}#}
+            {% if user.min_general %}
               <img src="..\static\Images\check.png" width="24px" height="24px" alt="Hecho">
-            {#{% endif%}#}
+            {% endif%}
           </td>
           <td class="text-center">
-            {#{% if user.min_gender %}#}
+            {% if user.min_gender %}
               <img src="..\static\Images\check.png" width="24px" height="24px" alt="Hecho">
-              {#{% endif%}#}
+              {% endif%}
           </td>
           <td class="text-center">
             <a href="/sca/select_user/{{user.payroll_number}}/"> <button type="button" name="button_ver_detalles" id="button_ver_detalles" ><img src="..\static\Images\ver-detalles.png" width="24px" height="24px" alt="Ver detalles"></button></a>
@@ -176,10 +178,12 @@
         var area = $("#select_area").val().split("-")[1];
         var training = $("#select_training").val();
         var min_training = $("#select_min_training").val();
+        var crsf = $('[name="csrfmiddlewaretoken"]').val();
 
         $.ajax({
-            url: "../sca/show_user",
+            url: {% url 'exportar_csv' %},
             data: {
+                "csrfmiddlewaretoken": crsf,
                 "filtro": true,
                 "first_name": name,
                 "last_name": last_name,
@@ -188,7 +192,7 @@
                 "training": training,
                 "min_training": min_training
             },
-            type: "POST",
+            type: "GET",
             success: function success() {
 
             }
