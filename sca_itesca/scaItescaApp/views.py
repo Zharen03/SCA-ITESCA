@@ -150,12 +150,13 @@ def showUser(request):
     return HttpResponse(template.render(context, request))
 
 
+@login_required
 def addUserForm(request):
     template = loader.get_template('add_user_form.html')
     areas = Area.objects.all().values()    
     context = {
         "areas": areas,
-        #'user_type': userTypeTest(request.user),
+        'user_type': userTypeTest(request.user),
     }
     return HttpResponse(template.render(context, request))
 

@@ -119,7 +119,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = 'static/'
-
+STATIC_ROOT = BASE_DIR / 'static/'
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
@@ -135,7 +135,7 @@ LOGIN_URL = '/sca/login'
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 
 #Set to logout when enough time has passed
-SESSION_COOKIE_AGE = 600000
+SESSION_COOKIE_AGE = 1800
 
 #Disable to override format
 USE_L10N = False  
